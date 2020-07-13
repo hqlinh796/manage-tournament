@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Athlete = sequelize.define('athletes', {
+    const Arbitration = sequelize.define('arbitrations', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -11,18 +11,6 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             filed: 'full_name'
         },
-        position: {
-            type: DataTypes.ENUM('ST', 'CM', 'CB', 'GK'),
-            allowNull: false
-        },
-        height: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        weight: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
         birthday: {
             type: DataTypes.DATE,
             allowNull: false
@@ -31,17 +19,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: false
         },
-        salary: {
-            type: DataTypes.INTEGER,
+        avatar: {
+            type: DataTypes.TEXT,
             allowNull: false
         },
-        dominantFoot: {
-            type: DataTypes.ENUM('Left', 'Right'),
+        gender: {
+            type: DataTypes.ENUM('Male, Female'),
             allowNull: false
-        },
-        teamId: {
-            type: DataTypes.UUID,
-            allowNull: true
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -53,8 +37,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Athlete.associate = function (models) {
-    //     models.Athlete.belongsTo(models.User, {
+    // Arbitration.associate = function (models) {
+    //     models.Arbitration.belongsTo(models.User, {
     //         onDelete: "CASCADE",
     //         foreignKey: {
     //             allowNull: false
@@ -62,5 +46,5 @@ module.exports = (sequelize, DataTypes) => {
     //     });
     // };
 
-    return Athlete;
+    return Arbitration;
 };

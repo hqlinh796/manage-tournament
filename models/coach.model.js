@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Athlete = sequelize.define('athletes', {
+    const Coach = sequelize.define('coaches', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -11,36 +11,12 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             filed: 'full_name'
         },
-        position: {
-            type: DataTypes.ENUM('ST', 'CM', 'CB', 'GK'),
-            allowNull: false
-        },
-        height: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
-        weight: {
-            type: DataTypes.FLOAT,
-            allowNull: false
-        },
         birthday: {
             type: DataTypes.DATE,
             allowNull: false
         },
-        nationality: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
         salary: {
             type: DataTypes.INTEGER,
-            allowNull: false
-        },
-        dominantFoot: {
-            type: DataTypes.ENUM('Left', 'Right'),
-            allowNull: false
-        },
-        teamId: {
-            type: DataTypes.UUID,
             allowNull: true
         },
         createdAt: {
@@ -53,8 +29,8 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Athlete.associate = function (models) {
-    //     models.Athlete.belongsTo(models.User, {
+    // Coach.associate = function (models) {
+    //     models.Coach.belongsTo(models.User, {
     //         onDelete: "CASCADE",
     //         foreignKey: {
     //             allowNull: false
@@ -62,5 +38,5 @@ module.exports = (sequelize, DataTypes) => {
     //     });
     // };
 
-    return Athlete;
+    return Coach;
 };

@@ -8,7 +8,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const {sequelize} = require('./models/');
 const Umzug = require('umzug');
-
+const db = require('./models');
 
 
 const umzug =  new Umzug({
@@ -27,6 +27,10 @@ umzug.up();
 
 const app = express();
 
+db.athletes.findAll()
+.then(result => {
+  console.log('------------------' + result.length);
+})
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

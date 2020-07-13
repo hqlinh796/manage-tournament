@@ -13,7 +13,7 @@ const sequelize = new Sequelize(
     port: Number(config.database.port),
     logging: config.env === 'development' ? console.log : false,
     define: {
-      underscored: true,
+      underscored: true
     },
   },
 );
@@ -23,8 +23,9 @@ fs.readdirSync(__dirname)
         return (file.indexOf('.') !== 0) && (file !== 'index.js')
     })
     .forEach(function (file) {
-        const model = require(path.join(__dirname, file))(sequelize, Sequelize)
-        sequelize[model.name] = model;
+        const model = require(path.join(__dirname, file))(sequelize, Sequelize);
+        console.log(model);
+        db[model.name] = model;
     })
 
 Object.keys(db).forEach(function (modelName) {
