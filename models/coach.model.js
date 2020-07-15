@@ -29,14 +29,15 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Coach.associate = function (models) {
-    //     models.Coach.belongsTo(models.User, {
-    //         onDelete: "CASCADE",
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Coach.associate = (models) => {
+        Coach.hasOne(models.teams, {
+            sourceKey: 'id',
+            foreignKey: 'coachId',
+            as: 'coach_team',
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
+        });
+    }
 
     return Coach;
 };

@@ -40,14 +40,29 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Team.associate = function (models) {
-    //     models.Team.belongsTo(models.User, {
-    //         onDelete: "CASCADE",
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Team.associate = function (models) {
+        Team.belongsTo(models.coaches, {
+            foreignKey: 'coachId',
+            targetKey: 'id',
+            as: 'team_coach',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        Team.hasMany(models.matches, {
+            foreignKey: 'hostTeam',
+            sourceKey: 'id',
+            as: 'hostTeam_matches',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        Team.hasMany(models.matches, {
+            foreignKey: 'guestTeam',
+            sourceKey: 'id',
+            as: 'guestTeam_matches',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+    };
 
     return Team;
 };

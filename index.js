@@ -27,10 +27,16 @@ umzug.up();
 
 const app = express();
 
-db.athletes.findAll()
-.then(result => {
-  console.log('------------------' + result.length);
-})
+// db.matches.findAll({
+//   include: [{
+//     model: db.teams,
+//     as: 'match_hostTeam'
+//   }]
+// })
+// //db.teams.findAll()
+// .then(result => {
+//   console.log('------------------' + result.length);
+// })
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');

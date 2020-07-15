@@ -24,13 +24,14 @@ fs.readdirSync(__dirname)
     })
     .forEach(function (file) {
         const model = require(path.join(__dirname, file))(sequelize, Sequelize);
-        console.log(model);
+        //console.log(model);
         db[model.name] = model;
     })
 
 Object.keys(db).forEach(function (modelName) {
-    if (db[modelName].options.hasOwnProperty('associate')) {
-        db[modelName].options.associate(db)
+    if ('associate' in db[modelName]) {
+      console.log('co nha');
+      db[modelName].associate(db);
     }
 })
 

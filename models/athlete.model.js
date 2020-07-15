@@ -37,11 +37,13 @@ module.exports = (sequelize, DataTypes) => {
         },
         dominantFoot: {
             type: DataTypes.ENUM('Left', 'Right'),
-            allowNull: false
+            allowNull: false,
+            field: 'dominant_foot'
         },
         teamId: {
             type: DataTypes.UUID,
-            allowNull: true
+            allowNull: true,
+            field: 'team_id'
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -53,14 +55,42 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Athlete.associate = function (models) {
-    //     models.Athlete.belongsTo(models.User, {
-    //         onDelete: "CASCADE",
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Athlete.associate = function (models) {
+        Athlete.belongsTo(models.teams, {
+            foreignKey: {
+                name: 'teamId',
+                allowNull: true
+            },
+            targetKey: 'id',
+            as: 'athlete_team',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
+        });
+        Athlete.belongsToMany(models.matches, {
+            foreignKey: 'athlete_id',
+            otherKey: 'match_id',
+            through: 'athletes_matches',
+            as: 'athlete_matches',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
+        });
+        Athlete.belongsToMany(models.matches, {
+            foreignKey: 'athlete_id',
+            otherKey: 'match_id',
+            through: 'athletes_scores',
+            as: 'athlete_socres',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
+        });
+        Athlete.belongsToMany(models.matches, {
+            foreignKey: 'athlete_id',
+            otherKey: 'match_id',
+            through: 'matches_cards',
+            as: 'athlete_cards',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
+        })
+    };
 
     return Athlete;
 };

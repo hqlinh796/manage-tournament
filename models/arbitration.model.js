@@ -1,3 +1,5 @@
+const MatchModel = require('./match.model');
+
 module.exports = (sequelize, DataTypes) => {
     const Arbitration = sequelize.define('arbitrations', {
         id: {
@@ -37,14 +39,16 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Arbitration.associate = function (models) {
-    //     models.Arbitration.belongsTo(models.User, {
-    //         onDelete: "CASCADE",
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Arbitration.associate = function (models) {
+        Arbitration.belongsToMany(models.matches, {
+            foreignKey: 'arbitration_id',
+            otherKey: 'match_id',
+            through: 'matches_arbitrations',
+            as: 'arbitration_matches',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+    };
 
     return Arbitration;
 };

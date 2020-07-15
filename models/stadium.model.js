@@ -25,14 +25,22 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    // Stadium.associate = function (models) {
-    //     models.Stadium.belongsTo(models.User, {
-    //         onDelete: "CASCADE",
-    //         foreignKey: {
-    //             allowNull: false
-    //         }
-    //     });
-    // };
+    Stadium.associate = function (models) {
+        Stadium.hasMany(models.matches, {
+            foreignKey: 'stadiumId',
+            sourceKey: 'id',
+            as: 'stadium_matches',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        Stadium.hasMany(models.stadiums_pictures, {
+            foreignKey: 'stadiumId',
+            sourceKey: 'id',
+            as: 'stadium_pictures',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+    };
 
     return Stadium;
 };
