@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <%-include('../general/head.ejs') %>
+</head>
+  <body>
+    <div id="wrapper">
+    <%-include('../general/nav.ejs') %>
+
+
+      <div id="content-wrapper" class="d-flex flex-column">
+        
+        <div class="container-fluid">
+          
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mt-3 text-gray-800">Thông tin đội bóng </h1>
+          </div>
+          <!-- add input -->
+          <div class = "row">
+              <div class="col">
+                  <div>
+                    <div>Tên đội bóng: ac</div>
+                    <a href="#">
+                        <div>Huấn lyện viên: ac</div>
+                    </a>
+                    <a href="#">
+                        <div>Quản lý: ac</div>
+                    </a>
+                    <a href="#">
+                        <div>Đội trưởng: ac</div>
+                    </a>
+                    <a href="#">
+                        <div>Cầu thủ: ac</div>
+                    </a>
+                    <a href="#">
+                        <div>Cầu thủ: ac</div>
+                    </a>
+                  </div>
+
+              </div>
+              <div class="col">
+                <div>
+                    <li>Số huy chương đạt được: 3</li>
+                    <li>Số trận đã tham gia</li>
+                </div>
+              </div>
+         
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    
+    <%-include('../general/js.ejs') %>
+
+    <script>
+
+      const $fmCauThu = $("#fm_them_cau_thu");
+      $fmCauThu.hide();
+      console.log("ok");
+
+      $("#btn_them_thanh_vien")[0].onclick = function(){
+        $fmCauThu.show();
+        $("#fm_doi_bong").hide();
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <%-include('../general/head.ejs') %>
+</head>
+  <body>
+    <div id="wrapper">
+    <%-include('../general/nav.ejs') %>
+
+
+      <div id="content-wrapper" class="d-flex flex-column">
+        
+        <div class="container-fluid">
+          
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">thêm đội bóng</h1>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          </div>
+          <!-- add input -->
+          <form class="form-group mx-auto" action="/doibong" method="GET">
+            <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+              <input type="text" class="form-control form-control-user" id="name" placeholder="Tên đội bóng">
+            </div>
+            
+            <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+              <input type="text" class="form-control form-control-user" id="manager" placeholder="Tên quản lý">
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+              <input type="text" class="form-control form-control-user" id="leader" placeholder="Tên đội trưởng">
+            </div>
+            <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+              <input type="text" class="form-control form-control-user" id="hlv" placeholder="Tên huấn luyện viên">
+            </div>
+
+            <button type="submit" class="btn btn-success btn-icon-split  mb-3 mb-sm-0 mt-3 ml-3" >
+              <span class="text">Tạo</span>
+            </button>
+          </div>
+        </form>
+        
+      </div>
+    </div>
+
+    <%-include('../general/js.ejs') %>
+  </body>
+</html>
