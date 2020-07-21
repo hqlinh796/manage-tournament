@@ -5,9 +5,7 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-//doi bong
-const doiBongRouter = require('./routes/doi_bong');
+// const usersRouter = require('./routes/users');
 
 const {sequelize} = require('./models/');
 const Umzug = require('umzug');
