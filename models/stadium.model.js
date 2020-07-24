@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
         hostTeam: {
             type: DataTypes.UUID,
             allowNull: false,
-            field: 'host_team'
+            field: 'host_team',
+            unique: true
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -27,19 +28,26 @@ module.exports = (sequelize, DataTypes) => {
 
     Stadium.associate = function (models) {
         Stadium.hasMany(models.matches, {
-            foreignKey: 'stadiumId',
-            sourceKey: 'id',
+            foreignKey: 'hostTeam',
+            sourceKey: 'hostTeam',
             as: 'stadium_matches',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
-        Stadium.hasMany(models.stadiums_pictures, {
+        Stadium.hasMany(models.pictures, {
             foreignKey: 'stadiumId',
             sourceKey: 'id',
             as: 'stadium_pictures',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
+        Stadium.belongsTo(models.teams, {
+            foreignKey: 'hostTeam',
+            targetKey: 'id',
+            as: 'stadium_team',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        })
     };
 
     return Stadium;

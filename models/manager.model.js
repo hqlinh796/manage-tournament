@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Coach = sequelize.define('coaches', {
+    const Manager = sequelize.define('managers', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: false,
             filed: 'full_name'
+        },
+        accountId: {
+            type: DataTypes.UUID,
+            allowNull: false,
+            filed: 'account_id'
         },
         birthday: {
             type: DataTypes.DATE,
@@ -33,15 +38,22 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    Coach.associate = (models) => {
-        Coach.hasOne(models.teams, {
+    Manager.associate = (models) => {
+        Manager.hasOne(models.teams, {
             sourceKey: 'id',
-            foreignKey: 'coachId',
-            as: 'coach_team',
+            foreignKey: 'managerId',
+            as: 'manager_team',
             onDelete: 'CASCADE',
             onUpdate: 'CASCADE'
         });
+        Manager.belongsTo(models.accounts, {
+            foreignKey: 'accountId',
+            targetKey: 'id',
+            as: 'manager_account',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
+        });
     }
 
-    return Coach;
+    return Manager;
 };

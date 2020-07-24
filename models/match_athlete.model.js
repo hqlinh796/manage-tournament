@@ -1,26 +1,18 @@
 module.exports = (sequelize, DataTypes) => {
-    const MatchScore = sequelize.define('matches_scores', {
-        id: {
+    const MatchAthlete = sequelize.define('matches_athletes', {
+        matchId: {
             type: DataTypes.UUID,
             primaryKey: true,
             allowNull: false,
-            defaultValue: DataTypes.UUIDV4
-        },
-        matchId: {
-            type: DataTypes.UUID,
-            allowNull: false,
             field: 'match_id'
-        },
-        time: {
-            type: DataTypes.INTEGER,
-            allowNull: false
         },
         athleteId: {
             type: DataTypes.UUID,
+            primaryKey: true,
             allowNull: false,
             field: 'athlete_id'
         },
-        typeScore: {
+        position: {
             type: DataTypes.TEXT,
             allowNull: false,
             field: 'type_score'
@@ -35,29 +27,29 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    MatchScore.associate = function (models) {
-        MatchScore.belongsTo(models.typescores, {
-            foreignKey: 'typeScore',
-            targetKey: 'code',
-            as: 'matches_scores_typescore',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
-        MatchScore.belongsTo(models.matches_athletes, {
+    MatchAthlete.associate = function (models) {
+        MatchAthlete.belongsTo(models.athletes, {
             foreignKey: 'athleteId',
-            targetKey: 'athleteId',
-            as: 'matches_scores_athlete',
+            targetKey: 'id',
+            as: 'matches_athletes_athlete',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
-        MatchScore.belongsTo(models.matches, {
+        MatchAthlete.hasMany(models.matches_scores, {
+            foreignKey: 'athleteId',
+            sourceKey: 'athleteId',
+            as: 'matches_athletes_scores',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        MatchAthlete.belongsTo(models.matches, {
             foreignKey: 'matchId',
             targetKey: 'id',
-            as: 'matches_scores_match',
+            as: 'matches_athletes_match',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
     };
 
-    return MatchScore;
+    return MatchAthlete;
 };

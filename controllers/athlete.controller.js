@@ -1,8 +1,15 @@
 const athleteService = require('../services/athlete.service');
-
+const db = require('../models');
 
 module.exports = {
     createAthlete: async (req, res, next) => {
+
+
+        
+            
+          
+
+
         const athlete = req.body;
         try {
             const result = await athleteService.createAthlete(athlete);
@@ -12,6 +19,7 @@ module.exports = {
         }
     },
     getListAthlete: async (req, res, next) =>{
+
         try {
             const result = await athleteService.getListAthlete();
             res.json(result).status(200);

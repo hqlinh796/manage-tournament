@@ -1,27 +1,23 @@
 module.exports = (sequelize, DataTypes) => {
-    const Coach = sequelize.define('coaches', {
+    const TypeScore = sequelize.define('typescores', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
             allowNull: false,
             defaultValue: DataTypes.UUIDV4
         },
-        avatar: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
-        fullName: {
+        code: {
             type: DataTypes.TEXT,
             allowNull: false,
-            filed: 'full_name'
+            unique: true
         },
-        birthday: {
-            type: DataTypes.DATE,
+        name: {
+            type: DataTypes.TEXT,
             allowNull: false
         },
-        salary: {
+        point: {
             type: DataTypes.INTEGER,
-            allowNull: true
+            allowNull: false
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -33,15 +29,15 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    Coach.associate = (models) => {
-        Coach.hasOne(models.teams, {
-            sourceKey: 'id',
-            foreignKey: 'coachId',
-            as: 'coach_team',
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE'
+    TypeScore.associate = function (models) {
+        TypeScore.hasMany(models.matches_scores, {
+            foreignKey: 'typeScore',
+            sourceKey: 'code',
+            as: 'typescore_matches_scores',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
         });
-    }
+    };
 
-    return Coach;
+    return TypeScore;
 };
