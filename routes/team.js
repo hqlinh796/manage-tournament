@@ -3,11 +3,8 @@ var router = express.Router();
 
 const teamController = require('../controllers/team.controller');
 
-router.get('/add', teamController.getAddTeamForm);
+router.get('/', teamController.getTeams);
 
-router.get('/:id', function(req, res, next){
-  
-  res.render('./team/thong_tin_doi_bong');
-})
+router.post('/', teamController.addTeam);
 
 module.exports = router;

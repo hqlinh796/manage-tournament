@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         managerId: {
             type: DataTypes.UUID,
-            allowNull: false,
+            allowNull: true,
             field: 'manager_id'
         },
         homeShirt: {

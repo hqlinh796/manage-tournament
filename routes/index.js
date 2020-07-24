@@ -4,10 +4,16 @@ const athleteRoute = require('./athletes');
 //doi bong
 const doiBongRouter = require('./team');
 const statisticalRouter = require('./statistical');
+const coachRouter = require('./coach');
+const stadiumRouter = require('./stadium');
+const matchRouter = require('./match');
 
 /* GET home page. */
 router.use('/athletes', athleteRoute);
 router.use('/team', doiBongRouter);
 router.use('/statistical', statisticalRouter);
+router.use('/coach', coachRouter);
+router.use('/stadium', stadiumRouter);
+router.use('/match', matchRouter);
 
 module.exports = router;
