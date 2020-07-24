@@ -10,9 +10,13 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             allowNull: false
         },
+        logo: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         coachId: {
             type: DataTypes.UUID,
-            allowNull: false,
+            allowNull: true,
             field: 'coach_id'
         },
         managerId: {
@@ -48,6 +52,20 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
+        Team.belongsTo(models.managers, {
+            foreignKey: 'managerId',
+            targetKey: 'id',
+            as: 'team_manager',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        Team.hasOne(models.stadiums, {
+            foreignKey: 'hostTeam',
+            sourceKey: 'id',
+            as: 'team_stadium',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
+        });
         Team.hasMany(models.matches, {
             foreignKey: 'hostTeam',
             sourceKey: 'id',
@@ -59,6 +77,13 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'guestTeam',
             sourceKey: 'id',
             as: 'guestTeam_matches',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        Team.hasMany(models.athletes, {
+            foreignKey: 'teamId',
+            sourceKey: 'id',
+            as: 'team_athletes',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });

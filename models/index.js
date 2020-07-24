@@ -30,7 +30,6 @@ fs.readdirSync(__dirname)
 
 Object.keys(db).forEach(function (modelName) {
     if ('associate' in db[modelName]) {
-      console.log('co nha');
       db[modelName].associate(db);
     }
 })

@@ -20,11 +20,6 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TIME,
             allowNull: false
         },
-        stadiumId: {
-            type: DataTypes.UUID,
-            allowNull: false,
-            field: 'stadium_id'
-        },
         createdAt: {
             type: DataTypes.DATE,
             field: 'created_at'
@@ -38,34 +33,11 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Match.associate = function (models) {
-        Match.belongsToMany(models.arbitrations, {
-            through: 'matches_arbitrations',
-            foreignKey: 'match_id',
-            otherKey: 'arbitration_id',
-            as: 'match_arbitrations',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
-        Match.belongsTo(models.stadiums, {
-            foreignKey: 'stadiumId',
-            targetKey: 'id',
-            as: 'match_stadium',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
         Match.belongsToMany(models.athletes, {
             through: 'matches_athletes',
             foreignKey: 'match_id',
             otherKey: 'athlete_id',
             as: 'match_athletes',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
-        Match.belongsToMany(models.athletes, {
-            through: 'matches_cards',
-            foreignKey: 'match_id',
-            otherKey: 'athlete_id',
-            as: 'match_cards',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
@@ -88,6 +60,13 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'guestTeam',
             targetKey: 'id',
             as: 'match_guestTeam',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        Match.belongsTo(models.stadiums, {
+            targetKey: 'hostTeam',
+            foreignKey: 'hostTeam',
+            as: 'match_stadium',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });

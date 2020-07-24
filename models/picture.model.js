@@ -1,19 +1,19 @@
 module.exports = (sequelize, DataTypes) => {
-    const StadiumPicture = sequelize.define('stadiums_pictures', {
+    const Picture = sequelize.define('pictures', {
         id: {
             type: DataTypes.UUID,
             primaryKey: true,
             allowNull: false,
             defaultValue: DataTypes.UUIDV4
         },
-        picture: {
-            type: DataTypes.TEXT,
-            allowNull: false
-        },
         stadiumId: {
             type: DataTypes.UUID,
             allowNull: false,
             field: 'stadium_id'
+        },
+        picture: {
+            type: DataTypes.TEXT,
+            allowNull: false
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -25,15 +25,15 @@ module.exports = (sequelize, DataTypes) => {
         }
     });
 
-    StadiumPicture.associate = function (models) {
-        StadiumPicture.belongsTo(models.stadiums, {
+    Picture.associate = function (models) {
+        Picture.belongsTo(models.stadiums, {
             foreignKey: 'stadiumId',
             targetKey: 'id',
-            as: 'stadiumpicture_stadium',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
+            as: 'pictures_stadium',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
         });
     };
 
-    return StadiumPicture;
+    return Picture;
 };

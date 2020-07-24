@@ -6,14 +6,19 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: DataTypes.UUIDV4
         },
+        avatar: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         fullName: {
             type: DataTypes.TEXT,
             allowNull: false,
             filed: 'full_name'
         },
-        position: {
-            type: DataTypes.ENUM('ST', 'CM', 'CB', 'GK'),
-            allowNull: false
+        positionCode: {
+            type: DataTypes.TEXT,
+            allowNull: false,
+            field: 'position_code'
         },
         height: {
             type: DataTypes.FLOAT,
@@ -33,10 +38,10 @@ module.exports = (sequelize, DataTypes) => {
         },
         salary: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         dominantFoot: {
-            type: DataTypes.ENUM('Left', 'Right'),
+            type: DataTypes.ENUM('Trái', 'Phải'),
             allowNull: false,
             field: 'dominant_foot'
         },
@@ -74,19 +79,10 @@ module.exports = (sequelize, DataTypes) => {
             onUpdate: "CASCADE",
             onDelete: "CASCADE"
         });
-        Athlete.belongsToMany(models.matches, {
-            foreignKey: 'athlete_id',
-            otherKey: 'match_id',
-            through: 'athletes_scores',
-            as: 'athlete_socres',
-            onUpdate: "CASCADE",
-            onDelete: "CASCADE"
-        });
-        Athlete.belongsToMany(models.matches, {
-            foreignKey: 'athlete_id',
-            otherKey: 'match_id',
-            through: 'matches_cards',
-            as: 'athlete_cards',
+        Athlete.belongsTo(models.positions, {
+            foreignKey: 'positionCode',
+            targetKey: 'id',
+            as: 'athlete_position',
             onUpdate: "CASCADE",
             onDelete: "CASCADE"
         })
