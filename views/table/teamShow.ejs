@@ -1,12 +1,17 @@
-<tr>
+<tr value=<%= data.id%>>
     <div>
-
     <!-- Button trigger modal -->
-        <td scope="row"><%= data.name %></td>
-        <td><%= data.team_coach.fullName %></td>
+    <% if(data) {%>
+        <td scope="row" ><%= data.name %></td>
+        <% if(data.team_coach) { %>
+            <td><%= data.team_coach.fullName %></td>
+        <% } else { %>
+            <td></td>
+        <% } %>
         <td><%= data.managerId %></td>
-        <td><%= data.homeShirt %></td>
-        <td><%= data.awayShirt %></td>
+        <td><img height="200" width="200" src=<%= data.homeShirt %>></img></td>
+        <td><img height="200" width="200" src=<%= data.awayShirt %>></img></td>
+    <% } %>
     <!-- Modal -->
     </div>
 </tr>

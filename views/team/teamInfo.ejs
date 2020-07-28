@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+    <%-include('../general/head.ejs') %>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <%-include('../general/nav.ejs') %>
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content" class="mt-3">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Thông tin đội bóng</h1>
+
+                        <!-- Button trigger modal -->
+                        <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                            data-toggle="modal" data-target="#editTeam">
+                            Sửa
+                        </button>
+                    </div>
+
+                    <!-- Team info -->
+                    <%-include('./infoBox.ejs', {data: teamData}); %>
+
+                    <div class="d-sm-flex align-items-center m-3 justify-content-between mb-4">
+                        <h4>Danh sách thành viên</h4>
+                        <!-- Button trigger modal -->
+                        <div class="row">
+                            <button type="button" class="m-1 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                data-toggle="modal" data-target="#addAthlete">
+                                Thêm
+                            </button>
+                            <button type="button" class="m-1 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                                id="sortAthlete">
+                                Sắp xếp
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-md-center">
+                        <div class="col">
+                            <table class="table table-hover table-inverse table-responsive" id="athleteList">
+                                <thead class="thead-inverse">
+                                    <tr>
+                                        <th>Avatar</th>
+                                        <th>Tên</th>
+                                        <th>Vị Trí</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% athleteList.forEach(function(row){ %>
+                                    <%- include('../table/show', {data: row}); %>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <%-include('./teamInfoModal.ejs', {data: teamData}); %>
+
+    <!-- Modal -->
+    <% athleteList.forEach(function(row){ %>
+    <%- include('../table/teamData.ejs', {data: row}); %>
+    <% }); %>
+
+    <%-include('../athlete/modal.ejs') %>
+    <!-- End Modal -->
+
+    <%-include('../general/js.ejs') %>
+
+    <script>
+        window.onload = function () {
+            $('#fm-addAthlete').action = window.location.toString();
+            console.log(window.location.toString());
+        }
+    </script>
+    <script src="../js/table/teamJS.js"></script>
+    <script src="../js/help/helpPositionCode.js"></script>
+    <script src="../js/table/athleteList.js"></script>
+    <script>
+        $(document).ready(function () {
+            for (i = 0; i < $('[name = "teamId"]').length; i++) {
+                $('[name = "teamId"]')[i].disabled = true
+            }
+            $('#sortAthlete').click(function () {
+                const table = $('#athleteList').DataTable();
+            })
+        });
+    </script>
+
+</body>
+
+</html>

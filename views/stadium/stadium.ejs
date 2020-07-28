@@ -29,42 +29,18 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Danh sách đội bóng</h1>
+            <h1 class="h3 mb-0 text-gray-800">Danh sách sân vận động</h1>
 
             <!-- Button trigger modal -->
             <button type="button" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal"
               data-target="#addTeam">
               Thêm
             </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="addTeam" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-              aria-hidden="true">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <form action="/team" method="post">
-                    <div class="modal-header">
-                      <h5 class="modal-title">Thêm đội bóng</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <%- include('./add.ejs', {data: teamData}) %>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="submit" class="btn btn-primary">Save</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
           </div>
 
           <div class="row justify-content-md-center">
-            <div class="col-6">
-              <table class="table table-hover table-inverse table-responsive">
+            <div class="col">
+              <table class="table table-hover table-inverse table-responsive" id="stadiumTable">
                 <thead class="thead-inverse">
                   <tr>
                     <th>Tên</th>
@@ -72,16 +48,52 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% teamData.forEach(function(row){ %>
+                  <% data.forEach(function(row){ %>
                   <%- include('../table/stadiumShow', {data: row}); %>
                   <% }); %>
                 </tbody>
               </table>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <%-include('../general/js.ejs') %>
+  <!-- Modal -->
+  <div class="modal fade" id="addTeam" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <form id="addStadium" method="post">
+          <div class="modal-header">
+            <h5 class="modal-title">Thêm sân</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <%- include('./add.ejs', {data: data}) %>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <%-include('../general/js.ejs') %>
 
+  <% data.forEach(function(row){ %>
+  <%-include('./modal.ejs', {data: row}) %>
+  <% }) %>
+
+  <script src="../js/table/stadium.js"></script>
+  <script>
+    $(document).ready(function () {
+      const table = $('#stadiumTable').DataTable();
+    });
+  </script>
 </body>
 
 </html>

@@ -5,7 +5,7 @@ const athleteController = require('../controllers/athlete.controller');
 
 router.get('/', athleteController.getListAthlete);
 
-router.get('/add', athleteController.getAddAthleteForm);
+router.get('/:id', athleteController.getAthleteById);
 
 /* GET users listing. */
 router.use('/', function(req, res, next){

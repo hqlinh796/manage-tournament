@@ -16,6 +16,10 @@ module.exports = {
     addTeams:(teamData) =>{
         const team = db.teams.create(teamData);
         return team;
-    }
+    },
+    getTeamByID: (id) =>{
+        const data = db.teams.findByPk(id);
+        return data;
+    },
 }
 

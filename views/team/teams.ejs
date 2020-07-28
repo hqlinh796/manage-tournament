@@ -4,8 +4,6 @@
 <head>
 
   <%-include('../general/head.ejs') %>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -50,7 +48,9 @@
                       </button>
                     </div>
                     <div class="modal-body">
+                      <% if(coachsData){ %>
                       <%- include('./add.ejs', {data: coachsData}) %>
+                      <% } %>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -63,8 +63,8 @@
           </div>
 
           <div class="row justify-content-md-center">
-            <div class="col-6">
-              <table class="table table-hover table-inverse table-responsive">
+            <div class="col">
+              <table class="table table-hover table-inverse table-responsive" id="team">
                 <thead class="thead-inverse">
                   <tr>
                     <th>Tên</th>
@@ -82,8 +82,18 @@
               </table>
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-          <%-include('../general/js.ejs') %>
+  <% teamData.forEach(function(row){ %>
+  <%- include('../table/teamData', {data:row}); %>
+  <% }); %>
+
+
+  <%-include('../general/js.ejs') %>
+  <script src="../js/table/teamJS.js"></script>
 
 </body>
 

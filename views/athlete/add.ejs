@@ -1,72 +1,44 @@
-<!DOCTYPE html>
-<html>
-  
-<head>
-  <%-include('../general/head.ejs') %>
-  <link rel="stylesheet" href="../../css/danger.css">
-</head>
-  <body>
-    <div id="wrapper">
-    <%-include('../general/nav.ejs') %>
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <label for="fullName">Avatar</label>
+  <input type="text" class="form-control form-control-user" id="avatar" name="avatar" placeholder="avatar">
+</div>
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <label for="fullName">Họ và tên</label>
+  <input type="text" class="form-control form-control-user" id="fullName" name="fullName" placeholder="Tên cầu thủ">
+</div>
 
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <label for="positionCode">Vị trí <i id="help-positionCode" style="font-size:15px;" class="material-icons">help</i></label>
+  <input type="text" class="form-control form-control-user" id="positionCode" name="positionCode" placeholder="Vị trí">
+</div>
 
-      <div id="content-wrapper" class="d-flex flex-column">
-        
-        <div class="container-fluid">
-          
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Thêm cầu thủ</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
-          </div>
-          <!-- add input -->
-          <form class="form-group mx-auto" action="/athletes" method="POST">
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <label for="fullName">Họ và tên</label>
-                <input type="text" class="form-control form-control-user" id="fullName" name="fullName" placeholder="Tên cầu thủ">
-              </div>
-              
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <input type="text" class="form-control form-control-user" id="position" name="position" placeholder="Vị trí">
-              </div>
-              
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <input type="text" class="form-control form-control-user" id="height" name="height" placeholder="chiều cao">
-              </div>
-            
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <input type="text" class="form-control form-control-user" id="weight" name="weight" placeholder="Cân nặng">
-              </div>
-            
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <label for="birthday" class="caption">yyyy-mm-dd</label>
-                <input type="text" class="form-control form-control-user" id="birthday" name="birthday" placeholder="Ngày sinh">
-              </div>
-            
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <input type="text" class="form-control form-control-user" id="nationality" name="nationality" placeholder="Quốc tịch">
-              </div>
-            
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <input type="text" class="form-control form-control-user" id="salary" name="salary" placeholder="Lương">
-              </div>
-            
-              <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <label for="dominantFoot" class="caption">Right/Left</label>
-                <input type="text" class="form-control form-control-user" id="dominantFoot" name="dominantFoot" placeholder="Chân thuận">
-              </div>
-            
-              <!-- <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-                <input type="text" class="form-control form-control-user" id="teamId" name="teamId" placeholder="Tên đội bóng">
-              </div> -->
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <input type="text" class="form-control form-control-user" id="height" name="height" placeholder="chiều cao">
+</div>
 
-              <button type="submit" class="btn btn-success btn-icon-split  mb-3 mb-sm-0 mt-3 ml-3" >
-                <span class="text">Tạo</span>
-              </button>
-          </form>
-        
-      </div>
-    </div>
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <input type="text" class="form-control form-control-user" id="weight" name="weight" placeholder="Cân nặng">
+</div>
 
-    <%-include('../general/js.ejs') %>
-  </body>
-</html>
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <label for="birthday" class="caption">yyyy-mm-dd</label>
+  <input type="text" class="form-control form-control-user" id="birthday" name="birthday" placeholder="Ngày sinh">
+</div>
+
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <input type="text" class="form-control form-control-user" id="nationality" name="nationality" placeholder="Quốc tịch">
+</div>
+
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <input type="text" class="form-control form-control-user" id="salary" name="salary" placeholder="Lương">
+</div>
+
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <label for="dominantFoot" class="caption">Trái/Phải</label>
+  <input type="text" class="form-control form-control-user" id="dominantFoot" name="dominantFoot" placeholder="Chân thuận">
+</div>
+
+<div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <label for="dominantFoot" class="caption">Team</label>
+  <input type="text" class="form-control form-control-user" id="teamId" name="teamId" placeholder="team">
+</div>

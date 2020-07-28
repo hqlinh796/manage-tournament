@@ -3,13 +3,6 @@ const db = require('../models');
 
 module.exports = {
     createAthlete: async (req, res, next) => {
-
-
-        
-            
-          
-
-
         const athlete = req.body;
         try {
             const result = await athleteService.createAthlete(athlete);
@@ -19,19 +12,17 @@ module.exports = {
         }
     },
     getListAthlete: async (req, res, next) =>{
-
         try {
             const result = await athleteService.getListAthlete();
-            res.json(result).status(200);
+            res.render('athlete/athletes', {data: result});
         } catch (error) {
             next(error);
         }
     },
-    getAddAthleteForm: async (req, res, next) =>{
-        try {
-            res.render('athlete/add');
-        } catch (error) {
-            next(error);
-        }
+    getAthleteById: async (req, res, next) =>{
+        const id = req.params.id;
+        console.log(id);
+        const data = await athleteService.getAthleteById(id);
+        res.json(data);
     }
 }

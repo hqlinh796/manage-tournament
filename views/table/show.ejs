@@ -1,11 +1,10 @@
-<tr>
+<tr value=<%=data.id %>>
     <div>
 
     <!-- Button trigger modal -->
-        <td scope="row"><%= data.fullName %></td>
-        <td><%= data.birthday %></td>
-        <td><%= data.salary %></td>
-    
+        <td scope="row"><img width="100" height="100" src=<%= data.avatar %>></td>
+        <td><%= data.fullName %></td>
+        <td><%= data.positionCode %></td>
     <!-- Modal -->
     </div>
 </tr>
