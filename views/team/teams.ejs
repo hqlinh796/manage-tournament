@@ -49,7 +49,7 @@
                     </div>
                     <div class="modal-body">
                       <% if(coachsData){ %>
-                      <%- include('./add.ejs', {data: coachsData}) %>
+                      <%- include('./add.ejs', {coachsData, teamData}) %>
                       <% } %>
                     </div>
                     <div class="modal-footer">
@@ -64,7 +64,7 @@
 
           <div class="row justify-content-md-center">
             <div class="col">
-              <table class="table table-hover table-inverse table-responsive" id="team">
+              <table class="table table-hover table-inversepicture" id="team">
                 <thead class="thead-inverse">
                   <tr>
                     <th>Tên</th>
@@ -86,10 +86,6 @@
       </div>
     </div>
   </div>
-
-  <% teamData.forEach(function(row){ %>
-  <%- include('../table/teamData', {data:row}); %>
-  <% }); %>
 
 
   <%-include('../general/js.ejs') %>

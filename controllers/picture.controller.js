@@ -1,4 +1,3 @@
-const db = require('../models');
 const pictureService = require('../services/picture.service');
 
 module.exports = {

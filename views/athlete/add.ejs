@@ -8,11 +8,12 @@
 </div>
 
 <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-  <label for="positionCode">Vị trí <i id="help-positionCode" style="font-size:15px;" class="material-icons">help</i></label>
-  <input type="text" class="form-control form-control-user" id="positionCode" name="positionCode" placeholder="Vị trí">
+  <label for="positionCode"> Vị trí </label>
+  <select name="positionCode" id="positionCode"></select>
 </div>
 
 <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
+  <label for="height">Chiều cao</label>
   <input type="text" class="form-control form-control-user" id="height" name="height" placeholder="chiều cao">
 </div>
 
@@ -34,11 +35,12 @@
 </div>
 
 <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-  <label for="dominantFoot" class="caption">Trái/Phải</label>
-  <input type="text" class="form-control form-control-user" id="dominantFoot" name="dominantFoot" placeholder="Chân thuận">
+  <select name="dominantFoot" id="dominantFoot">
+    <option value="Trái">Trái</option>
+    <option value="Phải">Phải</option>
+  </select>
 </div>
 
 <div class="col-sm-6 mb-3 mb-sm-0 mt-3">
-  <label for="dominantFoot" class="caption">Team</label>
   <input type="text" class="form-control form-control-user" id="teamId" name="teamId" placeholder="team">
 </div>

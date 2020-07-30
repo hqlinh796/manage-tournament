@@ -1,4 +1,5 @@
 const athleteService = require('../services/athlete.service');
+const positionService = require('../services/position.service');
 const db = require('../models');
 
 module.exports = {
@@ -14,7 +15,8 @@ module.exports = {
     getListAthlete: async (req, res, next) =>{
         try {
             const result = await athleteService.getListAthlete();
-            res.render('athlete/athletes', {data: result});
+            const position = await positionService.getAllPosition();
+            res.render('athlete/athletes', {athleteList: result, position: position});
         } catch (error) {
             next(error);
         }

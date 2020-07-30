@@ -4,8 +4,12 @@
     <div class="cols-sm-10">
       <div class="input-group">
         <span class="input-group-addon mr-2 mt-1"><i class="fa fa-futbol-o" aria-hidden="true"></i></i></span>
+        <%if(teamData){ %>
         <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên"
-          value="Manchester United" />
+          value= <%=teamData.name%> >
+        <%}else{%>
+          <input type="text" class="form-control" name="name" id="name" placeholder="Nhập tên"> >
+          <%}%>
       </div>
     </div>
   </div>
@@ -15,11 +19,24 @@
       <div class="input-group">
         <span class="input-group-addon mr-2 mt-1"><i class="fa fa-user fa" aria-hidden="true"></i></span>
         <div class="form-group">
-          <select class="form-control" name="coachId" id="coachId">
-            <% data.forEach(function(row){ %>
-              <option value=<%= row.id %>><%= row.fullName %></option>
-            <% }); %>
-          </select>
+          <%if(teamData){ %>
+            <select class="form-control" name="coachId" id="coachId" >
+              <% if(coachsData){ coachsData.forEach(function(row){ %>
+                <%if(teamData.coachsId == row.id){ %>
+                <option selected value=<%= row.id %>><%= row.fullName %></option>
+                <% }else{ %>
+                  
+                <option value=<%= row.id %>><%= row.fullName %></option>
+                  <% } %>
+              <% }); }%>
+            </select>
+          <%}else{%>
+            <select class="form-control" name="coachId" id="coachId">
+              <% if(coachsData){ coachsData.forEach(function(row){ %>
+                <option value=<%= row.id %>><%= row.fullName %></option>
+              <% }); }%>
+            </select>
+            <%}%>
         </div>
       </div>
     </div>
@@ -29,7 +46,11 @@
     <div class="cols-sm-10">
       <div class="input-group">
         <span class="input-group-addon mr-2 mt-1"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-        <input disabled type="text" class="form-control" name="managerId" id="managerId" placeholder="Chọn quản lý" value="" />
+        <%if(teamData){ %>
+          <input disabled type="text" class="form-control" name="managerId" id="managerId" placeholder="Chọn quản lý" value=<%=teamData.managerId %>>
+          <%}else{%>
+            <input disabled type="text" class="form-control" name="managerId" id="managerId" placeholder="Chọn quản lý" value="" >
+            <%}%>
       </div>
     </div>
   </div>
@@ -38,8 +59,13 @@
     <div class="cols-sm-10">
       <div class="input-group">
         <span class="input-group-addon mr-2 mt-1"><i class="fa fa-user-circle" aria-hidden="true"></i></span>
-        <input type="text" class="form-control" name="homeShirt" id="homeShirt" placeholder="Chọn đồng phục sân nhà"
-          value="" />
+        <%if(teamData){ %>
+          <input type="text" class="form-control" name="homeShirt" id="homeShirt" placeholder="Chọn đồng phục sân nhà"
+            value=<%= teamData.homeShirt%> >
+        <%}else{%>
+          <input type="text" class="form-control" name="homeShirt" id="homeShirt" placeholder="Chọn đồng phục sân nhà"
+            value="" >
+          <%}%>
       </div>
     </div>
   </div>
@@ -48,8 +74,13 @@
     <div class="cols-sm-10">
       <div class="input-group">
         <span class="input-group-addon mr-2 mt-1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
-        <input type="text" class="form-control" name="awayShirt" id="awayShirt" placeholder="Chọn đồng phục sân khách"
-          value="" />
+        <%if(teamData){ %>
+          <input type="text" class="form-control" name="awayShirt" id="awayShirt" placeholder="Chọn đồng phục sân khách"
+            value=<%= teamData.awayShirt%> >
+        <%}else{%>
+          <input type="text" class="form-control" name="awayShirt" id="awayShirt" placeholder="Chọn đồng phục sân khách"
+            value="" />
+          <%}%>
       </div>
     </div>
     <div class="form-group">
@@ -57,8 +88,13 @@
       <div class="cols-sm-10">
         <div class="input-group">
           <span class="input-group-addon mr-2 mt-1"><i class="fa fa-user-circle-o" aria-hidden="true"></i></span>
-          <input type="text" class="form-control" name="logo" id="logo" placeholder="Logo"
-            value="" />
+          <%if(teamData){ %>
+            <input type="text" class="form-control" name="logo" id="logo" placeholder="Logo"
+              value=<%=teamData.logo%> >
+          <%}else{%>
+            <input type="text" class="form-control" name="logo" id="logo" placeholder="Logo"
+              value="" >
+            <%}%>
         </div>
       </div>
     </div>

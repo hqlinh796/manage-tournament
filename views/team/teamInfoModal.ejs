@@ -12,6 +12,7 @@
                         </button>
                     </div>
                     <div class="modal-body">
+                        <%-include('./add.ejs', {teamData, coachsData}); %>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -35,8 +36,8 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <% if(data){ %>
-                        <%-include('../athlete/add.ejs', {id: data.id})%>
+                        <% if(teamData){ %>
+                        <%-include('../athlete/add.ejs', {data: teamData})%>
                         <% } %>
                     </div>
                     <div class="modal-footer">

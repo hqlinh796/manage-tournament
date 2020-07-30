@@ -7,6 +7,7 @@ module.exports = {
     },
     getListAthlete: ()=>{
         const data =db.athletes.findAll();
+        console.log("data");
         return data;
     },
     getListByTeamID: (teamId)=>{

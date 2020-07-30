@@ -1,6 +1,7 @@
 const teamService = require('../services/team.service');
 const coachService = require('../services/coach.service');
 const athleteService = require('../services/athlete.service');
+const positionService = require('../services/position.service');
 
 module.exports = {
     getTeams: async (req, res, next) => {
@@ -24,9 +25,11 @@ module.exports = {
     },
     getTeamByID: async (req, res, next) =>{
         const id = req.params.id;
+        const coachsData = await coachService.getCoaches();
         const teamData = await teamService.getTeamByID(id);
         const athleteList = await athleteService.getListByTeamID(id);
-        res.render('team/teamInfo', {teamData: teamData, athleteList: athleteList});
+        const position = await positionService.getAllPosition();
+        res.render('team/teamInfo', {teamData: teamData, athleteList: athleteList, position:position, coachsData});
     },
     addAthlete: async (req, res, next) =>{
         const id = req.params.id;

@@ -15,28 +15,29 @@
 
 
             <div class="container">
-                <div class="row justify-content-end">
-                    <div class="col-1">
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-add">
+                <div class="d-sm-flex align-items-center m-3 justify-content-between mb-4">
+                    <h4>Danh sách cầu thủ</h4>
+                    <!-- Button trigger modal -->
+                    <div class="row">
+                        <button type="button" class="m-1 d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                            data-toggle="modal" data-target="#addAthlete">
                             Thêm
                         </button>
-
                     </div>
                 </div>
 
-
                 <div class="row justify-content-md-center">
-                    <div class="col-6">
-                        <table class="table table-hover table-inverse table-responsive">
+                    <div class="col">
+                        <table class="table table-hover table-inverse" id="athleteList">
                             <thead class="thead-inverse">
                                 <tr>
-                                    <th>Họ tên</th>
-                                    <th>Ngày sinh</th>
-                                    <th>Lương</th>
+                                    <th>Avatar</th>
+                                    <th>Tên</th>
+                                    <th>Vị Trí</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <% data.forEach(function(row){ %>
+                                <% athleteList.forEach(function(row){ %>
                                 <%- include('../table/show', {data: row}); %>
                                 <% }); %>
                             </tbody>
@@ -48,7 +49,7 @@
 
 
             <!-- Modal -->
-            <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            <div class="modal fade" id="addAthlete" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
                 aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -75,10 +76,23 @@
         </div>
 
         <!-- Modal -->
-        <%-include('./modal.ejs') %>
+        <% athleteList.forEach(function(row){ %>
+        <%- include('../table/teamData.ejs', {data: row}); %>
+        <% }); %>
+
+        <%-include('../athlete/modal.ejs') %>
+        <!-- End Modal -->
 
         <%-include('../general/js.ejs') %>
         <script src="../js/help/helpPositionCode.js"></script>
+        <script src="../js/table/athleteList.js"></script>
+        <script>
+            $(document).ready(function () {
+                const table = $('#athleteList').DataTable();
+            });
+        </script>
+        
+        <script src="../js/select/athlete.select.js"></script>
 </body>
 
 </html>
