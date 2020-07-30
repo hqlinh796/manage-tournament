@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <%-include('../general/head.ejs') %>
+        <link rel="stylesheet" href="../../public/css/danger.css">
+        <link rel="stylesheet" href="../../public/css/manage-teams.css">
+      
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      </head>
+      
+      <body>
+        <div id="wrapper">
+          <%-include('../general/nav.ejs') %>
+      
+      
+          <div id="content-wrapper" class="d-flex flex-column">
+      
+            <div class="container-fluid">
+                <div class="row">
+                   <main role="main" class="col-md-12 col-lg-12 px-4">
+                    <section class="mainWidget statsRow " style="position: relative;
+                    clear: both;
+                    padding-top: 3rem;
+                    border-top: 2px solid #efefef;">
+                        <header>
+                           <h3 class="subHeader">Danh sách người quản lý đội bóng</h3>
+                        </header>
+                     </section>
+                    <div class="row mt-4">
+                        <div class="d-flex flex-row-reverse mb-2 pr-1 w-100 mr-2">
+                          <!-- <a href="/admin/user/upgrade" class="p-2 btn btn-primary btn-sm ml-1" role="button"
+                          aria-pressed="true">Upgrade Required</a> -->
+                          <a href="/admin/user/add" class="p-2 btn btn-success btn-sm" role="button" aria-pressed="true">
+                            <i class="fa fa-plus mr-2" aria-hidden="true"></i>Thêm người quản lý</a>
+                          </div>
+                          <div class="col-lg-12">
+                            <div class="main-box no-header clearfix">
+                              <div class="main-box-body clearfix">
+                                <div class="table-responsive">
+                                  <table class="table user-list">
+                                    <thead>
+                                      <tr>
+                                        <th class="text-center"><span>ID</span></th>
+                                        <th class="text-center"><span>Tên quản lý</span></th>
+                                        <th class="text-center" contenteditable=""><span>Đội bóng quản lý</span></th>
+                                        <th>&nbsp;</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <!-- <tr>
+                                        <td>
+                                          <a href="/admin/user/info/{{_id}}" class="user-link text-center">01</a>
+                                        </td>
+                                        <td class="text-center">
+                                            <a href="#">Tan Kiet</a>
+                                            </td>
+                                            <td class="text-center">
+                                              <a href="#">Manchester United</a>
+                                            </td>
+                                            <td style="width: 7%;">
+                                              <a href="/admin/user/add?id={{_id}}" class="table-link">
+                                                <span class="fa-stack">
+                                                  <i class="fa fa-square fa-stack-2x"></i>
+                                                  <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                              </a>
+                                              <a href="/admin/user/delete/{{_id}}" class="table-link danger" onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
+                                                <span class="fa-stack">
+                                                  <i class="fa fa-square fa-stack-2x"></i>
+                                                  <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                              </a>
+                                            </td>
+                                          </tr> -->
+                                          <% managers.forEach(function(manager) { %>
+                                            <tr>
+                                                <td>
+                                                  <a href="/admin/user/info/{{_id}}" class="user-link text-center"><%= manager.id %></a>
+                                                </td>
+                                                <td class="text-center">
+                                                    <a href="#"><%= manager.fullName %></a>
+                                                    </td>
+                                                    <td class="text-center">
+                                                      <a href="#"></a>
+                                                    </td>
+                                                    <td style="width: 7%;">
+                                                      <a href="/admin/user/add?id={{_id}}" class="table-link">
+                                                        <span class="fa-stack">
+                                                          <i class="fa fa-square fa-stack-2x"></i>
+                                                          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                      </a>
+                                                      <a href="/admin/user/delete/{{_id}}" class="table-link danger" onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
+                                                        <span class="fa-stack">
+                                                          <i class="fa fa-square fa-stack-2x"></i>
+                                                          <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                        </span>
+                                                      </a>
+                                                    </td>
+                                                  </tr>
+                                        <%  }); %>
+                                          
+                                        </tbody>
+                                      </table>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                   </main>
+                </div>
+             </div>
+             <!--===============================================================================================-->
+             <!-- /.container-fluid -->
+      
+          </div>
+        </div>
+  
+        <%-include('../general/js.ejs') %>
+      
+      </body>
+      
+</html>

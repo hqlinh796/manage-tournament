@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <%-include('../general/head.ejs') %>
+        <link rel="stylesheet" href="../../public/css/danger.css">
+        <link rel="stylesheet" href="../../public/css/manage-teams.css">
+        <link rel="stylesheet" href="../../public/css/teams-list.css">
+      
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+           .mainWidget {
+    position: relative;
+    clear: both;
+    padding-top: 3rem;
+    border-top: 2px solid #efefef;
+}
+
+.statsTable table {
+    text-align: left;
+}
+.playerIndex table {
+    text-align: left;
+}
+.table table {
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    border-collapse: inherit;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table thead {
+    background-color: #fbfbfb;
+}
+
+.statsTable {
+    margin-top: 2rem;
+}
+
+.table.statsTable th {
+    text-align: center;
+}
+.table {
+    clear: both;
+}
+
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+div {
+    display: block;
+}
+
+.tooltipContainer, .visuallyHidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+        </style>
+      </head>
+      
+      <body>
+        <div id="wrapper">
+          <%-include('../general/nav.ejs') %>
+      
+      
+          <div id="content-wrapper" class="d-flex flex-column">
+      
+            <div class="container-fluid">
+                <div class="row">
+                   <main role="main" class="col-md-12 col-lg-12 px-4">
+                      <div class="col-12">
+                         <section class="mainWidget statsRow ">
+                            <header>
+                               <h3 class="subHeader">Danh sách đội bóng</h3>
+                            </header>
+                         </section>
+                         <div data-script="pl_stats" data-widget="stats-table" data-stat="wins" data-current-size="20" data-type="team" data-page-size="20" data-page="0" data-comps="1" data-num-entries="49">
+                            <!-- <section class="pageFilter col-12 singleFilter" data-use-history="true" data-filter-config="rankedstats" data-reset-available="true">
+                               <header class="mobileHeader">
+                                  <h4>Chọn Mùa</h4>
+                               </header>
+                               <div style="display:block;width:100%;height:60px" id="wrap-btn-random">
+                                  <div class="competitor-container">
+                                     <select class="team form-control competitorA " name="matchAll[A][1/2][346674][team1]" id="matchA_346674">
+                                        <option value="#1" selected=""> 2020 </option>
+                                        <option value="#2"> 2019 </option>
+                                        <option value="#3"> 2018 </option>
+                                     </select>
+                                     <input type="hidden" name="matchAll[A][1/2][346674][old_team1]" value="#1">  
+                                  </div>
+                               </div>
+                            </section> -->
+                            <div class="table playerIndex statsTable teamStatsTable">
+                               <table>
+                                  <thead>
+                                     <tr>
+                                        <th scope="col">STT</th>
+                                        <th scope="col">Câu lạc bộ</th>
+                                        <th class="mainStat" scope="col">Người quản lý</th>
+                                        <th scope="col">Thao tác</th>
+                                     </tr>
+                                  </thead>
+                                  <tbody class="statsTableContainer">
+                                     <% teams.forEach(function(team, index) { %>
+                                       <tr class="">
+                                          <td><%= index %></td>
+                                          <td><a href="//www.premierleague.com/clubs/10/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="<%=team.logo %>" width="30" height="30"> </span><%=team.name %></a></td>
+                                          <td class="mainStat">ten quan ly</td>
+                                          <td><span>
+                                            <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                            <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                          </span></td>
+                                       </tr>
+                                 <%    }); %>
+                                     <!-- <tr class="">
+                                        <td>2.</td>
+                                        <td><a href="//www.premierleague.com/clubs/11/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t43.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t43.png, https://resources.premierleague.com/premierleague/badges/25/t43@x2.png 2x"> </span>Manchester City</a></td>
+                                        <td class="mainStat">24</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>3.</td>
+                                        <td><a href="//www.premierleague.com/clubs/4/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t8.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t8.png, https://resources.premierleague.com/premierleague/badges/25/t8@x2.png 2x"> </span>Chelsea</a></td>
+                                        <td class="mainStat">19</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>4.</td>
+                                        <td><a href="//www.premierleague.com/clubs/26/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t13.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t13.png, https://resources.premierleague.com/premierleague/badges/25/t13@x2.png 2x"> </span>Leicester City</a></td>
+                                        <td class="mainStat">18</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>5.</td>
+                                        <td><a href="//www.premierleague.com/clubs/12/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t1.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t1.png, https://resources.premierleague.com/premierleague/badges/25/t1@x2.png 2x"> </span>Manchester United</a></td>
+                                        <td class="mainStat">17</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>6.</td>
+                                        <td><a href="//www.premierleague.com/clubs/43/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t90.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t90.png, https://resources.premierleague.com/premierleague/badges/25/t90@x2.png 2x"> </span>Burnley</a></td>
+                                        <td class="mainStat">15</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>7.</td>
+                                        <td><a href="//www.premierleague.com/clubs/21/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t6.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t6.png, https://resources.premierleague.com/premierleague/badges/25/t6@x2.png 2x"> </span>Tottenham Hotspur</a></td>
+                                        <td class="mainStat">15</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>8.</td>
+                                        <td><a href="//www.premierleague.com/clubs/18/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t49.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t49.png, https://resources.premierleague.com/premierleague/badges/25/t49@x2.png 2x"> </span>Sheffield United</a></td>
+                                        <td class="mainStat">14</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>9.</td>
+                                        <td><a href="//www.premierleague.com/clubs/38/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t39.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t39.png, https://resources.premierleague.com/premierleague/badges/25/t39@x2.png 2x"> </span>Wolverhampton Wanderers</a></td>
+                                        <td class="mainStat">14</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr>
+                                     <tr class="">
+                                        <td>10.</td>
+                                        <td><a href="//www.premierleague.com/clubs/1/club/overview" class="playerName"><span class="badge badge-image-container" data-widget="club-badge-image" data-size="25"><img class="badge-image badge-image--25 js-badge-image" src="https://resources.premierleague.com/premierleague/badges/25/t3.png" srcset="https://resources.premierleague.com/premierleague/badges/25/t3.png, https://resources.premierleague.com/premierleague/badges/25/t3@x2.png 2x"> </span>Arsenal</a></td>
+                                        <td class="mainStat">13</td>
+                                        <td><span>
+                                          <button type="button" class="btn btn-primary btn-sm">Sửa</button>
+                                          <button type="button" class="btn btn-danger btn-sm">Xoá</button>
+                                        </span></td>
+                                     </tr> -->
+                                  </tbody>
+                               </table>
+                            </div>
+                         </div>
+                      </div>
+                   </main>
+                </div>
+             </div>
+             <!--===============================================================================================-->
+             <!-- /.container-fluid -->
+      
+          </div>
+        </div>
+  
+        <%-include('../general/js.ejs') %>
+      
+      </body>
+      
+</html>

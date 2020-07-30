@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <%-include('../general/head.ejs') %>
+        <link rel="stylesheet" href="../css/danger.css">
+        <link rel="stylesheet" href="../css/manage-teams.css">
+        <link rel="stylesheet" href="../css/manager-team-add.css">
+      
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+          .text-center {
+    text-align: center;
+}
+h3 {
+    font-family: Lato,sans-serif;
+    font-weight: 400;
+    line-height: 1.1;
+    color: inherit;
+    margin-top: 0;
+    margin-top: 100px;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+*, :after, :before {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+#profile-wrap #editProfile .container .tab-content {
+    margin-top: 20px;
+}
+
+.tab-content {
+    -webkit-box-shadow: 0 1px 2px #d8d8d8;
+    box-shadow: 0 1px 2px #d8d8d8;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background-color: #fff;
+    padding: 15px;
+}
+
+#profile-wrap #editProfile .container .tab-content .personal-avatar h2 {
+    padding-top: 10px;
+    font-weight: 700;
+    color: #3bbf1a;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-weight: 400;
+    cursor: pointer;
+}
+
+input[type=file] {
+    display: block;
+}
+.hidden {
+    display: none!important;
+}
+input, input:focus {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+input {
+    color: inherit;
+    font: inherit;
+    margin: 0;
+    line-height: normal;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+.img-thumbnail {
+    padding: 4px;
+    line-height: 1.428571429;
+    background-color: #f8f8f8;
+    border: 1px solid #ecf0f1;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    display: inline-block;
+    max-width: 100%;
+    height: auto;
+}
+
+#profile-wrap #editProfile .container .tab-content .personal-avatar .avatar-position #avatar {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #3bbf1a;
+}
+.img-circle {
+    border-radius: 50%;
+}
+
+hr, img {
+    border: 0;
+}
+img {
+    vertical-align: middle;
+    max-width: 100%;
+}
+
+.form-group>label {
+    text-align: right;
+    margin-bottom: 0;
+}
+
+#profile-wrap #editProfile .container .tab-content .personal-info .display-align {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control, output {
+    display: block;
+    line-height: 1.428571429;
+    color: #596377;
+}
+
+.tab-content .personal-info .display-align label {
+    margin-top: 8px;
+}
+        </style>
+      </head>
+      
+      <body>
+        <div id="wrapper">
+          <%-include('../general/nav.ejs') %>
+      
+      
+          <div id="content-wrapper" class="d-flex flex-column">
+      
+            <div class="container-fluid">
+                <div class="row">
+                   <main role="main" class="col-md-12 col-lg-12 px-4">
+                      <div class="col-12">
+                        <h3 class="text-center">Thêm quản lý đội bóng</h3>
+                        <form method="POST" style="width: 100%;">
+                        <div class="row tab-content">
+                            <div class="flex-row" id="show-error-success">
+                                
+                                                        </div>
+                            <!-- left column -->
+                            <div class="col-md-4 col-sm-6 col-xs-12 personal-avatar">
+                                <div class="avatar-container text-center">
+                                    <div class="avatar-position">
+                                        <input id="UploadAvatar" class="hidden" accept="image/*" name="avatar" id="avatar" type="file">
+                                        <label for="UploadAvatar">
+                                            <img class="img-circle img-thumbnail" id="avatar" width="150" height="150" src="https://png.pngtree.com/png-vector/20190223/ourmid/pngtree-vector-avatar-icon-png-image_695765.jpg" tabindex="0">
+                                        </label>
+                                    </div>
+                                                                </div>
+                                <!-- <h2 class="panel-title text-center changeEmail pointer" data-toggle="modal" data-target="#changeEmail" tabindex="0">stepupstudyenglish@gmail.com</h2> -->
+                          </div>
+                            <!-- edit form column -->
+                            <div class="col-md-7 col-sm-6 col-xs-12 personal-info">
+                                <div class="form-group display-align row">
+                                    <label class="col-lg-2 col-md-3 col-sm-4 control-label">Họ Tên</label>
+                                    <div class="col-lg-10 col-md-9 col-sm-8">
+                                        <input class="form-control" id="firstName" name="fullName" type="text" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group display-align row">
+                                    <label class="col-lg-2 col-md-3 col-sm-4 control-label">Lương</label>
+                                    <div class="col-lg-10 col-md-9 col-sm-8">
+                                        <input class="form-control" id="salary" name="salary" type="number">
+                                    </div>
+                                </div>
+                                <div class="form-group display-align row">
+                                    <label class="col-lg-2 col-md-3 col-sm-4 control-label">Ngày sinh</label>
+                                    <div class="col-lg-10 col-md-9 col-sm-8">
+                                        <input class="width200 form-control hasDatepicker" id="birthday" placeholder="ngày/tháng/năm" name="birthday" type="date" value="">
+                                    </div>
+                                </div>
+                                <div class="form-group display-align row">
+                                    <label class="col-lg-2 col-md-3 col-sm-4 control-label">Tài khoản</label>
+                                    <div class="col-lg-10 col-md-9 col-sm-8">
+                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#openAccountList">Chọn</button>
+                                    </div>
+                                </div>
+                                <div class="form-group display-align text-center">
+                                    <label class="col-lg-2 col-md-3 col-sm-4 control-label"></label>
+                                    <div class="col-lg-10 col-md-9 col-sm-8">
+                                        <input class="btn btn-primary save" value="Lưu" type="submit">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </form>
+                      </div>
+                   </main>
+                </div>
+             </div>
+             <!--===============================================================================================-->
+             <!-- /.container-fluid -->
+      
+          </div>
+        </div>
+      
+      <!-- Modal -->
+  <!-- Modal -->
+<div class="modal fade" id="openAccountList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Danh sách tài khoản</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="table playerIndex statsTable teamStatsTable">
+            <table style="width:100%;">
+               <thead>
+                  <tr>
+                     <th scope="col">STT</th>
+                     <th scope="col">Username</th>
+                     <th scope="col">Thao tác</th>
+                  </tr>
+               </thead>
+               <tbody class="statsTableContainer">
+                <% var clickAccountAt = -1 %>
+                  <% accounts.forEach(function(account, index) { %>
+                    <tr class="">
+                      <td><%= index + 1 %></td>
+                      <td></span><%= account.username %></a></td>
+                      <td><span>
+                        <button type="button" class="btn btn-primary btn-sm"  data-dismiss="modal">Liên kết</button>
+                      </span></td>
+                   </tr>
+                <%  }) %>
+               </tbody>
+            </table>
+         </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+      
+        <%-include('../general/js.ejs') %>
+        
+      
+      </body>
+      
+</html>

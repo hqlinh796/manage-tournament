@@ -1,37 +1,37 @@
 const database = require('../models');
 
-class TeamService {
-    static async getAllTeams() {
+class ManagerService {
+    static async getAllManagers() {
         try {
-            return await database.teams.findAll();
+            return await database.managers.findAll();
         } catch (error) {
             throw error;
         }
     }
 
-    static async addTeam(newTeam) {
+    static async addManager(newManager) {
         try {
-            return await database.teams.create(newTeam);
+            return await database.managers.create(newManager);
         } catch (error) {
             throw error;
         }
     }
 
-    static async updateTeam(id, updateTeam) {
+    static async updateManager(id, updateManager) {
         try {
-            const teamToUpdate = await database.teams.findOne({
+            const managerToUpdate = await database.managers.findOne({
                 where: {
                     id: id
                 }
             });
 
-            if (teamToUpdate) {
-                await database.teams.update(updateTeam, {
+            if (managerToUpdate) {
+                await database.managers.update(updateManager, {
                     where: {
                         id: id
                     }
                 });
-                return updateTeam;
+                return updateManager;
             }
             
             return null;
@@ -40,35 +40,35 @@ class TeamService {
         }
     }
 
-    static async getMatch(id) {
+    static async getManager(id) {
         try {
-            const team = await database.teams.findOne({
+            const manager = await database.managers.findOne({
                 where: {
                     id: id
                 }
             });
 
-            return team;
+            return manager;
         } catch (error) {
             throw error;
         }
     }
 
-    static async deleteTeam(id) {
+    static async deleteManager(id) {
         try {
-            const teamToDelete = await database.teams.findOne({
+            const managerToDelete = await database.managers.findOne({
                 where: {
                     id: id
                 }
             });
 
-            if (teamToDelete) {
-                const deleteTeam = await database.teams.destroy({
+            if (managerToDelete) {
+                const deleteManager = await database.managers.destroy({
                     where: {
                         id: id
                     }
                 });
-                return deleteTeam;
+                return deleteManager;
             }
             return null;
         } catch (error) {
@@ -77,4 +77,4 @@ class TeamService {
     }
 }
 
-module.exports = TeamService;
+module.exports = ManagerService;

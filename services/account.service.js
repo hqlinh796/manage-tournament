@@ -1,37 +1,37 @@
 const database = require('../models');
 
-class TeamService {
-    static async getAllTeams() {
+class AccountService {
+    static async getAllAccounts() {
         try {
-            return await database.teams.findAll();
+            return await database.accounts.findAll();
         } catch (error) {
             throw error;
         }
     }
 
-    static async addTeam(newTeam) {
+    static async addAccount(newAccount) {
         try {
-            return await database.teams.create(newTeam);
+            return await database.accounts.create(newAccount);
         } catch (error) {
             throw error;
         }
     }
 
-    static async updateTeam(id, updateTeam) {
+    static async updateAccount(id, accountUpdate) {
         try {
-            const teamToUpdate = await database.teams.findOne({
+            const accountToUpdate = await database.accounts.findOne({
                 where: {
                     id: id
                 }
             });
 
-            if (teamToUpdate) {
-                await database.teams.update(updateTeam, {
+            if (accountToUpdate) {
+                await database.accounts.update(accountUpdate, {
                     where: {
                         id: id
                     }
                 });
-                return updateTeam;
+                return accountUpdate;
             }
             
             return null;
@@ -40,35 +40,35 @@ class TeamService {
         }
     }
 
-    static async getMatch(id) {
+    static async getAccount(id) {
         try {
-            const team = await database.teams.findOne({
+            const account = await database.accounts.findOne({
                 where: {
                     id: id
                 }
             });
 
-            return team;
+            return account;
         } catch (error) {
             throw error;
         }
     }
 
-    static async deleteTeam(id) {
+    static async deleteAccount(id) {
         try {
-            const teamToDelete = await database.teams.findOne({
+            const accountToDelete = await database.accounts.findOne({
                 where: {
                     id: id
                 }
             });
 
-            if (teamToDelete) {
-                const deleteTeam = await database.teams.destroy({
+            if (accountToDelete) {
+                const deleteAccount = await database.accounts.destroy({
                     where: {
                         id: id
                     }
                 });
-                return deleteTeam;
+                return deleteAccount;
             }
             return null;
         } catch (error) {
@@ -77,4 +77,4 @@ class TeamService {
     }
 }
 
-module.exports = TeamService;
+module.exports = AccountService;
