@@ -5,9 +5,7 @@ module.exports = {
         const newAccount = req.body;
         try {
             const createAccount = await accountService.addAccount(newAccount);
-        
-            res.send(createAccount);
-    
+           res.send();
         } catch (error) {
             next(error);
         }

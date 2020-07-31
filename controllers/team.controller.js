@@ -26,8 +26,17 @@ module.exports = {
                 teams: teams
             });
         } catch (error) {
-            console.log(error);
             next(error);
+        }
+    },
+    addTeam: async (req, res, next) => {
+        const newTeam = req.body;
+        try {
+            await teamService.addTeam(newTeam);
+
+            res.redirect('/admin/team');
+        } catch (error) {
+            next(error)
         }
     }
 }

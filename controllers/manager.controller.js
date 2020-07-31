@@ -5,13 +5,11 @@ const accountController = require('../controllers/account.controller');
 module.exports = {
     addManager : async (req, res, next) => {
         const newManager = req.body;
-    
         try {
             const createManager = await managerService.addManager(newManager);
             
             console.log(createManager);
-            res.send('create successfully!');
-    
+            res.redirect('/admin/manager');
         } catch (error) {
             next(error);
         }
@@ -48,5 +46,4 @@ module.exports = {
             next(error);
         }
     }
-    
 };

@@ -32,7 +32,7 @@
                         <div class="d-flex flex-row-reverse mb-2 pr-1 w-100 mr-2">
                           <!-- <a href="/admin/user/upgrade" class="p-2 btn btn-primary btn-sm ml-1" role="button"
                           aria-pressed="true">Upgrade Required</a> -->
-                          <a href="/admin/user/add" class="p-2 btn btn-success btn-sm" role="button" aria-pressed="true">
+                          <a href="/admin/manager/add" class="p-2 btn btn-success btn-sm" role="button" aria-pressed="true">
                             <i class="fa fa-plus mr-2" aria-hidden="true"></i>Thêm người quản lý</a>
                           </div>
                           <div class="col-lg-12">
@@ -74,10 +74,10 @@
                                               </a>
                                             </td>
                                           </tr> -->
-                                          <% managers.forEach(function(manager) { %>
+                                          <% managers.forEach(function(manager, index) { %>
                                             <tr>
                                                 <td>
-                                                  <a href="/admin/user/info/{{_id}}" class="user-link text-center"><%= manager.id %></a>
+                                                  <a href="/admin/user/info/{{_id}}" class="user-link text-center"><%= index + 1 %></a>
                                                 </td>
                                                 <td class="text-center">
                                                     <a href="#"><%= manager.fullName %></a>

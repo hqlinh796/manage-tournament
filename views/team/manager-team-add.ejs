@@ -148,7 +148,7 @@ img {
                    <main role="main" class="col-md-12 col-lg-12 px-4">
                       <div class="col-12">
                         <h3 class="text-center">Thêm quản lý đội bóng</h3>
-                        <form method="POST" style="width: 100%;">
+                        <form method="POST" style="width: 100%;" action="/admin/manager/add">
                         <div class="row tab-content">
                             <div class="flex-row" id="show-error-success">
                                 
@@ -188,7 +188,13 @@ img {
                                 <div class="form-group display-align row">
                                     <label class="col-lg-2 col-md-3 col-sm-4 control-label">Tài khoản</label>
                                     <div class="col-lg-10 col-md-9 col-sm-8">
-                                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#openAccountList">Chọn</button>
+                                      <div class="input-group mb-3">
+                                        <input type="text" class="form-control required" aria-describedby="basic-addon2" id="account">
+                                        <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="accountId" name="accountId" >
+                                        <div class="input-group-append">
+                                          <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#openAccountList">Chọn</button>
+                                        </div>
+                                      </div>
                                     </div>
                                 </div>
                                 <div class="form-group display-align text-center">
@@ -232,17 +238,22 @@ img {
                   </tr>
                </thead>
                <tbody class="statsTableContainer">
-                <% var clickAccountAt = -1 %>
                   <% accounts.forEach(function(account, index) { %>
                     <tr class="">
                       <td><%= index + 1 %></td>
                       <td></span><%= account.username %></a></td>
                       <td><span>
-                        <button type="button" class="btn btn-primary btn-sm"  data-dismiss="modal">Liên kết</button>
+                        <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal" onclick="setAccountField('<%= JSON.stringify(account) %>');" >Liên kết</button>
                       </span></td>
                    </tr>
                 <%  }) %>
                </tbody>
+               <script type="text/javascript">
+                function setAccountField(account) {
+                  document.getElementById("account").value = JSON.parse(account).username;
+                  document.getElementById("accountId").value = JSON.parse(account).id;
+                }
+              </script>
             </table>
          </div>
         </div>
@@ -253,7 +264,6 @@ img {
   </div>
       
         <%-include('../general/js.ejs') %>
-        
       
       </body>
       
