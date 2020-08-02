@@ -41,6 +41,16 @@ module.exports = (sequelize, DataTypes) => {
             onUpdate: "CASCADE",
             onDelete: "CASCADE"
         });
+        Account.hasOne(models.teams, {
+            foreignKey: {
+                name: 'managerId',
+                allowNull: true
+            },
+            sourceKey: 'id',
+            as: 'account_team',
+            onUpdate: "CASCADE",
+            onDelete: "CASCADE"
+        });
         Account.belongsTo(models.roles, {
             foreignKey: 'roleCode',
             targetKey: 'code',

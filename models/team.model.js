@@ -52,7 +52,7 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
-        Team.belongsTo(models.managers, {
+        Team.belongsTo(models.accounts, {
             foreignKey: 'managerId',
             targetKey: 'id',
             as: 'team_manager',

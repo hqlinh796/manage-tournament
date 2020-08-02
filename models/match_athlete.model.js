@@ -1,5 +1,11 @@
 module.exports = (sequelize, DataTypes) => {
     const MatchAthlete = sequelize.define('matches_athletes', {
+        id: {
+            type: DataTypes.UUID,
+            primaryKey: true,
+            allowNull: false,
+            defaultValue: DataTypes.UUIDV4
+        },
         matchId: {
             type: DataTypes.UUID,
             primaryKey: true,
@@ -11,11 +17,6 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             allowNull: false,
             field: 'athlete_id'
-        },
-        position: {
-            type: DataTypes.TEXT,
-            allowNull: false,
-            field: 'type_score'
         },
         createdAt: {
             type: DataTypes.DATE,
@@ -36,16 +37,9 @@ module.exports = (sequelize, DataTypes) => {
             onUpdate: 'CASCADE'
         });
         MatchAthlete.hasMany(models.matches_scores, {
-            foreignKey: 'athleteId',
-            sourceKey: 'athleteId',
+            foreignKey: 'matchAthlete',
+            sourceKey: 'id',
             as: 'matches_athletes_scores',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
-        MatchAthlete.belongsTo(models.matches, {
-            foreignKey: 'matchId',
-            targetKey: 'id',
-            as: 'matches_athletes_match',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });

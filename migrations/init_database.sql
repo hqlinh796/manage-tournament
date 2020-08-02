@@ -27,8 +27,8 @@ CREATE TABLE "rules" (
   "max_age" int,
   "min_athletes" int,
   "max_athletes" int,
-  "max_time_score" int,
   "max_foreign_athletes" int,
+  "max_time_score" int,
   "created_at" date,
   "updated_at" date
 );
@@ -75,6 +75,7 @@ CREATE TABLE "coaches" (
   "full_name" text,
   "birthday" date,
   "salary" int,
+  "nationality" text,
   "created_at" date,
   "updated_at" date
 );
@@ -85,14 +86,14 @@ CREATE TABLE "managers" (
   "account_id" uuid,
   "full_name" text,
   "birthday" date,
-  "salary" int,
+  "nationality" text,
   "created_at" date,
   "updated_at" date
 );
 
 CREATE TABLE "accounts" (
   "id" uuid PRIMARY KEY,
-  "username" text UNIQUE,
+  "username" text,
   "password" text,
   "role_code" text,
   "created_at" date,
@@ -118,8 +119,7 @@ CREATE TABLE "actions" (
 CREATE TABLE "roles_actions" (
   "role_code" text,
   "action_code" text,
-  "created_at" date,
-  "updated_at" date
+  PRIMARY KEY("role_code", "action_code")
 );
 
 CREATE TABLE "matches" (
@@ -131,31 +131,28 @@ CREATE TABLE "matches" (
   "updated_at" date
 );
 
-CREATE TABLE "matches_athletes" (
-  "match_id" uuid,
-  "athlete_id" uuid,
-  "position" text,
-  "created_at" date,
-  "updated_at" date,
-  PRIMARY KEY ("match_id", "athlete_id")
-);
-
 CREATE TABLE "matches_scores" (
   "id" uuid PRIMARY KEY,
-  "match_id" uuid,
-  "athlete_id" uuid,
+  "match_athlete" uuid,
   "time" float,
   "type_score" text,
   "created_at" date,
   "updated_at" date
+  
 );
 
-
+CREATE TABLE "matches_athletes" (
+  "id" uuid PRIMARY KEY,
+  "match_id" uuid,
+  "athlete_id" uuid
+  
+);
 
 CREATE TABLE "stadiums" (
   "id" uuid PRIMARY KEY,
   "name" text,
   "host_team" uuid UNIQUE,
+  "address" text,
   "created_at" date,
   "updated_at" date
 );
@@ -168,7 +165,7 @@ CREATE TABLE "pictures" (
   "updated_at" date
 );
 
-ALTER TABLE "teams" ADD FOREIGN KEY ("manager_id") REFERENCES "managers" ("id");
+ALTER TABLE "teams" ADD FOREIGN KEY ("manager_id") REFERENCES "accounts" ("id");
 
 ALTER TABLE "accounts" ADD FOREIGN KEY ("role_code") REFERENCES "roles" ("code");
 
@@ -190,16 +187,13 @@ ALTER TABLE "matches_athletes" ADD FOREIGN KEY ("athlete_id") REFERENCES "athlet
 
 ALTER TABLE "matches_athletes" ADD FOREIGN KEY ("match_id") REFERENCES "matches" ("id");
 
-
 ALTER TABLE "teams" ADD FOREIGN KEY ("coach_id") REFERENCES "coaches" ("id");
 
 ALTER TABLE "pictures" ADD FOREIGN KEY ("stadium_id") REFERENCES "stadiums" ("id");
 
 ALTER TABLE "matches" ADD FOREIGN KEY ("host_team") REFERENCES "stadiums" ("host_team");
 
-ALTER TABLE "matches_scores" ADD FOREIGN KEY ("match_id") REFERENCES "matches" ("id");
-
-ALTER TABLE "matches_scores" ADD FOREIGN KEY ("athlete_id", "match_id") REFERENCES "matches_athletes" ("athlete_id", "match_id");
+ALTER TABLE "matches_scores" ADD FOREIGN KEY ("match_athlete") REFERENCES "matches_athletes" ("id");
 
 ALTER TABLE "managers" ADD FOREIGN KEY ("account_id") REFERENCES "accounts" ("id");
 

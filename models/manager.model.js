@@ -24,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             allowNull: false
         },
-        salary: {
-            type: DataTypes.INTEGER,
+        nationality: {
+            type: DataTypes.TEXT,
             allowNull: true
         },
         createdAt: {
@@ -39,13 +39,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     Manager.associate = (models) => {
-        Manager.hasOne(models.teams, {
-            sourceKey: 'id',
-            foreignKey: 'managerId',
-            as: 'manager_team',
-            onDelete: 'CASCADE',
-            onUpdate: 'CASCADE'
-        });
+        
         Manager.belongsTo(models.accounts, {
             foreignKey: 'accountId',
             targetKey: 'id',

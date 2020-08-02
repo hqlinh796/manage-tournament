@@ -84,7 +84,7 @@ module.exports = {
             }], {
             transaction
             });
-            //console.log('=================== ', accounts[0].dataValues.id);
+            
 
             const positions = await db.positions.bulkCreate([{
                 code: 'CF',
@@ -204,6 +204,7 @@ module.exports = {
             await transaction.commit();
 
         } catch (error) {
+            console.log(error);
             await transaction.rollback();
         }
 

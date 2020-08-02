@@ -6,19 +6,14 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false,
             defaultValue: DataTypes.UUIDV4
         },
-        matchId: {
+        matchAthlete: {
             type: DataTypes.UUID,
             allowNull: false,
-            field: 'match_id'
+            field: 'match_athlete'
         },
         time: {
             type: DataTypes.INTEGER,
             allowNull: false
-        },
-        athleteId: {
-            type: DataTypes.UUID,
-            allowNull: false,
-            field: 'athlete_id'
         },
         typeScore: {
             type: DataTypes.TEXT,
@@ -44,16 +39,9 @@ module.exports = (sequelize, DataTypes) => {
             onUpdate: 'CASCADE'
         });
         MatchScore.belongsTo(models.matches_athletes, {
-            foreignKey: 'athleteId',
-            targetKey: 'athleteId',
-            as: 'matches_scores_athlete',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
-        MatchScore.belongsTo(models.matches, {
-            foreignKey: 'matchId',
+            foreignKey: 'matchAthlete',
             targetKey: 'id',
-            as: 'matches_scores_match',
+            as: 'matches_scores_athlete',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
