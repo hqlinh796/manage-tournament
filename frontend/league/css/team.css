@@ -1,0 +1,11 @@
+#logo{
+    width: 200px;
+    height: 280px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
+.shirt {
+    max-width: 100%;
+}
