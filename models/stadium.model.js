@@ -16,6 +16,10 @@ module.exports = (sequelize, DataTypes) => {
             field: 'host_team',
             unique: true
         },
+        address: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         createdAt: {
             type: DataTypes.DATE,
             field: 'created_at'
