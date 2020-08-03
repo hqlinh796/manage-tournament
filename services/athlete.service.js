@@ -17,5 +17,13 @@ module.exports = {
     getAthleteById: (id)=>{
         const data = db.athletes.findByPk(id);
         return data;
+    },
+    updateAthleteById: (id, data)=>{
+        const newData = db.athletes.update(data, {
+            where: {
+                id: id
+            }
+        });
+        console.log(newData);
     }
 }

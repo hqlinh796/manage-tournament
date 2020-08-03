@@ -10,7 +10,20 @@ module.exports ={
         return data;
     },
     getAllStadium: ()=>{
-        const data = db.stadiums.findAll();
+        const data = db.stadiums.findAll({
+            include: [
+                {
+                  model: db.teams,
+                  as: 'stadium_team'
+                }
+            ]
+        });
         return data;
+    },
+    updateStadiumById:(id, data)=>{
+        const newData = db.stadiums.update(data,{
+            where:{id: id}
+        });
+        return newData;
     }
 }

@@ -14,7 +14,7 @@ module.exports = {
     createStadium: async (req, res, next) => {
         try {
             const data = req.body;
-            console.log(data);
+            console.log(JSON.stringify(data));
             const result = await stadiumService.addStadium(data);
             const pictures = data.pictures;
             if(pictures){
@@ -27,6 +27,16 @@ module.exports = {
                 } 
             }
             res.json(result);
+        } catch (error) {
+            next(error);
+        }
+    },
+    updateStadiumById: async (req, res, next) =>{
+        try {
+            const data = req.body;
+            const id = req.params.id;
+            const newData = await stadiumService.updateStadiumById(id, data);
+            res.json(newData);
         } catch (error) {
             next(error);
         }

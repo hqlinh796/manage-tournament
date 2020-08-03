@@ -21,5 +21,13 @@ module.exports = {
         const data = db.teams.findByPk(id);
         return data;
     },
+    updateTeamById: (id, data)=>{
+        const newData = db.teams.update(data,{
+            where:{
+                id: id
+            }
+        });
+        console.log(newData);
+    }
 }
 

@@ -7,7 +7,7 @@ window.onload = function () {
 
         const parent = $('#' + id).find('#pictures-area')[0];
 
-        const url = urlBase + "/picture/" + id;
+        const url = urlBase + "/pictures/" + id;
 
         let hasLoad = false;
         for (i in list) {

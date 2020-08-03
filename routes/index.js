@@ -8,15 +8,15 @@ const coachRouter = require('./coach');
 const stadiumRouter = require('./stadium');
 const matchRouter = require('./match');
 const pictureRouter = require('./picture');
-const positionRouter = require('./position.js')
+const positionRouter = require('./position')
 /* GET home page. */
 router.use('/athletes', athleteRoute);
-router.use('/team', doiBongRouter);
-router.use('/statistical', statisticalRouter);
-router.use('/coach', coachRouter);
-router.use('/stadium', stadiumRouter);
-router.use('/match', matchRouter);
-router.use('/picture', pictureRouter);
-router.use('/position', positionRouter);
+router.use('/teams', doiBongRouter);
+router.use('/statisticals', statisticalRouter);
+router.use('/coachs', coachRouter);
+router.use('/stadiums', stadiumRouter);
+router.use('/matchs', matchRouter);
+router.use('/pictures', pictureRouter);
+router.use('/positions', positionRouter);
 
 module.exports = router;

@@ -39,5 +39,16 @@ module.exports = {
         const athleteList = await athleteService.getListByTeamID(id);
         const location = req.originalUrl.toString();
         res.redirect(location);
+    },
+    getTeamsAPI: async (req, res, next) => {
+        const teamData = await teamService.getTeams();
+        const coachsData = await coachService.getCoaches();
+        res.json(teamData);
+    },
+    updateAthlete: async(req, res, next)=>{
+        const data = req.body;
+        const id = req.params.id;
+        const newData = await athleteService.updateAthleteById(id, data);
+        res.json(newData);
     }
 }
