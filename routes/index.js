@@ -8,7 +8,7 @@ const coachRouter = require('./coach');
 const stadiumRouter = require('./stadium');
 const matchRouter = require('./match');
 const pictureRouter = require('./picture');
-const positionRouter = require('./position')
+const positionRouter = require('./position');
 /* GET home page. */
 router.use('/athletes', athleteRoute);
 router.use('/teams', doiBongRouter);

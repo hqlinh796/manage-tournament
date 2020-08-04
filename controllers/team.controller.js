@@ -21,7 +21,7 @@ module.exports = {
         const data = req.body;
         console.log(data);
         await teamService.addTeams(data);
-        res.redirect('/team');
+        res.redirect('/teams');
     },
     getTeamByID: async (req, res, next) =>{
         const id = req.params.id;

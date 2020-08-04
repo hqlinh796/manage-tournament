@@ -4,6 +4,6 @@ $.get('/teams/apis/all', function (data, status) {
         const option = document.createElement('option');
         option.value = data[i].id;
         option.innerText = data[i].name;
-        $('#team-list')[0].appendChild(option);
+        $('#hostTeam')[0].appendChild(option);
     }
 });

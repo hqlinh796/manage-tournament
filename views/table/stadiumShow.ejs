@@ -1,10 +1,32 @@
-<tr value=<%= data.id %>>
-    <div>
 
-    <!-- Button trigger modal -->
-        <td scope="row"><%= data.name %></td>
-        <td><%= data.stadium_team.name %></td>
-    
-    <!-- Modal -->
-    </div>
+<tr value=<%= data.id %> >
+    <td scope="row" class="text-center">
+        01
+    </td>
+    <td class="text-center">
+        <%= data.name %>
+    </td>
+    <td class="text-center">
+        <%= data.stadium_team.name %>
+    </td>
+    <td class="text-center">
+        <%= data.address%>
+    </td>
+
+    <td style="width: 7%;" id="options">
+        <a href="#modal-update-stadium" class="table-link"  role="button" aria-pressed="true" data-toggle="modal">
+            <span class="fa-stack">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+        
+        <a href="/admin/user/delete/{{_id}}" class="table-link danger"
+            onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
+            <span class="fa-stack">
+                <i class="fa fa-square fa-stack-2x"></i>
+                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+            </span>
+        </a>
+    </td>
 </tr>

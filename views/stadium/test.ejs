@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <%-include('../general/head.ejs')%>
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <%-include('../general/nav.ejs') %>
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main Content -->
+      <div id="content">
+
+        <%-include('../general/topbar.ejs') %>
+
+        <!-- Begin Page Content -->
+        <div class="container-fluid">
+          <div class="row">
+            <main role="main" class="col-md-12 col-lg-12 px-4">
+              <div class="row mt-4">
+
+                
+                <div class="col-12 d-flex justify-content-between">
+                  <div >
+                    <input class="form-control" type="text" name="" value="" placeholder="Tìm kiếm">
+                  </div>
+                  <div class="mb-3">
+                    <!-- <a href="/admin/user/upgrade" class="p-2 btn btn-primary btn-sm ml-1" role="button"
+                          aria-pressed="true">Upgrade Required</a> -->
+                    <a href="#modal-add-stadium" class="p-2 btn btn-success btn-sm" role="button" aria-pressed="true" data-toggle="modal">
+                      <i class="fa fa-plus mr-2" aria-hidden="true"></i>Thêm</a>
+                  </div>
+                </div>
+                <%- include('./table/stadium-list.ejs')%>
+              </div>
+            </main>
+          </div>
+        </div>
+        <!--===============================================================================================-->
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- End of Main Content -->
+
+      
+    <%-include('../general/footer')%>   
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+    
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Modal -->
+  <%- include('./modal/modal-add-stadium.ejs')%>
+  <%- include('./modal/modal-update-stadium.ejs')%>
+
+  <%stadiumData.forEach(function(row){%>
+  <%- include('./modal/modal-stadium-list.ejs', {data: row})%>
+  <%})%>
+  
+  <%- include('../general/js')%>
+  
+  <script src="../js/table/stadium.js"></script>
+  <script src="../js/select/team-list.select.js"></script>
+
+  <script>
+    $(function() {
+      //document https://www.daterangepicker.com/
+      $('input[name="birthday"]').daterangepicker({
+        singleDatePicker: true,
+       
+      }, function(start, end, label) {
+        var years = moment().diff(start, 'years');
+        alert("You are " + years + " years old!");
+      });
+    });
+    </script>
+
+</body>
+
+</html>

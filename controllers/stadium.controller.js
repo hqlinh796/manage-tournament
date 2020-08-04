@@ -4,7 +4,7 @@ const pictureService = require('../services/picture.service');
 module.exports = {
     getAllStadium: async (req, res, next) => {
         const data = await stadiumService.getAllStadium();
-        res.render('stadium/stadium', { data: data });
+        res.render('stadium/test', { stadiumData: data });
     },
     getStadium: async (req, res, next) => {
         const id = req.params.id;
@@ -26,7 +26,7 @@ module.exports = {
                     pictureService.addPicture(dataPicture);
                 } 
             }
-            res.json(result);
+            res.redirect('/stadiums');
         } catch (error) {
             next(error);
         }
