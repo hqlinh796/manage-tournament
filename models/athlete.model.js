@@ -81,7 +81,7 @@ module.exports = (sequelize, DataTypes) => {
         });
         Athlete.belongsTo(models.positions, {
             foreignKey: 'positionCode',
-            targetKey: 'id',
+            targetKey: 'code',
             as: 'athlete_position',
             onUpdate: "CASCADE",
             onDelete: "CASCADE"

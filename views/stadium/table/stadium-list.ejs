@@ -5,17 +5,17 @@
                 <table class="table user-list" id="stadiumTable">
                     <thead>
                         <tr>
-                            <th class="text-center"><span>STT <i class="fas fa-sort"></i></span></th>
-                            <th class="text-center"><span>Tên <i class="fas fa-sort"></i></span></th>
-                            <th class="text-center" contenteditable=""><span>Chủ nhà<i class="fas fa-sort"></i></span>
+                            <th onclick="sortTable(0)" class="text-center"><span>STT <i class="fas fa-sort"></i></span></th>
+                            <th onclick="sortTable(1)" class="text-center"><span>Tên <i class="fas fa-sort"></i></span></th>
+                            <th onclick="sortTable(2)" class="text-center"><span>Chủ nhà<i class="fas fa-sort"></i></span>
                             </th>
-                            <th class="text-center"><span>Địa chỉ<i class="fas fa-sort"></i></span></th>
+                            <th onclick="sortTable(3)" class="text-center"><span>Địa chỉ<i class="fas fa-sort"></i></span></th>
 
                             <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
-                    <tbody>
+                    <tbody id="data-table">
                         <% stadiumData.forEach(function(row){ %>
                         <%- include('../../table/stadiumShow', {data: row}); %>
                         <% }); %>

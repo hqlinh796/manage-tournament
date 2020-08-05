@@ -17,8 +17,8 @@ module.exports = {
         const team = db.teams.create(teamData);
         return team;
     },
-    getTeamByID: (id) =>{
-        const data = db.teams.findByPk(id);
+    getTeamByID: async (id) =>{
+        const data =await db.teams.findByPk(id);
         return data;
     },
     updateTeamById: (id, data)=>{
