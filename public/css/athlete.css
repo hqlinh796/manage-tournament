@@ -1,0 +1,21 @@
+#avatar-athlete {
+    width: 200px;
+    height: 280px;
+    object-fit: contain;
+    margin: 0 auto;
+    display: block;
+}
+
+#logo {
+    max-width: 200px;
+    display: block;
+    margin: 30px auto;
+    margin-top: 20px;
+    
+}
+
+.team-name {
+    font-size: 30px;
+    font-weight: bold;
+    color: #680303;
+}
