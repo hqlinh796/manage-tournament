@@ -144,7 +144,9 @@ CREATE TABLE "matches_scores" (
 CREATE TABLE "matches_athletes" (
   "id" uuid PRIMARY KEY,
   "match_id" uuid,
-  "athlete_id" uuid
+  "athlete_id" uuid,
+ "created_at" date,
+  "updated_at" date
   
 );
 

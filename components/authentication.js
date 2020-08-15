@@ -7,7 +7,8 @@ module.exports = function authenticete(req, res, next) {
     const refreshToken = req.cookies.refreshToken || '';
     const data = jwt.decodeJWT(token, refreshToken);
     if (!data) {
-        return res.redirect('login');
+        res.cookie('previousPage', req.originalUrl);
+        return res.redirect('/accounts/login');
     }
     req.account = data;
     next();

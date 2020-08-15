@@ -2,12 +2,12 @@ const bcrypt = require('bcrypt');
 const accountService = require('../services/account.service');
 const roleService = require('../services/role.service');
 const saltRounds = 10;
+const jwt = require('../components/jsonwebtoken');
 const db = require('../models');
 
 module.exports = {
     getLoginPage: (req, res) => {
-        
-        res.cookie('token', 'coNacuaChu');
+        //console.log(req.cookies.previousPage);
         res.render('login');
     },
     verifyAccount: (req, res, next) => {
@@ -28,7 +28,7 @@ module.exports = {
         const {username, password} = req.body;
         //check if username exist
         const account = await accountService.getAccountByUsername(username);
-        //console.log('account: ', JSON.stringify(req.body));
+        console.log('account: ', JSON.stringify(req.body));
         if (!account) {
             //response error
             res.render()
@@ -42,7 +42,13 @@ module.exports = {
                 return;
             }
             //generate token and set header
-            res.render('index');
+            const {token, refreshToken} = jwt.generateJWT(account.username, account.roleCode);
+            
+            res.cookie('token', token);
+            res.cookie('refreshToken', refreshToken);
+            const page = req.cookies.previousPage || '/';
+            //console.log('prevopis: ', req.session.previousPage);
+            return res.redirect(page);
         })
         
     },
@@ -67,7 +73,7 @@ module.exports = {
         });
     },
     getAccountPage: async (req, res, next) => {
-        const temp = await db.matches_scores.findAll();
+        const temp = await db.matches_athletes.findAll();
         console.log(JSON.stringify(temp));
         const accountList = await accountService.getAccounts();
         const roleList = await roleService.getRoles();

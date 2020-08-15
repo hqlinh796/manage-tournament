@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             field: 'updated_at'
         }
+    }, {
+        timestamp: false
     });
 
     MatchAthlete.associate = function (models) {
