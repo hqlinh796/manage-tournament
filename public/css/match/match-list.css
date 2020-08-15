@@ -1,0 +1,59 @@
+.teamName {
+    font-family: PremierSans-Bold,Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
+.shortname {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge-image-container .badge-image {
+    vertical-align: middle;
+}
+img {
+    opacity: 1;
+    transition: opacity .35s ease-in-out,transform .2s;
+}
+img {
+    border: 0;
+}
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    box-sizing: border-box;
+}
+
+span {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.score {
+    background: #4e73df;
+    font-size: 1.2rem;
+    color: #fff;
+    font-family: PremierSans-Bold,Arial,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 400;
+    line-height: 2rem;
+}
+
+.score span {
+    padding: 0 .7rem;
+    font-weight: 400;
+    vertical-align: initial;
+    position: relative;
+}
+
+
+.display-align label {
+    margin-top: 8px;
+}
+
+.form-group>label {
+    text-align: right;
+    margin-bottom: 0;
+}

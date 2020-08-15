@@ -1,0 +1,58 @@
+<tr>
+    <td class="text-center">
+      <a href="#" class="text-center"
+        >1</a
+      >
+    </td>
+    <td class="text-right">
+        <span class="team"><span class="teamName">
+            <span class="shortname"><%= match.match_hostTeam.name%></span> 
+        </span>
+            <span class="badge badge-image-container" data-widget="club-badge-image" data-size="25">
+                <img style="max-width: 20px;" class="badge-image badge-image--25 js-badge-image" src="<%= match.match_hostTeam.logo%>"> 
+            </span>
+        </span>
+    </td>
+    <td  class="text-center">
+        <span class="score ">0<span>-</span>2</span>
+    </td>
+    <td  class="text-left">
+        <span class="team">
+            <span class="badge badge-image-container" data-widget="club-badge-image" data-size="25">
+                <img style="max-width: 20px;" class="badge-image badge-image--25 js-badge-image" src="<%= match.match_guestTeam.logo%>" >
+             </span>
+            <span class="teamName"><span class="shortname"><%= match.match_guestTeam.name%></span> </span>
+        </span>
+    </td>
+    <td>
+        <span class="time">
+            <%= match.time%>
+        </span>
+    </td>
+    <td class="text-center">
+        <span class="stadiumName">
+            <%= match.match_stadium.name%>
+            <strong>Leicester</strong> 
+        </span>
+    </td>
+    <td style="width: 7%;">
+      <!-- <a href="" class="table-link" data-toggle="modal"
+      data-target="#addManager" onclick="">
+        <span class="fa-stack">
+          <i class="fa fa-square fa-stack-2x"></i>
+          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+        </span>
+      </a> -->
+      <a
+        href="/match/delete?id=<%= match.id%>"
+        class="table-link danger"
+        onclick="return confirm('Bạn có muốn xoá trận đấu này?')"
+      >
+        <span class="fa-stack">
+          <i class="fa fa-square fa-stack-2x"></i>
+          <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+        </span>
+      </a>
+    </td>
+  </tr>
+  

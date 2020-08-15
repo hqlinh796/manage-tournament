@@ -12,6 +12,10 @@ module.exports = {
                     {
                       model: db.accounts,
                       as: 'team_manager'
+                    },
+                    {
+                        model: db.stadiums,
+                      as: 'team_stadium'
                     }
                 ]
             });
