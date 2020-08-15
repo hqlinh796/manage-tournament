@@ -38,13 +38,7 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
-        MatchScore.belongsTo(models.matches_athletes, {
-            foreignKey: 'matchAthlete',
-            targetKey: 'id',
-            as: 'matches_scores_athlete',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
+        
     };
 
     return MatchScore;

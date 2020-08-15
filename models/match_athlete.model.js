@@ -36,6 +36,13 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
+        MatchAthlete.belongsTo(models.matches, {
+            foreignKey: 'matchId',
+            targetKey: 'id',
+            as: 'matches_athletes_matches',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
         MatchAthlete.hasMany(models.matches_scores, {
             foreignKey: 'matchAthlete',
             sourceKey: 'id',

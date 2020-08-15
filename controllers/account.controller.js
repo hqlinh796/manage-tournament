@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const accountService = require('../services/account.service');
 const roleService = require('../services/role.service');
 const saltRounds = 10;
-
+const db = require('../models');
 
 module.exports = {
     getLoginPage: (req, res) => {
@@ -67,6 +67,8 @@ module.exports = {
         });
     },
     getAccountPage: async (req, res, next) => {
+        const temp = await db.matches_scores.findAll();
+        console.log(JSON.stringify(temp));
         const accountList = await accountService.getAccounts();
         const roleList = await roleService.getRoles();
         console.log(JSON.stringify(roleList));
