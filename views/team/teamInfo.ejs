@@ -99,6 +99,20 @@
     <script src="../js/table/teamJS.js"></script>
     <script src="../js/help/helpPositionCode.js"></script>
     <script src="../js/table/athleteList.js"></script>
+    
+    <script>
+        $(function () {
+            console.log('date ok');
+
+            $("#birthday").datepicker();
+            $.datepicker.formatDate( "yy-mm-dd", new Date( 2000, 1 - 1, 26 ) );
+            $( "#birthday" ).datepicker( "setDate", "01/01/2000" );
+            $( "#birthday" ).datepicker({
+  showMonthAfterYear: true
+});
+        });
+    </script>
+
     <script>
         $(document).ready(function () {
             for (i = 0; i < $('[name = "teamId"]').length; i++) {

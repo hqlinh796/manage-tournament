@@ -1,0 +1,80 @@
+<form action="/stadiums" method="POST" id="fm-stadium">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="my-modal-title">Sân vận động</h5>
+            <button class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+
+            <div class="form-group">
+                <div id="demo" class="carousel slide" data-ride="carousel">
+
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                    </ul>
+
+                    <!-- The slideshow -->
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="http://rebrand.ly/gx2ean9" alt="Los Angeles">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="http://rebrand.ly/slk87ud" alt="Chicago">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="http://rebrand.ly/zwfenwn" alt="New York">
+                        </div>
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-md-4">
+                    <label for="avatar">Link 1 (Để tạm)</label>
+                    <input id="avatar" class="form-control" type="text" name="pictures">
+                </div>
+                <div class="col-md-4">
+                    <label for="avatar">Link 2 (Để tạm)</label>
+                    <input id="avatar" class="form-control" type="text" name="pictures">
+                </div>
+                <div class="col-md-4">
+                    <label for="avatar">Link 3 (Để tạm)</label>
+                    <input id="avatar" class="form-control" type="text" name="pictures">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Tên</label>
+                <input id="name" class="form-control" type="text" name="name" value="Cristiano Ronaldo">
+
+            </div>
+
+            <div class="form-group">
+                <label for="address">Địa chỉ</label>
+                <input id="address" class="form-control" type="text" name="address" value="10/01/1985">
+
+            </div>
+            <div class="form-group">
+                <label for="team-list">Chủ nhà</label>
+                <select name="hostTeam" class="form-control" id="hostTeam"></select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary" style="float: right">Lưu</button>
+
+        </div>
+    </div>
+</form>

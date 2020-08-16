@@ -4,7 +4,7 @@ const pictureService = require('../services/picture.service');
 module.exports = {
     getAllStadium: async (req, res, next) => {
         const data = await stadiumService.getAllStadium();
-        res.render('stadium/stadium', { data: data });
+        res.render('stadium/index', { stadiumData: data });
     },
     getStadium: async (req, res, next) => {
         const id = req.params.id;
@@ -14,7 +14,7 @@ module.exports = {
     createStadium: async (req, res, next) => {
         try {
             const data = req.body;
-            console.log(data);
+            console.log(JSON.stringify(data));
             const result = await stadiumService.addStadium(data);
             const pictures = data.pictures;
             if(pictures){
@@ -26,7 +26,17 @@ module.exports = {
                     pictureService.addPicture(dataPicture);
                 } 
             }
-            res.json(result);
+            res.redirect('/stadiums');
+        } catch (error) {
+            next(error);
+        }
+    },
+    updateStadiumById: async (req, res, next) =>{
+        try {
+            const data = req.body;
+            const id = req.params.id;
+            const newData = await stadiumService.updateStadiumById(id, data);
+            res.json(newData);
         } catch (error) {
             next(error);
         }
