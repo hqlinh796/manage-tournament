@@ -41,14 +41,14 @@ module.exports = (sequelize, DataTypes) => {
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
-        Match.belongsToMany(models.athletes, {
-            through: 'matches_scores',
-            foreignKey: 'match_id',
-            otherKey: 'athlete_id',
-            as: 'match_scores',
-            onDelete: "CASCADE",
-            onUpdate: 'CASCADE'
-        });
+        // Match.belongsToMany(models.athletes, {
+        //     through: 'matches_scores',
+        //     foreignKey: 'match_id',
+        //     otherKey: 'athlete_id',
+        //     as: 'match_scores',
+        //     onDelete: "CASCADE",
+        //     onUpdate: 'CASCADE'
+        // });
         Match.belongsTo(models.teams, {
             foreignKey: 'hostTeam',
             targetKey: 'id',

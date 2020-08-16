@@ -26,6 +26,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.DATE,
             field: 'updated_at'
         }
+    }, {
+        timestamp: false
     });
 
     MatchAthlete.associate = function (models) {
@@ -33,6 +35,13 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: 'athleteId',
             targetKey: 'id',
             as: 'matches_athletes_athlete',
+            onDelete: "CASCADE",
+            onUpdate: 'CASCADE'
+        });
+        MatchAthlete.belongsTo(models.matches, {
+            foreignKey: 'matchId',
+            targetKey: 'id',
+            as: 'matches_athletes_matches',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });

@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
         },
         teamId: {
             type: DataTypes.UUID,
-            allowNull: false,
+            allowNull: true,
             field: 'team_id'
         },
         createdAt: {

@@ -3,16 +3,16 @@ const database = require('../models');
 class MatchAthleteScore {
     static async getByMatchAthlete(matchAthlete) {
         try {
-            return await database.matches_scores.findOne({
+            return await database.matches_scores.findAll({
                 where: {
                     matchAthlete: matchAthlete
                 },
-                // include: [
-                //     {
-                //         model: database.typescores,
-                //         as: 'matches_scores_typescore'
-                //     }
-                // ]
+                include: [
+                    {
+                        model: database.typescores,
+                        as: 'matches_scores_typescore'
+                    }
+                ]
             });
         } catch (error) {
             throw(error);

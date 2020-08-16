@@ -41,10 +41,11 @@ module.exports = (sequelize, DataTypes) => {
         MatchScore.belongsTo(models.matches_athletes, {
             foreignKey: 'matchAthlete',
             targetKey: 'id',
-            as: 'matches_scores_athlete',
+            as: 'matches_scores_matches_athletes',
             onDelete: "CASCADE",
             onUpdate: 'CASCADE'
         });
+        
     };
 
     return MatchScore;
