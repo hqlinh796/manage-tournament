@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 const athleteRoute = require('./athletes');
-//doi bong
 const doiBongRouter = require('./team');
 const statisticalRouter = require('./statistical');
 const coachRouter = require('./coach');

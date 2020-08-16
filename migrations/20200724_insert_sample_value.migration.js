@@ -34,52 +34,52 @@ module.exports = {
 
             const accounts = await db.accounts.bulkCreate([{
                 username: 'teammanager1',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager2',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager3',
-                password: '123456',
+                password: '12$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC3456',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager4',
-                password: '123456',
+                password: '12$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC3456',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager5',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager6',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager7',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager8',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager9',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'teammanager10',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'team_manager'
             }, {
                 username: 'superadmin',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'super_admin'
             }
             , {
                 username: 'tournamentmanager',
-                password: '123456',
+                password: '$2b$10$LVuAzwcISedTKx13Aqc8xuKVMVjqUxR4YWYbEh/6lAbAupS1hx4OC',
                 roleCode: 'tournament_manager'
             }], {
             transaction
