@@ -245,7 +245,7 @@ module.exports = {
             inner join athletes	on athletes.id = matches_athletes.athlete_id 
             inner join matches on matches_athletes.match_id = matches.id
             inner join teams on athletes.team_id = teams.id
-        where teams.id = :id
+        where typescores.code <> 'C' and teams.id = :id
         group by athletes.id, athletes.avatar, athletes.full_name, athletes.position_code
         `, {
             replacements: { id: id },

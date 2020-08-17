@@ -1,7 +1,9 @@
 const athleteService = require('../services/athlete.service');
 const positionService = require('../services/position.service');
 const teamService = require('../services/team.service');
+const managerService = require('../services/manager.service');
 const db = require('../models');
+const coachService = require('../services/coach.service');
 
 module.exports = {
     createAthlete: async (req, res, next) => {
@@ -35,8 +37,19 @@ module.exports = {
         const id = req.params.id;
         const teamData = await teamService.getTeamByID(id);
         const athletesData = await athleteService.getAthletesByTeamId(id);
+        // console.log(teamData.managerId);
+        const managerData = await managerService.getManagerByAccount(teamData.managerId);
+    
+        // const coachesData = await coachService.getCoachesNotInTeam();
+        const coachesData = await coachService.getCoaches();
+    
+        const coachData = await coachService.getCoachById(teamData.coachId);
+        console.log("coachData");
+        console.log(coachData);
+        console.log(coachesData);
+        console.log(managerData);
 
-        res.render('athlete/index', { athletesData, teamData });
+        res.render('athlete/index', { athletesData, teamData, managerData, coachesData, coachData });
     },
     updateAthleteById: async (req, res, next) => {
         const id = req.params.id;

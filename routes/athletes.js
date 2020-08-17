@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const athleteController = require('../controllers/athlete.controller');
+const teamController = require('../controllers/team.controller');
+const teamService = require('../services/team.service');
 
 
 router.get('/', athleteController.getListAthlete);
@@ -20,6 +22,7 @@ router.use('/', function(req, res, next){
 
 router.post('/', athleteController.createAthlete);
 router.post('/team/:id', athleteController.createAthlete);
+router.post('/team/:id/edit', teamController.updateTeam);
 router.post('/:id', athleteController.updateAthleteById);
 router.delete('/:id', athleteController.deleteAthleteById);
 

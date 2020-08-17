@@ -1,6 +1,6 @@
 <tr value=<%= row.id%>>
     <td class="text-center">
-        <%=index + 1%>
+        01
     </td>
     <td class="text-center">
         <%= row.fullName%>
@@ -9,20 +9,17 @@
         <%= row.birthday%>
     </td>
     <td class="text-center">
-        <%= row.athlete_position.name%>
-    </td>
-    <td class="text-center">
         <%= row.nationality%>
     </td>
     <td style="width: 7%;">
-        <a href="#modal-update-athlete" class="table-link" name="update-athlete" aria-pressed="true" data-toggle="modal">
+        <a href="#modal-update-coach" class="table-link" name="update-coach" aria-pressed="true" data-toggle="modal">
             <span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
                 <i
                     class="fa fa-pencil fa-stack-1x fa-inverse"></i>
             </span>
         </a>
-        <a href="#athleteList" name="delete-athlete"
+        <a href="#coachList" name="delete-coach"
             class="table-link danger">
             <span class="fa-stack">
                 <i class="fa fa-square fa-stack-2x"></i>
