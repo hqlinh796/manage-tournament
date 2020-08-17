@@ -13,9 +13,13 @@ router.use('/:id', function(req, res, next){
 })
 router.post('/:id', teamController.addAthlete);
 
+router.get('/', teamController.showTeamList);
 
-router.get('/', teamController.getTeams);
-router.post('/', teamController.addTeam);
+router.get('/add', teamController.showTeamAdd);
 
+router.post('/add', teamController.addTeam);
 
+router.get('/edit', teamController.showTeamAdd);
+
+router.get('/delete', teamController.deleteTeam);
 module.exports = router;
