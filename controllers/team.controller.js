@@ -199,15 +199,17 @@ module.exports = {
                 if (new Date(matches[i].time) < new Date()) {
                     if(goal1 > goal2) {
                         team1.win++;
+                        team2.lose++;
                         team1.score += 3;
                     } else if (goal1 < goal2) {
                         team2.win++;
+                        team1.lose++;
                         team2.score += 3;
                     } else {
                         team1.drawn++;
                         team1.score += 1;
                         team2.drawn++;
-                        team1.score += 1;
+                        team2.score += 1;
                     }
                 }
                 team1.goalDifference += goal1 - goal2;
