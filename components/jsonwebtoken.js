@@ -2,9 +2,9 @@ const jwt = require('jsonwebtoken');
 const jwtSecret = 'AbCd123456!@#$%^';
 
 module.exports = {
-    generateJWT: function(username, roleCode) {
-        const token = jwt.sign({ username, roleCode }, jwtSecret, { expiresIn: 600 });
-        const refreshToken = jwt.sign({ username, roleCode }, jwtSecret, { expiresIn: 60*60 });
+    generateJWT: function(username, roleCode, teamId) {
+        const token = jwt.sign({ username, roleCode, teamId }, jwtSecret, { expiresIn: 600 });
+        const refreshToken = jwt.sign({ username, roleCode, teamId }, jwtSecret, { expiresIn: 60*60 });
         return {
             token,
             refreshToken

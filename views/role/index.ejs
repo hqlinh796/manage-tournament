@@ -21,9 +21,9 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
   <!-- Custom styles for this template-->
-  <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="/css/manage-teams.css">
-  <link rel="stylesheet" type="text/css" href="/css/athlete.css">
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="css/manage-teams.css">
+  <link rel="stylesheet" type="text/css" href="css/athlete.css">
   
    <!-- Bootstrap -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -31,11 +31,16 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
-  <!-- Date picker -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  <!-- Multiselect dropdown -->
+  <!-- JS & CSS library of MultiSelect plugin -->
+  <script src="js/jquery.multi-select.min.js"></script>
+  <script src="js/jquery.multi-select.js"></script>
+  
+  <link rel="stylesheet" href="/css/example-styles.css">
+  <!-- <link rel="stylesheet" href="/css/multi-select.dist.css">
+  <link rel="stylesheet" href="/css/multi-select.dev.css.map">
+  <link rel="stylesheet" href="/css/multi-select.dev.css">
+  <link rel="stylesheet" href="/css/multi-select.css"> -->
   
   <script src="https://kit.fontawesome.com/51d5218d26.js" crossorigin="anonymous"></script>
 
@@ -54,7 +59,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3" style="font-size: 13px">Ngoại <br>hạng anh</div>
       </a>
 
       <!-- Divider -->
@@ -64,7 +69,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Trang chủ</span></a>
       </li>
 
       <!-- Divider -->
@@ -72,7 +77,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Chức năng
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -80,13 +85,13 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Đội bóng</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <a class="collapse-item" href="buttons.html">Cầu thủ</a>
+            <a class="collapse-item" href="cards.html">Thống kê</a>
           </div>
         </div>
       </li>
@@ -96,21 +101,34 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
           aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <span>Giải đấu</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="utilities-color.html">Đội bóng</a>
+            <a class="collapse-item" href="utilities-border.html">Lịch thi đấu</a>
+            <a class="collapse-item" href="utilities-animation.html">BXH</a>
+            <a class="collapse-item" href="utilities-other.html">Thống kê</a>
+            <a class="collapse-item" href="utilities-other.html">Quy định</a>
           </div>
         </div>
       </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#accountCollapse"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Tài khoản</span>
+        </a>
+        <div id="accountCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-color.html">Danh sách</a>
+            <a class="collapse-item" href="utilities-border.html">Vai trò</a>
+          </div>
+        </div>
+      </li>
 
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -369,7 +387,7 @@
         <div class="container-fluid">
           <div class="row">
             <main role="main" class="col-md-12 col-lg-12 px-4">
-                <h1>Tài khoản</h1>
+                <h1>Phân quyền</h1>
               <div class="row mt-4">
 
                 
@@ -380,7 +398,7 @@
                   <div class="mb-3">
                     <!-- <a href="/admin/user/upgrade" class="p-2 btn btn-primary btn-sm ml-1" role="button"
                           aria-pressed="true">Upgrade Required</a> -->
-                    <a href="#create-account-modal" class="p-2 btn btn-success btn-sm" role="button" aria-pressed="true" data-toggle="modal">
+                    <a href="#my-modal" class="p-2 btn btn-success btn-sm" role="button" aria-pressed="true" data-toggle="modal">
                       <i class="fa fa-plus mr-2" aria-hidden="true"></i>Thêm</a>
                   </div>
                 </div>
@@ -392,47 +410,53 @@
                           <thead>
                             <tr>
                               <th class="text-center"><span>STT <i class="fas fa-sort"></i></span></th>
-                              <th class="text-center"><span>Username <i class="fas fa-sort"></i></span></th>
-                              <th class="text-center" contenteditable=""><span>Vai trò <i class="fas fa-sort"></i></span></th>
+                              <th class="text-center"><span>Vai trò <i class="fas fa-sort"></i></span></th>
+                              <th class="text-center"><span>Mã vai trò <i class="fas fa-sort"></i></span></th>
+                              <th class="text-center" contenteditable=""><span>Chức năng <i class="fas fa-sort"></i></span></th>
                               <th class="text-center"><span>Ghi chú<i class="fas fa-sort"></i></span></th>
                               
                               <th>&nbsp;</th>
                             </tr>
                           </thead>
                           <tbody>
-                            <% accountList.forEach(function(account, key) { %>
-                              <tr>
-                                <td class="text-center">
-                                  <%=Number.parseInt(key) + 1%>
-                                </td>
-                                <td class="text-center">
-                                  <%= account.username %>
-                                </td>
-                                <td class="text-center">
-                                  <%= account.account_role.name %>
-                                </td>
-                                <td class="text-center">
-                                  <% if (account.account_team) { %>
-                                    <%= account.account_team.name %>
-                                  <% } %>
-                                </td>
-                                <td style="width: 7%;">
-                                  <a href="/admin/user/add?id={{_id}}" class="table-link">
-                                    <span class="fa-stack">
-                                      <i class="fa fa-square fa-stack-2x"></i>
-                                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                  </a>
-                                  <a href="/admin/user/delete/{{_id}}" class="table-link danger"
-                                    onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
-                                    <span class="fa-stack">
-                                      <i class="fa fa-square fa-stack-2x"></i>
-                                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                  </a>
-                                </td>
-                              </tr>
-                              <% }) %>
+                              <% roleList.forEach(function(role, index) {%>
+                                <tr>
+                                    <td class="text-center">
+                                      <%= index + 1 %>
+                                    </td>
+                                    <td class="text-center">
+                                      <%= role.name %>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= role.code %>
+                                    </td>
+                                    <td class="text-center">
+                                        <% role.actions.forEach(function(action, index){  %>
+                                          <% if (index < 5) {%>
+                                            <%= action.name %>, 
+                                            <% }%>
+                                          <%})%> ...
+                                    </td>
+                                    <td class="text-center">
+                                        
+                                    </td>
+                                    <td style="width: 7%;">
+                                      <a href="#" class="table-link edit-role-btn" id="role-<%= role.code%>">
+                                        <span class="fa-stack">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      </a>
+                                      <a href="/roles/delete-role/<%= role.code %>" class="table-link danger"
+                                        onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
+                                        <span class="fa-stack">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      </a>
+                                    </td>
+                                  </tr>
+                                <%})%>
                           </tbody>
                           
                         </table>
@@ -475,35 +499,50 @@
 
  
     <!-- Info Model -->
-    <div id="create-account-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true" style="padding-bottom: 100px">
-      <div class="modal-dialog modal-dialog-centered" role="document">
+    <div id="my-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true" style="padding-bottom: 100px">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="my-modal-title">Thêm mới tài khoản</h5>
+            <h5 class="modal-title" id="my-modal-title">Thêm mới vai trò</h5>
             <button class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form id="create-account-form">
+            <form id="create-role-form">
+              
+              <div class="row">
+                <div class="col-md-6">
+                    <label for="role">Tên vai trò</label>
+                    <input id="name" class="form-control" type="text" name="role" placeholder="">
+                    
+                  </div>
+                  <div class="col-md-6">
+                    <label for="code">Mã vai trò</label>
+                    <input id="code" class="form-control" type="text" name="code">
+                    
+                  </div>
+              </div>
               
               <div class="form-group">
-                <label for="username">Username</label>
-                <input id="username" class="form-control" type="text" name="username" value="" autocomplete="off">
-                
-              </div>
-              <div class="form-group">
-                <label for="password">Password</label>
-                <input id="password" class="form-control" type="password" name="password" value="" autocomplete="off">
-                
-              </div>
-              
-              <div class="form-group">
-                <label for="role">Vai trò</label>
-                <select id="role" class="form-control" name="role">
-                  <% roleList.forEach(function(role) { %>
-                    <option value="<%= role.code %>"> <%= role.name %></option>
-                    <% })%>
+                <label for="action">Vai trò</label>
+                <select id="action" name="action" multiple="multiple" class="form-control">
+                    <optgroup label="Đội bóng">
+                      <% actionGroupByCategory.team.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    <optgroup label="Giải đấu">
+                      <% actionGroupByCategory.tournament.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    <optgroup label="Tài khoản">
+                      <% actionGroupByCategory.account.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    
                 </select>
               
             </div>
@@ -516,57 +555,140 @@
       </div>
     </div>
   
+    <div id="edit-role-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true" style="padding-bottom: 100px">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="my-modal-title">Chỉnh sửa vai trò</h5>
+            <button class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="create-role-form">
+              
+              <div class="row">
+                <div class="col-md-6">
+                    <label for="role-edit-from">Tên vai trò</label>
+                    <input id="name-edit-from" class="form-control" type="text" name="role" placeholder="">
+                    
+                  </div>
+                  <div class="col-md-6">
+                    <label for="code-edit-from">Mã vai trò</label>
+                    <input id="code-edit-from" class="form-control" type="text" name="code">
+                    
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="action-edit-form">Vai trò</label>
+                <select id="action-edit-form" name="action" multiple="multiple" class="form-control">
+                    <optgroup label="Đội bóng">
+                      <% actionGroupByCategory.team.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    <optgroup label="Giải đấu">
+                      <% actionGroupByCategory.tournament.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    <optgroup label="Tài khoản">
+                      <% actionGroupByCategory.account.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    
+                </select>
+              
+            </div>
+              
+              <button type="submit" class="btn btn-primary" style="float: right">Lưu</button>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+        $('#action').multiSelect();
+        $('#action-edit-form').multiSelect();
+
+        $('#create-role-form').submit((e) => {
+            e.preventDefault();
+            const name = $('#name').val();
+            const code = $('#code').val();
+            let actionList = [];
+            const listDom = $( ".multi-select-menuitems input[type=checkbox]:checked" );
+            for (i of listDom) 
+                actionList.push(i.value);
+            
+            if (!name || !code || !actionList.length) {
+                alert('Nhap day du cac truong');
+                return;
+            }
+            
+            
+            const data = {
+                    name: name,
+                    code: code,
+                    actions: actionList
+            };
+            
+            //send ajax
+            fetch('/roles/create-role', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            })
+            .then(res => location.reload());
+           
+        })
+        $('.edit-role-btn').click(function(e) {
+          const code = this.id.slice(5);
+          
+          fetch('/roles/' + code, {
+            method: 'GET',
+
+          })
+          .then(res => res.json())
+          .then(data => {
+            
+            $('#name-edit-from').val(data.name);
+            $('#code-edit-from').val(data.code);
+            let temp = [];
+            data.actions.forEach(element => {
+              temp.push(element.code);
+            });
+            
+            const listDom = $( "#edit-role-modal .multi-select-menuitems input[type=checkbox]" );
+            for (item of listDom) {
+              if (temp.includes(item.value))
+                item.checked = true;
+            }
+            $('#edit-role-modal').modal();
+          })
+        
+          
+          return false;
+        })
+        });
+
+        
+
+    </script>
+    
 
   
+ 
 
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
-
-  <script>
-    $(document).ready(() => {
-      //validate account
-      $('#create-account-form').submit((e) => {
-        e.preventDefault();
-        const username = $('#username').val();
-        const password = $('#password').val();
-        const roleCode = $('#role').val();
-        if (!username || !password) {
-          //show error
-          console.log('Nhap day du cac truong');
-          return;
-        }
-
-        $.ajax({
-          type: 'POST',
-          url: '/accounts/create-account',
-          data: {
-            username,
-            password,
-            roleCode
-          },
-          success: function(data, statusCode) {
-            location.reload();
-          }
-        })
-      })
-    })
-
-    
-  </script>
+ 
 
 </body>
 

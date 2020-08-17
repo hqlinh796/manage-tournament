@@ -3,6 +3,8 @@ const router = express.Router();
 const accountController = require('../controllers/account.controller');
 const authenticate = require('../components/authentication');
 
+router.get('/', authenticate, accountController.getAccountPage);
+
 router.get('/login', accountController.getLoginPage);
 
 router.post('/login', accountController.login);

@@ -61,6 +61,7 @@ module.exports = {
         res.redirect(location);
     },
     showTeamList: async (req, res, next) => {
+        console.log(res.locals.account);
         try {
             const teams = await teamService.getTeams();
             for(let i = 0; i < teams.length; i++) {
