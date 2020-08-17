@@ -33,9 +33,14 @@
 
   <!-- Multiselect dropdown -->
   <!-- JS & CSS library of MultiSelect plugin -->
+  <script src="js/jquery.multi-select.min.js"></script>
   <script src="js/jquery.multi-select.js"></script>
-  <!-- <script src="js/jquery.multi-select.min.js"></script> -->
-  <link rel="stylesheet" href="css/example-styles.css">
+  
+  <link rel="stylesheet" href="/css/example-styles.css">
+  <!-- <link rel="stylesheet" href="/css/multi-select.dist.css">
+  <link rel="stylesheet" href="/css/multi-select.dev.css.map">
+  <link rel="stylesheet" href="/css/multi-select.dev.css">
+  <link rel="stylesheet" href="/css/multi-select.css"> -->
   
   <script src="https://kit.fontawesome.com/51d5218d26.js" crossorigin="anonymous"></script>
 
@@ -393,6 +398,7 @@
                             <tr>
                               <th class="text-center"><span>STT <i class="fas fa-sort"></i></span></th>
                               <th class="text-center"><span>Vai trò <i class="fas fa-sort"></i></span></th>
+                              <th class="text-center"><span>Mã vai trò <i class="fas fa-sort"></i></span></th>
                               <th class="text-center" contenteditable=""><span>Chức năng <i class="fas fa-sort"></i></span></th>
                               <th class="text-center"><span>Ghi chú<i class="fas fa-sort"></i></span></th>
                               
@@ -400,93 +406,40 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td class="text-center">
-                                01
-                              </td>
-                              <td class="text-center">
-                                Quản lý đội bóng
-                              </td>
-                              <td class="text-center">
-                                Thêm, xoá, sửa đội bóng
-                              </td>
-                              <td class="text-center">
-                                
-                              </td>
-                              <td style="width: 7%;">
-                                <a href="/admin/user/add?id={{_id}}" class="table-link">
-                                  <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                  </span>
-                                </a>
-                                <a href="/admin/user/delete/{{_id}}" class="table-link danger"
-                                  onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
-                                  <span class="fa-stack">
-                                    <i class="fa fa-square fa-stack-2x"></i>
-                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                  </span>
-                                </a>
-                              </td>
-                            </tr>
-                            <tr>
-                                <td class="text-center">
-                                  01
-                                </td>
-                                <td class="text-center">
-                                  teammanager
-                                </td>
-                                <td class="text-center">
-                                  Quản lý đội bóng
-                                </td>
-                                <td class="text-center">
-                                  Manchester United
-                                </td>
-                                <td style="width: 7%;">
-                                  <a href="/admin/user/add?id={{_id}}" class="table-link">
-                                    <span class="fa-stack">
-                                      <i class="fa fa-square fa-stack-2x"></i>
-                                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                  </a>
-                                  <a href="/admin/user/delete/{{_id}}" class="table-link danger"
-                                    onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
-                                    <span class="fa-stack">
-                                      <i class="fa fa-square fa-stack-2x"></i>
-                                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                  </a>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td class="text-center">
-                                  01
-                                </td>
-                                <td class="text-center">
-                                  teammanager
-                                </td>
-                                <td class="text-center">
-                                  Quản lý đội bóng
-                                </td>
-                                <td class="text-center">
-                                  Manchester United
-                                </td>
-                                <td style="width: 7%;">
-                                  <a href="/admin/user/add?id={{_id}}" class="table-link">
-                                    <span class="fa-stack">
-                                      <i class="fa fa-square fa-stack-2x"></i>
-                                      <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                  </a>
-                                  <a href="/admin/user/delete/{{_id}}" class="table-link danger"
-                                    onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
-                                    <span class="fa-stack">
-                                      <i class="fa fa-square fa-stack-2x"></i>
-                                      <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-                                    </span>
-                                  </a>
-                                </td>
-                              </tr>
+                              <% roleList.forEach(function(role, index) {%>
+                                <tr>
+                                    <td class="text-center">
+                                      <%= index + 1 %>
+                                    </td>
+                                    <td class="text-center">
+                                      <%= role.name %>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= role.code %>
+                                    </td>
+                                    <td class="text-center">
+                                        <%= role.actions %>
+                                    </td>
+                                    <td class="text-center">
+                                        
+                                    </td>
+                                    <td style="width: 7%;">
+                                      <a href="/admin/user/add?id={{_id}}" class="table-link">
+                                        <span class="fa-stack">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      </a>
+                                      <a href="/admin/user/delete/{{_id}}" class="table-link danger"
+                                        onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
+                                        <span class="fa-stack">
+                                          <i class="fa fa-square fa-stack-2x"></i>
+                                          <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                      </a>
+                                    </td>
+                                  </tr>
+                                <%})%>
                           </tbody>
                           
                         </table>
@@ -533,18 +486,18 @@
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="my-modal-title">Thêm mới tài khoản</h5>
+            <h5 class="modal-title" id="my-modal-title">Thêm mới vai trò</h5>
             <button class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <form method="get" action="">
+            <form id="create-role-form">
               
               <div class="row">
                 <div class="col-md-6">
                     <label for="role">Tên vai trò</label>
-                    <input id="role" class="form-control" type="text" name="role" placeholder="">
+                    <input id="name" class="form-control" type="text" name="role" placeholder="">
                     
                   </div>
                   <div class="col-md-6">
@@ -589,29 +542,46 @@
 
     <script>
         $(document).ready(function() {
+
         $('#action').multiSelect();
+
+        $('#create-role-form').submit((e) => {
+            e.preventDefault();
+            const name = $('#name').val();
+            const code = $('#code').val();
+            let actions = [];
+            const listDom = $( ".multi-select-menuitems input[type=checkbox]:checked" );
+            for (i of listDom) 
+                actions.push(i.value);
+            
+            if (!name || !code || !actions.length) {
+                alert('Nhap day du cac truong');
+                return;
+            }
+
+
+            //send ajax
+            $.ajax({
+                type: 'POST',
+                url: '/roles/create-role',
+                data: {
+                    name,
+                    code,
+                    actions
+                },
+                success: (data, status) => {
+                    location.reload();
+                }
+            })
+        })
         });
+
+
     </script>
     
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
   
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="js/demo/chart-area-demo.js"></script>
-  <script src="js/demo/chart-pie-demo.js"></script>
+ 
 
  
 

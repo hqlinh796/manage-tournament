@@ -9,10 +9,13 @@ const matchRouter = require('./match');
 const pictureRouter = require('./picture');
 const positionRouter = require('./position.js')
 const accountRouter = require('./account');
+const roleRouter = require('./role');
 
 const authenticate = require('../components/authentication');
 
 /* GET home page. */
+
+
 
 router.use('/athletes', authenticate, athleteRoute);
 router.use('/team', authenticate, doiBongRouter);
@@ -22,6 +25,7 @@ router.use('/stadium', authenticate, stadiumRouter);
 router.use('/match', authenticate, matchRouter);
 router.use('/picture', authenticate, pictureRouter);
 router.use('/position', authenticate, positionRouter);
+router.use('/roles', roleRouter);
 router.use('/accounts', accountRouter);
 
 module.exports = router;

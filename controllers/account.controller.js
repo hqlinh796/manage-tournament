@@ -38,7 +38,7 @@ module.exports = {
             if (err || !isMatch) {
                 console.log(err);
                 //response error
-                res.render('account/account');
+                res.render('login');
                 return;
             }
             //generate token and set header
@@ -46,7 +46,8 @@ module.exports = {
             
             res.cookie('token', token);
             res.cookie('refreshToken', refreshToken);
-            const page = req.cookies.previousPage || '/';
+            let page = req.cookies.previousPage === '/accounts/login' ? '/' : req.cookies.previousPage;
+            page = page ? page : '/';
             //console.log('prevopis: ', req.session.previousPage);
             return res.redirect(page);
         })
