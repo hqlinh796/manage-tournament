@@ -57,7 +57,6 @@
                               <div class="form-group">
                                   <label class="control-label required">Người quản lý</label>
                                  
-                                <div class="input-group mb-3">
                                     
                                   <div class="dropdown">
                                     <% if(team) { %>
@@ -65,13 +64,13 @@
                                           <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager" value="<%=team.manager.fullName%>">
                                 <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" value="<%=team.managerId%>"> -->
                                 <input id="managerId" name="managerId" style="display: none;" value="<%=team.managerId%>">
-                            <button style="width:100%" id="manager" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=""><%=team.manager.fullName%></button>
+                            <button style="width:100% text-left" id="manager" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=""><%=team.manager.fullName%></button>
                                    <% } else { %>
                                     <input id="managerId" name="managerId" style="display: none;" value="">
-                                    <button style="width:100%" id="manager"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">Chọn quản lý</button>
+                                    <button style="width:100% text-left" id="manager"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">Chọn quản lý</button>
                                 <% }} else { %>
                                   <input id="managerId" name="managerId" style="display: none;" value="">
-                                  <button style="width:100%" id="manager"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">Chọn quản lý</button>
+                                  <button style="width:100% text-left" id="manager"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">Chọn quản lý</button>
                                 <% } %>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
                               <% managers.forEach(function(manager, index) { %>
@@ -86,25 +85,23 @@
                               
                             </div>
                           </div>
-                                </div>
                               </div>
 
                               <div class="form-group">
                                   <label for="name" class="control-label required">Huấn luận viên</label>
-                                  <div class="input-group mb-3">
                                     <div class="dropdown">
                                     <% if(team) { %>
                                        <% if(team.coach) { %>
                                    <input id="coachId" name="coachId" style="display: none;" value="<%=coach.id %>">
-                                   <button style="width:100%" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=""><%= coach.fullName%></button>
+                                   <button style="width:100% text-left" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=""><%= coach.fullName%></button>
                                     <% } else { %>
                                      <input id="coachId" name="coachId" style="display: none;" value="">
-                                     <button style="width:100%" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">
+                                     <button style="width:100% text-left" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">
                                        Chọn huấn luận viên
                                      </button>
                                  <% }} else { %>
                                    <input id="coachId" name="coachId" style="display: none;" value="">
-                                   <button style="width:100%" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2 " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">
+                                   <button style="width:100% text-left" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2 " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">
                                      Chọn huấn luận viên
                                    </button>
                                  <% } %>
@@ -120,7 +117,6 @@
                                <% }); %>
                            </div>
                          </div>
-                                  </div>
                               </div>
                           </div>
                       </div>
@@ -181,7 +177,7 @@
 
     </div>
 
-    <div class="modal fade" id="openCoachList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="openCoachList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -258,7 +254,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <script>
         function setManagerValue(manager) {   
@@ -287,6 +283,7 @@
         }
         function setNoneTeamValue() {
             document.getElementById("id").name = "";
+            document.getElementById("UploadLogo").value = '';
           document.getElementById("logo").src = 'https://www.designevo.com/res/templates/thumb_small/star-soccer-ball-badge.png';
           document.getElementById("name").value = '';
           document.getElementById("managerId").value = '';
@@ -294,6 +291,8 @@
           document.getElementById("coachId").value = '';
           document.getElementById("coach").innerText = 'Chọn huấn luận viên';
           document.getElementById("logo-uniform1").src = 'https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png';
+          document.getElementById("homeShirt").value = '';
           document.getElementById("logo-uniform2").src = 'https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png';
+          document.getElementById("awayShirt").value = '';
         }
       </script>

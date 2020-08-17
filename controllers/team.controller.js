@@ -86,6 +86,7 @@ module.exports = {
             for(let i = 0; i < managers.length; i++) {
                 managers[i].account = await managers[i].getManager_account();
             }
+            console.log(coaches);
 
             res.render('team/team-list', {
                 teams : teams,

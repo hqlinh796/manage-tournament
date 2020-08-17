@@ -16,13 +16,7 @@
             <div class="col-md-4 col-sm-6 col-xs-12 personal-avatar">
               <div class="avatar-container text-center">
                 <div class="avatar-position">
-                  <input
-                    id="UploadAvatar"
-                    class="hidden"
-                    accept="image/*"
-                    name="avatar"
-                    type="text"
-                  />
+                  
                   <label for="UploadAvatar">
                     <img
                       class="img-circle img-thumbnail"
@@ -33,6 +27,12 @@
                       tabindex="0"
                     />
                   </label>
+                  <input
+                  class="form-control"
+                    id="UploadAvatar"
+                    name="avatar"
+                    type="text"
+                  />
                 </div>
               </div>
               <!-- <h2 class="panel-title text-center changeEmail pointer" data-toggle="modal" data-target="#changeEmail" tabindex="0">stepupstudyenglish@gmail.com</h2> -->
@@ -87,43 +87,34 @@
                   >Tài khoản</label
                 >
                 <div class="col-lg-10 col-md-9 col-sm-8">
-                  <div class="input-group mb-3">
-                    <input
-                      type="text"
-                      class="form-control required"
-                      aria-describedby="basic-addon2"
-                      id="account"
-                    />
-                    <input
-                      style="display: none;"
-                      type="text"
-                      class="form-control required"
-                      aria-describedby="basic-addon2"
-                      id="accountId"
-                      name="accountId"
-                    />
-                    <div class="input-group-append">
-                      <button
-                        type="button"
-                        class="btn btn-info btn-sm"
-                        data-toggle="modal"
-                        data-target="#openAccountList"
-                      >
-                        Chọn
-                      </button>
+                    <div class="dropdown">
+                                   <input id="accountId" name="accountId" style="display: none;" value="">
+                                   <button style="width:100% text-left" id="account" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2 " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">
+                                     Chọn tài khoản
+                                   </button>
+                           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                             <% accounts.forEach(function(account, index) { %>
+                               <button class="dropdown-item" type="button"  onclick="setAccountValue('<%= JSON.stringify(account) %>')">
+                                 <span class="team">
+                                 <span class="teamName">
+                                   <span class="shortname"><%= account.username %></span> 
+                                 </span>
+                               </span>
+                               </button>
+                               <% }); %>
+                           </div>
+                         </div>
                     </div>
-                  </div>
                 </div>
               </div>
-              <div class="form-group display-align text-center">
-                <label class="col-lg-2 col-md-3 col-sm-4 control-label"></label>
-                <div class="col-lg-10 col-md-9 col-sm-8">
-                  <input
-                    class="btn btn-primary save"
-                    value="Lưu"
-                    type="submit"
-                  />
-                </div>
+            </div>
+            <div class="form-group display-align text-center mt-2">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <input
+                  class="btn btn-primary save"
+                  value="Lưu"
+                  type="submit"
+                />
               </div>
             </div>
           </div>
@@ -137,9 +128,10 @@
 <%-include('./add-modal.ejs')%>
 
 <script>
-    function hideDialog() {
-            $('#openAccountList').modal('hide');
-          }
+          function setAccountValue(account) {
+          document.getElementById("account").innerText = JSON.parse(account).username;
+          document.getElementById("accountId").value = JSON.parse(account).id;
+        }
     function setTeamValue(manager) {
         document.getElementById('id').name = 'id';
         document.getElementById('id').value = JSON.parse(manager).id;
@@ -148,7 +140,7 @@
         document.getElementById('fullName').value = JSON.parse(manager).fullName;
         document.getElementById('birthday').value = JSON.parse(manager).birthday;
         document.getElementById('nationality').value = JSON.parse(manager).nationality == null? '' : JSON.parse(manager).nationality;
-        document.getElementById('account').value = JSON.parse(manager).manager_account == null? '' : JSON.parse(manager).manager_account.username;
+        document.getElementById('account').innerText = JSON.parse(manager).manager_account == null? '' : JSON.parse(manager).manager_account.username;
         document.getElementById('accountId').value = JSON.parse(manager).manager_account == null? '' : JSON.parse(manager).manager_account.id;
     }
 

@@ -22,20 +22,20 @@ module.exports = {
                     if (matchAthlete.matches_athletes_athlete.teamId == matchAthlete.matches_athletes_matches.hostTeam ) {
                         matchAthlete.matches_athletes_scores.forEach(matchScore => {
                             if(!matchScore.typeScore.localeCompare('C')) {
-                                listAthGoalHost.push(matchAthlete.matches_athletes_athlete.fullName );
+                                listAthGoalHost.push(matchAthlete.matches_athletes_athlete.fullName + ' p' + matchScore.time);
                                 goal1++;
                             } else {
-                                listAthGoalHost.push(matchAthlete.matches_athletes_athlete.fullName + '(Phản lưới)');
+                                listAthGoalHost.push(matchAthlete.matches_athletes_athlete.fullName + '(Phản lưới)' + ' p' + matchScore.time);
                                 goal2++;
                             }
                         });
                     } else {
                         matchAthlete.matches_athletes_scores.forEach(matchScore => {
                             if(!matchScore.typeScore.localeCompare('C')) {
-                                listAthGoalGuest.push(matchAthlete.matches_athletes_athlete.fullName);
+                                listAthGoalGuest.push(matchAthlete.matches_athletes_athlete.fullName+ ' p' + matchScore.time);
                                 goal2++;
                             } else {
-                                listAthGoalGuest.push(matchAthlete.matches_athletes_athlete.fullName + '(Phản lưới)');
+                                listAthGoalGuest.push(matchAthlete.matches_athletes_athlete.fullName + '(Phản lưới)'+ ' p' + matchScore.time);
                                 goal1++;
                             }
                         });
