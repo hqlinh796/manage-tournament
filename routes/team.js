@@ -4,14 +4,6 @@ var router = express.Router();
 const teamController = require('../controllers/team.controller');
 
 
-router.get('/apis/all', teamController.getTeamsAPI);
-router.get('/:id/statistical', teamController.statistical);
-
-// router.use('/:id', function(req, res, next){
-//     req.body.teamId = req.params.id;
-//     next();
-// })
-
 router.get('/', teamController.showTeamList);
 
 router.get('/add', teamController.showTeamAdd);
@@ -24,6 +16,14 @@ router.get('/delete', teamController.deleteTeam);
 
 router.get('/rank', teamController.showRank);
 
+router.get('/apis/all', teamController.getTeamsAPI);
+
+router.get('/:id/statistical', teamController.statistical);
+
+router.use('/:id', function(req, res, next){
+    req.body.teamId = req.params.id;
+    next();
+})
 router.post('/:id', teamController.addAthlete);
 
 router.get('/:id', teamController.getTeamByID);

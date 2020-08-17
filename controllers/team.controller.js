@@ -127,7 +127,7 @@ module.exports = {
                 await teamService.deleteTeam(req.query.id);
             }
 
-            res.redirect('/team');
+            res.redirect('/teams');
         } catch (error) {
             next(error);
         }
@@ -215,5 +215,17 @@ module.exports = {
             res.render('team/team-rank', {
                 teams: teams
             });
+    },
+
+    updateTeam: async (req, res, next)=>{
+        const data = req.body;
+        const id = req.params.id;
+        console.log("update team");
+        console.log(data);
+        const result = await teamService.updateTeam(id, data);
+        if(result){
+            res.redirect('/athletes/team/' + id);
+        }
+        
     }
 }

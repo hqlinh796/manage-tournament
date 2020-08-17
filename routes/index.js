@@ -13,7 +13,7 @@ const managerRouter = require('./manager')
 router.use('/athletes', athleteRoute);
 router.use('/teams', doiBongRouter);
 router.use('/statisticals', statisticalRouter);
-router.use('/coachs', coachRouter);
+router.use('/coaches', coachRouter);
 router.use('/stadiums', stadiumRouter);
 router.use('/matchs', matchRouter);
 router.use('/pictures', pictureRouter);

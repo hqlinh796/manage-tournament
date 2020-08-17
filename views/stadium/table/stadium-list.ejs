@@ -16,8 +16,8 @@
                     </thead>
                     <tbody>
                     <tbody id="data-table">
-                        <% stadiumData.forEach(function(row){ %>
-                        <%- include('../../table/stadiumShow', {data: row}); %>
+                        <% stadiumData.forEach(function(row, index){ %>
+                        <%- include('../../table/stadiumShow', {data: row, index}); %>
                         <% }); %>
                     </tbody>
                     </tbody>
