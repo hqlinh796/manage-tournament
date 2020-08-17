@@ -4,6 +4,8 @@ const athleteService = require('../services/athlete.service');
 const positionService = require('../services/position.service');
 const accountService = require('../services/account.service');
 const managerService = require('../services/manager.service');
+const matchService = require('../services/match.service');
+const matchAthleteService = require('../services/match_athlete.service');
 
 module.exports = {
     getTeams: async (req, res, next) => {
@@ -145,5 +147,73 @@ module.exports = {
         const id = req.params.id;
         const result = await teamService.statistical(id);
         res.render('statistical/index.ejs', {result});
+    }, 
+    showRank: async(req, res, next) => {
+        const matches = await matchService.getAllMatch();
+        const teams = await teamService.getTeams();
+        teams.forEach(team => {
+            team.win = 0;
+            team.lose = 0;
+            team.drawn = 0;
+            team.score = 0;
+            team.goalDifference = 0;
+        });
+
+            
+            for(let i = 0; i < matches.length; i++) {
+                const matchAthletes = await matchAthleteService.getByMatch(matches[i].id);
+                let goal1 = 0, goal2 = 0;
+                matchAthletes.forEach(matchAthlete => {
+                    
+                    if (matchAthlete.matches_athletes_athlete.teamId == matchAthlete.matches_athletes_matches.hostTeam ) {
+                        matchAthlete.matches_athletes_scores.forEach(matchScore => {
+                            if(!matchScore.typeScore.localeCompare('C')) {
+                                goal1++;
+                            } else {
+                                goal2++;
+                            }
+                        });
+                    } else {
+                        matchAthlete.matches_athletes_scores.forEach(matchScore => {
+                            if(!matchScore.typeScore.localeCompare('C')) {
+                                goal2++;
+                            } else {
+                                goal1++;
+                            }
+                        });
+                    }
+                });
+
+                
+                const team1 = teams.find(({id}) => {
+                    return id === (matches[i].hostTeam);
+                });
+                
+                const team2 = teams.find(({id}) => {
+                    return id === (matches[i].guestTeam);
+                });
+
+
+                if (new Date(matches[i].time) < new Date()) {
+                    if(goal1 > goal2) {
+                        team1.win++;
+                        team1.score += 3;
+                    } else if (goal1 < goal2) {
+                        team2.win++;
+                        team2.score += 3;
+                    } else {
+                        team1.drawn++;
+                        team1.score += 1;
+                        team2.drawn++;
+                        team1.score += 1;
+                    }
+                }
+                team1.goalDifference += goal1 - goal2;
+                team2.goalDifference += goal2 - goal1;
+            }
+
+            res.render('team/team-rank', {
+                teams: teams
+            });
     }
 }

@@ -56,55 +56,72 @@
 
                               <div class="form-group">
                                   <label class="control-label required">Người quản lý</label>
-                                  <!-- <div class="row">
-                                    <input class="form-control required col-9" id="manager" name="manager" type="text" value="">
-                                    <button type="button" class="btn btn-info col-3"  data-toggle="modal" data-target="#openCoachList">Info</button>
-                                </div> -->
+                                 
                                 <div class="input-group mb-3">
+                                    
+                                  <div class="dropdown">
                                     <% if(team) { %>
-                                        <% if(team.manager) { %>
-                                            <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager" value="<%=team.manager.fullName%>">
-                                  <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" value="<%=team.managerId%>">
-                                     <% } else { %>
-                                        <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager">
-                                  <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" >
-                                  <% }} else { %>
-                                    <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager">
-                                  <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" >
-                                  <% } %>
-                                  <div class="input-group-append">
-                                    <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#openManagerList">Chọn</button>
-                                  </div>
+                                      <!-- <% if(team.manager) { %>
+                                          <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager" value="<%=team.manager.fullName%>">
+                                <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" value="<%=team.managerId%>"> -->
+                                <input id="managerId" name="managerId" style="display: none;" value="<%=team.managerId%>">
+                            <button style="width:100%" id="manager" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=""><%=team.manager.fullName%></button>
+                                   <% } else { %>
+                                    <input id="managerId" name="managerId" style="display: none;" value="">
+                                    <button style="width:100%" id="manager"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">Chọn quản lý</button>
+                                <% }} else { %>
+                                  <input id="managerId" name="managerId" style="display: none;" value="">
+                                  <button style="width:100%" id="manager"  class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">Chọn quản lý</button>
+                                <% } %>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                              <% managers.forEach(function(manager, index) { %>
+                                <button class="dropdown-item" type="button"  onclick="setManagerValue('<%= JSON.stringify(manager) %>')">
+                                  <span class="team">
+                                  <span class="teamName">
+                                    <span class="shortname"><%= manager.fullName %></span> 
+                                  </span>
+                                </span>
+                                </button>
+                                <% }); %>
+                              
+                            </div>
+                          </div>
                                 </div>
                               </div>
 
                               <div class="form-group">
                                   <label for="name" class="control-label required">Huấn luận viên</label>
                                   <div class="input-group mb-3">
+                                    <div class="dropdown">
                                     <% if(team) { %>
-                                        <% if(team.coach) { %>
-                                            <input type="text" class="form-control required" aria-describedby="basic-addon2" id="coach" value="<%= coach.fullName%>">
-                                    <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="coachId" name="coachId" value="<%=coach.id %>">
-                                     <% } else { %>
-                                        <input type="text" class="form-control required" aria-describedby="basic-addon2" id="coach">
-                                    <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="coachId" name="coachId">
-                                  <% }} else { %>
-                                    <input type="text" class="form-control required" aria-describedby="basic-addon2" id="coach">
-                                    <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="coachId" name="coachId">
-                                  <% } %>
-                                    <div class="input-group-append">
-                                      <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#openCoachList">Chọn</button>
-                                    </div>
+                                       <% if(team.coach) { %>
+                                   <input id="coachId" name="coachId" style="display: none;" value="<%=coach.id %>">
+                                   <button style="width:100%" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value=""><%= coach.fullName%></button>
+                                    <% } else { %>
+                                     <input id="coachId" name="coachId" style="display: none;" value="">
+                                     <button style="width:100%" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">
+                                       Chọn huấn luận viên
+                                     </button>
+                                 <% }} else { %>
+                                   <input id="coachId" name="coachId" style="display: none;" value="">
+                                   <button style="width:100%" id="coach" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2 " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value="">
+                                     Chọn huấn luận viên
+                                   </button>
+                                 <% } %>
+                           <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                             <% coaches.forEach(function(coach, index) { %>
+                               <button class="dropdown-item" type="button"  onclick="setAccountValue('<%= JSON.stringify(coach) %>')">
+                                 <span class="team">
+                                 <span class="teamName">
+                                   <span class="shortname"><%= coach.fullName %></span> 
+                                 </span>
+                               </span>
+                               </button>
+                               <% }); %>
+                           </div>
+                         </div>
                                   </div>
                               </div>
-
-                              <div class="form-group">
-                                  <label class="control-label required">Số cầu thủ</label>
-                                  <div>
-                                    <input class="form-control required" type="number" value="">
-                                </div>
-                              </div>
-
                           </div>
                       </div>
 
@@ -244,19 +261,12 @@
       </div>
 
       <script>
-          function hideDialog() {
-            $('#openManagerList').modal('hide');
-            $('#openCoachList').modal('hide');
-          }
-
         function setManagerValue(manager) {   
-            // hideDialog();         
-          document.getElementById("manager").value = JSON.parse(manager).fullName;
+          document.getElementById("manager").innerText = JSON.parse(manager).fullName;
           document.getElementById("managerId").value = JSON.parse(manager).accountId;
         }
         function setAccountValue(coach) {
-            hideDialog();
-          document.getElementById("coach").value = JSON.parse(coach).fullName;
+          document.getElementById("coach").innerText = JSON.parse(coach).fullName;
           document.getElementById("coachId").value = JSON.parse(coach).id;
         }
 
@@ -267,9 +277,9 @@
           document.getElementById("UploadLogo").value = JSON.parse(team).logo;
           document.getElementById("name").value = JSON.parse(team).name;
           document.getElementById("managerId").value = JSON.parse(team).accountId == null ? '' : JSON.parse(team).accountId;
-          document.getElementById("manager").value = JSON.parse(team).team_manager == null? '' : JSON.parse(team).team_manager.username;
+          document.getElementById("manager").innerText = JSON.parse(team).team_manager == null? '' : JSON.parse(team).team_manager.username;
           document.getElementById("coachId").value = JSON.parse(team).coachId == null? '' : JSON.parse(team).coachId;
-          document.getElementById("coach").value = JSON.parse(team).team_coach == null? '' : JSON.parse(team).team_coach.fullName;
+          document.getElementById("coach").innerText = JSON.parse(team).team_coach == null? '' : JSON.parse(team).team_coach.fullName;
           document.getElementById("logo-uniform1").src = JSON.parse(team).homeShirt;
           document.getElementById("homeShirt").value = JSON.parse(team).homeShirt == null? '' : JSON.parse(team).homeShirt;
           document.getElementById("logo-uniform2").src = JSON.parse(team).awayShirt;
@@ -280,9 +290,9 @@
           document.getElementById("logo").src = 'https://www.designevo.com/res/templates/thumb_small/star-soccer-ball-badge.png';
           document.getElementById("name").value = '';
           document.getElementById("managerId").value = '';
-          document.getElementById("manager").value = '';
+          document.getElementById("manager").innerText = 'Chọn quản lý';
           document.getElementById("coachId").value = '';
-          document.getElementById("coachId").value = '';
+          document.getElementById("coach").innerText = 'Chọn huấn luận viên';
           document.getElementById("logo-uniform1").src = 'https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png';
           document.getElementById("logo-uniform2").src = 'https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png';
         }

@@ -1,0 +1,88 @@
+<div class="modal fade" id="showMatchDetail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="max-width: 650px;"  role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thông tin chi tiết trận đấu</h5>
+          <button type="button" class="close"  aria-label="Close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+          <div class="row">
+            <main role="main" class="col-md-12 col-lg-12 px-4">
+                <div class="col-12">
+                    <div class="match-detail clearfix">
+                        <div class="col-xs-4 text-center">
+                           <!-- Avatar -->
+                           <div class="league-avatar" style="padding:3px">
+                              <img src="" class="avatar1-match" style="width:100%" id="logoHostTeamInfo">
+                           </div>
+                           <!-- Name -->
+                           <h4 class="match-detail-competitor-name team1-match" id="hostTeamInfo">
+                              
+                           </h4>
+                        </div>
+                        <div class="col-xs-4 match-soccer__result">
+                           <div class="match-detail__result">
+                              <h2 class="text-center">
+                                 <span class="soccer1-match" id="resultInfo"></span>
+                              </h2>
+                              <div class="text-center match-detail__sub-result">
+                                 <!--ko if: $root.LeagueInfo.IsSwissSystem--><!--/ko-->
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-xs-4 text-center">
+                           <!-- Avatar -->
+                           <div class="league-avatar" style="padding:3px">
+                              <img src="" class="avatar2-match" style="width:100%" id="logoGuestTeamInfo">
+                           </div>
+                           <!-- Name -->
+                           <h4 class="match-detail-competitor-name team2-match" id="guestTeamInfo">
+                              
+                           </h4>
+                           <!--/ko-->
+                        </div>
+                     </div>
+             </div>
+             
+             <hr style="border: #f1f1f1 2px solid">
+             <div class="imso_gs__gs-cont imso-medium-font imso_gs__gs-cont-ed row">
+                <div class="imso_gs__tgs imso_gs__left-team col-5"  id="listAthGoalHost">
+                </div>
+                <div class="imso_gs__sb-cont col-2"><img class="imso_gs__icon" src="//ssl.gstatic.com/onebox/sports/soccer_timeline/soccer-ball-retina.png" alt="Goals" data-atf="1"></div>
+                <div class="imso_gs__tgs imso_gs__right-team col-5" id="listAthGoalGuest">
+                </div>
+             </div>
+             </div>
+            </main>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    
+    function setMatchValue(match, result, listAthGoalHost, listAthGoalGuest) {
+        document.getElementById('listAthGoalHost').innerHTML = '';
+        document.getElementById('listAthGoalGuest').innerHTML= '';
+        document.getElementById('hostTeamInfo').innerText = JSON.parse(match).match_hostTeam.name;
+        document.getElementById('logoHostTeamInfo').src = JSON.parse(match).match_hostTeam.logo;
+        document.getElementById('guestTeamInfo').innerText= JSON.parse(match).match_guestTeam.name;
+        document.getElementById('logoGuestTeamInfo').src = JSON.parse(match).match_guestTeam.logo;
+        document.getElementById('resultInfo').innerText = result;
+        var arrAthGoalHost = listAthGoalHost.split(',');
+        arrAthGoalHost.forEach(element => {
+            document.getElementById('listAthGoalHost').innerHTML = `<div class="imso_gs__gs-r"><span>${element}</span>&nbsp;<span><span class="imso_gs__g-a-t"><span><span><span class="liveresults-sports-immersive__game-minute"></span></span></span></span><span> </span></span></div>` + document.getElementById('listAthGoalHost').innerHTML;
+        });
+        var arrAthGoalGuest = listAthGoalGuest.split(',');
+        arrAthGoalGuest.forEach(element => {
+            document.getElementById('listAthGoalGuest').innerHTML = ` <div class="imso_gs__gs-r"><span id="athGoalGuest">${element}</span>&nbsp;<span><span class="imso_gs__g-a-t"><span><span><span class="liveresults-sports-immersive__game-minute"></span></span></span></span><span> </span></span></div>` + document.getElementById('listAthGoalGuest').innerHTML;
+        });
+       
+    }
+
+  </script>
