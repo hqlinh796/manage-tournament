@@ -1,0 +1,289 @@
+<div id="content-wrapper" class="d-flex flex-column">
+
+      <div class="container-fluid">
+        <div class="row">
+          <main role="main" class="col-md-12 col-lg-12 px-4">
+            <form method="POST" action="/team/add">
+                <input id="id" name="" style="display: none;">
+          <div class="col-12">
+             <section class="mainWidget statsRow pt-3">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                <header>
+                   <h3 class="subHeader">Thêm mới đội bóng</h3>
+                </header>
+             </section>
+             <div class="panel-body mt-3">
+              <div class="row">
+                  <div class="col-md-10 col-md-offset-1 ml-5">
+
+                      <div class="flex-row" id="show-error-success">
+                          
+                                                                  </div>
+                      <div class="row boss-team">
+                          <div class="col-sm-5">
+                              <div class="form-group">
+                                  <label for="name" class="control-label">Ảnh đại diện</label>
+                                  <div>
+                                      <div class="avatar border-radius clearfix">
+                                          <label for="UploadAvatar" class="width-100">
+                                              <span class="fa fa-edit pull-right"></span>
+                                              <span class="fa fa-trash-o pull-right align-delete-icon" style="display: none;"></span>
+                                              <% if(team) { %>
+                                                <img id="logo" width="242" height="242" src="<%=team.logo%>">
+                                             <% } else { %>
+                                                <img id="logo" width="242" height="242" src="https://www.designevo.com/res/templates/thumb_small/star-soccer-ball-badge.png">
+                                          <%   } %>
+                                              
+                                          </label>
+                                          <input class="form-control mt-2" id="UploadLogo" name="logo" type="text" value="">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-sm-7">
+                              <div class="form-group">
+                                  <label for="name" class="control-label required">Tên đội</label>
+                                  <div>
+                                    <% if(team) { %>
+                                        <input class="form-control required" id="name" name="name" type="text" value="<%=team.name%>">
+                                     <% } else { %>
+                                        <input class="form-control required" id="name" name="name" type="text" value="">
+                                  <%   } %>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label class="control-label required">Người quản lý</label>
+                                  <!-- <div class="row">
+                                    <input class="form-control required col-9" id="manager" name="manager" type="text" value="">
+                                    <button type="button" class="btn btn-info col-3"  data-toggle="modal" data-target="#openCoachList">Info</button>
+                                </div> -->
+                                <div class="input-group mb-3">
+                                    <% if(team) { %>
+                                        <% if(team.manager) { %>
+                                            <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager" value="<%=team.manager.fullName%>">
+                                  <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" value="<%=team.managerId%>">
+                                     <% } else { %>
+                                        <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager">
+                                  <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" >
+                                  <% }} else { %>
+                                    <input type="text" class="form-control required" aria-describedby="basic-addon2" id="manager">
+                                  <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="managerId" name="managerId" >
+                                  <% } %>
+                                  <div class="input-group-append">
+                                    <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#openManagerList">Chọn</button>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label for="name" class="control-label required">Huấn luận viên</label>
+                                  <div class="input-group mb-3">
+                                    <% if(team) { %>
+                                        <% if(team.coach) { %>
+                                            <input type="text" class="form-control required" aria-describedby="basic-addon2" id="coach" value="<%= coach.fullName%>">
+                                    <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="coachId" name="coachId" value="<%=coach.id %>">
+                                     <% } else { %>
+                                        <input type="text" class="form-control required" aria-describedby="basic-addon2" id="coach">
+                                    <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="coachId" name="coachId">
+                                  <% }} else { %>
+                                    <input type="text" class="form-control required" aria-describedby="basic-addon2" id="coach">
+                                    <input style="display: none;" type="text" class="form-control required" aria-describedby="basic-addon2" id="coachId" name="coachId">
+                                  <% } %>
+                                    <div class="input-group-append">
+                                      <button type="button" class="btn btn-info"  data-toggle="modal" data-target="#openCoachList">Chọn</button>
+                                    </div>
+                                  </div>
+                              </div>
+
+                              <div class="form-group">
+                                  <label class="control-label required">Số cầu thủ</label>
+                                  <div>
+                                    <input class="form-control required" type="number" value="">
+                                </div>
+                              </div>
+
+                          </div>
+                      </div>
+
+                      <hr style="border: #f1f1f1 2px solid">
+
+                      <div class="row detail-team mt-15">
+                      <hr style="border: #f1f1f1 2px solid">
+
+                      <div class="row detail-team mt-15" style="width: 80%;">
+                          <div class="col-sm-6 form-group">
+                              <label class="control-label">Đồng phục 1</label>
+                              <div class="avatar border-radius clearfix">
+                                  <label for="UploadUniform" class="width-100">
+                                      <span class="fa fa-edit pull-right"></span>
+                                      <img id="logo-uniform1" width="100" height="100" src="https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png">
+                                  </label>
+                                  <input class="form-control" id="homeShirt" name="homeShirt" type="text" value="">
+                              </div>
+                          </div>
+                          <div class="col-sm-6 form-group">
+                              <label class="control-label">Đồng phục 2</label>
+                              <div class="avatar border-radius clearfix">
+                                  <label for="UploadUniform2" class="width-100">
+                                      <span class="fa fa-edit pull-right"></span>
+                                      <img id="logo-uniform2" width="100" height="100" src="https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png">
+                                  </label>
+                                  <input class="form-control" id="awayShirt"  name="awayShirt" type="text" value="">
+                              </div>
+                          </div>
+                      </div>
+
+                      <hr style="border: #f1f1f1 2px solid">
+
+                  </div>
+              </div>
+          </div>
+          </div>
+          
+          <hr style="border: #f1f1f1 2px solid">
+
+          <div class="panel-footer pb-2">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-2">
+                    <div class="text-center">
+                        <button class="btn btn-primary" type="submit">Lưu</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+          </div>
+        </form>
+       </main>
+        </div>
+      </div>
+      <!--===============================================================================================-->
+      <!-- /.container-fluid -->
+
+    </div>
+
+    <div class="modal fade" id="openCoachList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Danh sách huấn luận viên</h5>
+              <button type="button" class="close" aria-label="Close"  onclick="hideDialog()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="table playerIndex statsTable teamStatsTable">
+                <table style="width:100%;">
+                   <thead>
+                      <tr>
+                         <th scope="col">STT</th>
+                         <th scope="col">Tên</th>
+                         <th scope="col">Thao tác</th>
+                      </tr>
+                   </thead>
+                   <tbody class="statsTableContainer">
+                      <% coaches.forEach(function(coach, index) { %>
+                        <tr class="">
+                          <td><%= index + 1 %></td>
+                          <td></span><%= coach.fullName %></a></td>
+                          <td><span>
+                            <button type="button" class="btn btn-primary btn-sm"  data-dismiss="modal" onclick="setAccountValue('<%= JSON.stringify(coach) %>')">Thêm</button>
+                          </span></td>
+                       </tr>
+                    <%  }) %>
+                   </tbody>
+                </table>
+             </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+    
+    
+      <div class="modal fade" id="openManagerList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Danh sách người quản lý</h5>
+              <button type="button" class="close" aria-label="Close" onclick="hideDialog()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="table playerIndex statsTable teamStatsTable">
+                <table style="width:100%;">
+                   <thead>
+                      <tr>
+                         <th scope="col">STT</th>
+                         <th scope="col">Tên</th>
+                         <th scope="col">Thao tác</th>
+                      </tr>
+                   </thead>
+                   <tbody class="statsTableContainer">
+                      <% managers.forEach(function(manager, index) { %>
+                        <tr class="">
+                          <td><%= index + 1 %></td>
+                          <td></span><%= manager.fullName %></a></td>
+                          <td><span>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="setManagerValue('<%= JSON.stringify(manager) %>')">Thêm</button>
+                          </span></td>
+                       </tr>
+                    <%  }) %>
+                   </tbody>
+                </table>
+             </div>
+            </div>
+            <div class="modal-footer">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+          function hideDialog() {
+            $('#openManagerList').modal('hide');
+            $('#openCoachList').modal('hide');
+          }
+
+        function setManagerValue(manager) {   
+            hideDialog();         
+          document.getElementById("manager").value = JSON.parse(manager).fullName;
+          document.getElementById("managerId").value = JSON.parse(manager).accountId;
+        }
+        function setAccountValue(coach) {
+            hideDialog();
+          document.getElementById("coach").value = JSON.parse(coach).fullName;
+          document.getElementById("coachId").value = JSON.parse(coach).id;
+        }
+
+        function setTeamValue(team) {
+            document.getElementById("id").name = "id";
+            document.getElementById("id").value = JSON.parse(team).id;
+          document.getElementById("logo").src = JSON.parse(team).logo;
+          document.getElementById("UploadLogo").value = JSON.parse(team).logo;
+          document.getElementById("name").value = JSON.parse(team).name;
+          document.getElementById("managerId").value = JSON.parse(team).accountId == null ? '' : JSON.parse(team).accountId;
+          document.getElementById("manager").value = JSON.parse(team).team_manager == null? '' : JSON.parse(team).team_manager.username;
+          document.getElementById("coachId").value = JSON.parse(team).coachId == null? '' : JSON.parse(team).coachId;
+          document.getElementById("coach").value = JSON.parse(team).team_coach == null? '' : JSON.parse(team).team_coach.fullName;
+          document.getElementById("logo-uniform1").src = JSON.parse(team).homeShirt;
+          document.getElementById("homeShirt").value = JSON.parse(team).homeShirt == null? '' : JSON.parse(team).homeShirt;
+          document.getElementById("logo-uniform2").src = JSON.parse(team).awayShirt;
+          document.getElementById("awayShirt").value = JSON.parse(team).awayShirt == null? '' : JSON.parse(team).awayShirt;
+        }
+        function setNoneTeamValue() {
+            document.getElementById("id").name = "";
+          document.getElementById("logo").src = 'https://www.designevo.com/res/templates/thumb_small/star-soccer-ball-badge.png';
+          document.getElementById("name").value = '';
+          document.getElementById("managerId").value = '';
+          document.getElementById("manager").value = '';
+          document.getElementById("coachId").value = '';
+          document.getElementById("coachId").value = '';
+          document.getElementById("logo-uniform1").src = 'https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png';
+          document.getElementById("logo-uniform2").src = 'https://cdn4.iconfinder.com/data/icons/clothes-accessories-2/367/clothes-accessory-clothing-garment_03-512.png';
+        }
+      </script>
