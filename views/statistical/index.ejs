@@ -28,15 +28,25 @@
                     <div class="row">
                         <main role="main" class="col-md-12 col-lg-12 px-4">
                             <div class="col mt-4">
-                                <div class="row justify-content-md-center"><h1> Tổng điểm: <span style="color: blue;" id="total-point"></span></h1></div>
-                                <div class="row">
+                                <div class="row justify-content-md-center"><h1> Tổng điểm: <span style="color: blue;" id="total-point"><%= result.point%></span></h1></div>
+                                <div class="row justify-content-md-center">
                                     <div class="col">
-
-                                        <canvas id="winChart" width="100" height="100"></canvas>
+                                        <div class="row">
+                                            Tổng số bàn thắng: <span style="color: blue;" id="total-point"><%= result.goals%></span>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            Tổng số bàn thủng lưới: <span style="color: blue;" id="total-point"><%= result.fail%></span>
+                                        </div>
                                     </div>
                                     <div class="col">
-    
-                                        <canvas id="goalChart" width="100" height="100"></canvas>
+                                        <div class="row">
+                                            Tổng số trận thắng: <span style="color: blue;" id="total-point"><%= result.win%></span>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            Tổng số trận thua: <span style="color: blue;" id="total-point"><%= result.lose%></span>
+                                        </div>
                                     </div>
                                 </div>
                                 <h2>Danh sách</h2>
@@ -72,7 +82,7 @@
 
     <%- include('../general/js')%>
 
-    <script>
+    <!-- <script>
         const json ='<%-JSON.stringify(result)%>';
         const data = json.replace(/&quot;/g,'"');
         const values = JSON.parse(data);
@@ -160,7 +170,7 @@
         
         // const data = <%= result %>;
         // console.log(data);
-    </script>
+    </script> -->
 
 </body>
 
