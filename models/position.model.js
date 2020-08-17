@@ -28,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
     Position.associate = function (models) {
         Position.hasMany(models.athletes, {
             foreignKey: 'positionCode',
-            sourceKey: 'id',
+            sourceKey: 'code',
             as: 'position_athletes',
             onUpdate: "CASCADE",
             onDelete: "CASCADE"

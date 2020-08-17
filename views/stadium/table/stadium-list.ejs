@@ -1,0 +1,29 @@
+<div class="col-12">
+    <div class="main-box no-header clearfix">
+        <div class="main-box-body clearfix">
+            <div class="table-responsive">
+                <table class="table user-list" id="stadiumTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)" class="text-center"><span>STT <i class="fas fa-sort"></i></span></th>
+                            <th onclick="sortTable(1)" class="text-center"><span>Tên <i class="fas fa-sort"></i></span></th>
+                            <th onclick="sortTable(2)" class="text-center"><span>Chủ nhà<i class="fas fa-sort"></i></span>
+                            </th>
+                            <th onclick="sortTable(3)" class="text-center"><span>Địa chỉ<i class="fas fa-sort"></i></span></th>
+
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <tbody id="data-table">
+                        <% stadiumData.forEach(function(row){ %>
+                        <%- include('../../table/stadiumShow', {data: row}); %>
+                        <% }); %>
+                    </tbody>
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

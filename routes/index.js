@@ -13,18 +13,14 @@ const roleRouter = require('./role');
 
 const authenticate = require('../components/authentication');
 
-/* GET home page. */
-
-
-
 router.use('/athletes', authenticate, athleteRoute);
-router.use('/team', authenticate, doiBongRouter);
-router.use('/statistical', authenticate, statisticalRouter);
-router.use('/coach', authenticate, coachRouter);
-router.use('/stadium', authenticate, stadiumRouter);
-router.use('/match', authenticate, matchRouter);
-router.use('/picture', authenticate, pictureRouter);
-router.use('/position', authenticate, positionRouter);
+router.use('/teams', authenticate, doiBongRouter);
+router.use('/statisticals', authenticate, statisticalRouter);
+router.use('/coachs', authenticate, coachRouter);
+router.use('/stadiums', authenticate, stadiumRouter);
+router.use('/matchs', authenticate, matchRouter);
+router.use('/pictures', authenticate, pictureRouter);
+router.use('/positions', authenticate, positionRouter);
 router.use('/roles', roleRouter);
 router.use('/accounts', accountRouter);
 
