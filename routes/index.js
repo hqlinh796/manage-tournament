@@ -7,21 +7,15 @@ const coachRouter = require('./coach');
 const stadiumRouter = require('./stadium');
 const matchRouter = require('./match');
 const pictureRouter = require('./picture');
-const positionRouter = require('./position.js')
-const accountRouter = require('./account');
-
-const authenticate = require('../components/authentication');
-
+const positionRouter = require('./position');
 /* GET home page. */
-
-router.use('/athletes', authenticate, athleteRoute);
-router.use('/team', authenticate, doiBongRouter);
-router.use('/statistical', authenticate, statisticalRouter);
-router.use('/coach', authenticate, coachRouter);
-router.use('/stadium', authenticate, stadiumRouter);
-router.use('/match', authenticate, matchRouter);
-router.use('/picture', authenticate, pictureRouter);
-router.use('/position', authenticate, positionRouter);
-router.use('/accounts', accountRouter);
+router.use('/athletes', athleteRoute);
+router.use('/teams', doiBongRouter);
+router.use('/statisticals', statisticalRouter);
+router.use('/coachs', coachRouter);
+router.use('/stadiums', stadiumRouter);
+router.use('/matchs', matchRouter);
+router.use('/pictures', pictureRouter);
+router.use('/positions', positionRouter);
 
 module.exports = router;

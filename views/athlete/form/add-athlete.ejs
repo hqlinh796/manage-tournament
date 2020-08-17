@@ -1,0 +1,65 @@
+<form method="post" action="" id="fm-add-athlete">
+    <div class="from-group">
+        <img src="http://rebrand.ly/spihiv9" alt="" id="avatar-athlete" class="">
+    </div>
+    <div class="form-group">
+        <label for="avatar">Link avatar (Để tạm)</label>
+        <input id="avatar" class="form-control" type="text" name="avatar">
+    </div>
+
+    <div class="form-group">
+        <label for="fullName">Tên</label>
+        <input id="fullName" class="form-control" type="text" name="fullName" value="Cristiano Ronaldo">
+
+    </div>
+
+    <div class="form-group row" style="margin-right: -0.75rem; margin-left: -0.75rem;">
+        <div class="col-6">
+
+            <label for="birthday">Ngày sinh</label>
+            <input id="birthday" class="form-control" type="text" name="birthday" value="10/01/1985">
+
+        </div>
+        <div class="col-6">
+            <label for="nationality">Quốc tịch</label>
+            <select id="nationality" class="form-control" name="nationality">
+                <option>Anh</option>
+                <option>Pháp</option>
+                <option>Đức</option>
+                <option>Bồ Đào Nha</option>
+                <option>Mỹ</option>
+            </select>
+
+        </div>
+    </div>
+    <div class="form-group row" style="margin-right: -0.75rem; margin-left: -0.75rem;">
+        <div class="col-6">
+            <label for="height">Chiều cao</label>
+            <input id="height" class="form-control" type="text" name="height" value="184">
+        </div>
+        <div class="col-6">
+            <label for="weight">Cân nặng</label>
+            <input id="weight" class="form-control" type="text" name="weight" value="73">
+        </div>
+
+    </div>
+    <div class="form-group row" style="margin-right: -0.75rem; margin-left: -0.75rem;">
+        <div class="col-3">
+            <label for="dominantFoot">Chân thuận</label>
+            <select id="dominantFoot" class="form-control" name="dominantFoot">
+                <option value="Trái">Trái</option>
+                <option value="Phải">Phải</option>
+            </select>
+        </div>
+        <div class="col-5">
+            <!-- select position code -->
+            <%-include('../select/select-position.ejs')%>
+        </div>
+        <div class="col-4">
+            <label for="salary">Lương</label>
+            <input id="salary" class="form-control" type="text" name="salary" value="10000000">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="float: right">Lưu</button>
+</form>

@@ -43,7 +43,7 @@ module.exports = {
         const id = req.params.id;
         const coachsData = await coachService.getCoaches();
         const teamData = await teamService.getTeamByID(id);
-        const athleteList = await athleteService.getListByTeamID(id);
+        const athleteList = await athleteService.getAthletesByTeamId(id);
         const position = await positionService.getAllPosition();
         res.render('team/teamInfo', {teamData: teamData, athleteList: athleteList, position:position, coachsData});
     },
@@ -127,5 +127,21 @@ module.exports = {
         } catch (error) {
             next(error);
         }
+    },
+    getTeamsAPI: async (req, res, next) => {
+        const teamData = await teamService.getTeams();
+        const coachsData = await coachService.getCoaches();
+        res.json(teamData);
+    },
+    updateAthlete: async(req, res, next)=>{
+        const data = req.body;
+        const id = req.params.id;
+        const newData = await athleteService.updateAthleteById(id, data);
+        res.json(newData);
+    },
+    statistical: async(req, res, next) =>{
+        const id = req.params.id;
+        const result = await teamService.statistical(id);
+        res.render('statistical/index.ejs', {result});
     }
 }

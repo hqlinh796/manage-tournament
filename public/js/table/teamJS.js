@@ -3,7 +3,7 @@ window.onload = function () {
         console.log($(this).index());
         const id = $('#team').find('tbody tr')[$(this).index()].attributes.value.value;
         console.log(id);
-        window.location.href = "/team/"+id;
+        window.location.href = "/teams/"+id;
         // $('#'+ id).modal('show');
     });
 }
