@@ -20,5 +20,14 @@ module.exports ={
             }
         });
         return data;
-    }
+    },
+    deletePicturesByStadiumId: (id)=>{
+        const data = db.pictures.destroy({
+            where: {
+                stadiumId: id,
+            }
+        });
+        return data;
+    },
+    
 }

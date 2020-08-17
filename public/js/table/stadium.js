@@ -59,8 +59,9 @@ window.onload = function () {
             // $('#' + id).modal('show');
         } else {
             const url = "/stadiums/" + id;
-            setAction(url);
-            
+            const pictureUrl = "/pictures/" + id;
+            $('#modal-update-stadium #fm-stadium')[0].action = url;
+            console.log(url);
 
             $.get(url.toString(), function (data, status) {
                 console.log(data);
@@ -70,6 +71,14 @@ window.onload = function () {
                 $('#modal-update-stadium #fm-stadium').find('#name')[0].value = data.name;
                 $('#modal-update-stadium #fm-stadium').find("#address")[0].value = data.address;
                 $('#modal-update-stadium #fm-stadium').find("#hostTeam")[0].value = data.hostTeam;
+
+                $.get(pictureUrl.toString(), function (data, status){
+                    console.log(data);
+                    for (i =0; i< data.length; i++){
+                        $('#modal-update-stadium #fm-stadium').find("[name = 'pictures']")[i].value = data[i].picture;
+                    }
+                });
+                
 
             });
         }

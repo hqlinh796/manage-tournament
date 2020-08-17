@@ -32,11 +32,23 @@ module.exports = {
         }
     },
     updateStadiumById: async (req, res, next) =>{
+        
         try {
             const data = req.body;
             const id = req.params.id;
             const newData = await stadiumService.updateStadiumById(id, data);
-            res.json(newData);
+            await pictureService.deletePicturesByStadiumId(id);
+            const pictures = data.pictures;
+            if(pictures){
+                for (pic in pictures){
+                    const dataPicture = {};
+                    dataPicture.stadiumId = id;
+                    dataPicture.picture = pictures[pic];
+                    console.log(dataPicture);
+                    pictureService.addPicture(dataPicture);
+                } 
+            }
+            res.redirect('/stadiums');
         } catch (error) {
             next(error);
         }
