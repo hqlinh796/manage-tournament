@@ -11,5 +11,6 @@ module.exports = function authenticete(req, res, next) {
         return res.redirect('/accounts/login');
     }
     req.account = data;
+    res.locals.account = data;
     next();
 }

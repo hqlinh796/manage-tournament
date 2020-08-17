@@ -1,0 +1,31 @@
+<!-- Modal -->
+<div class="modal fade" id="model-coach" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <form action="" method="POST" id="update-coach">
+                <div class="modal-header">
+                    <h5 class="modal-title">Đổi Huấn Luyện Viên</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <select class="form-control" name="coachId">
+                        <% coachesData.forEach(function(row, index){ %>
+                        <% if(coachData && row.id === coachData.id){ %>
+                        <option selected value=<%=row.id%>> <%=row.fullName%></option>
+                        <% } else {%>
+                        <option value=<%=row.id%>> <%=row.fullName%></option>
+                        <% } %>
+                        <% }); %>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

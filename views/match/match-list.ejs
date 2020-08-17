@@ -4,6 +4,9 @@
     <%-include('../general/head.ejs') %>
     <link href="../../css/manage-teams.css" rel="stylesheet">
     <link href="../../css/match/match-list.css" rel="stylesheet">
+    <link href="../../css/match/match-info.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     
 
     <script
@@ -35,6 +38,7 @@
                     clear: both;
                   "
                 >
+                
                   <header>
                     <h3 class="subHeader">Danh sách trận đấu</h3>
                   </header>
@@ -54,10 +58,6 @@
                     <i class="fa fa-plus mr-2" aria-hidden="true"></i>Thêm trận đấu
                     </button>
                   </div>
-
-                    <!-- Modal -->
-                <%- include('./match-add-modal.ejs', {teams: teams}) %>
-        </div>
                   <div class="col-lg-12">
                     <div class="main-box no-header clearfix">
                       <div class="main-box-body clearfix">
@@ -101,7 +101,14 @@
                       </div>
                     </div>
                   </div>
-                </div>
+
+                    <!-- Modal -->
+                <%- include('./match-add-modal.ejs', {teams: teams}) %>
+                <%- include('./match-info-modal.ejs') %>
+                
+        </div>
+        
+                  
               </main>
             </div>
           </div>
@@ -113,7 +120,13 @@
       $(document).ready(function() {
         $('.match-list').DataTable();
       } );
+
+      $('.table > tbody > tr').click(function() {
+        
+      });
     </script>
+
+    
 
     <%-include('../general/js.ejs') %>
     <script src="../js/table/teamJS.js"></script>

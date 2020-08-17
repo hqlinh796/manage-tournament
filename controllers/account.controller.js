@@ -60,8 +60,9 @@ module.exports = {
                 res.render('login');
                 return;
             }
+            console.log(JSON.stringify(account));
             //generate token and set header
-            const {token, refreshToken} = jwt.generateJWT(account.username, account.roleCode);
+            const {token, refreshToken} = jwt.generateJWT(account.username, account.roleCode, account.account_team.id);
             
             res.cookie('token', token);
             res.cookie('refreshToken', refreshToken);
@@ -94,11 +95,9 @@ module.exports = {
     },
     getAccountPage: async (req, res, next) => {
         const temp = await db.matches_athletes.findAll();
-        console.log(JSON.stringify(temp));
         const accountList = await accountService.getAccounts();
         const roleList = await roleService.getRoles();
-        console.log(JSON.stringify(roleList));
-        res.render('account/account', {accountList, roleList});
+        res.render('account/', {accountList, roleList});
 
         //xu ly accountList
     }

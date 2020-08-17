@@ -35,15 +35,22 @@
         </span>
     </td>
     <td style="width: 7%;">
-      <!-- <a href="" class="table-link" data-toggle="modal"
-      data-target="#addManager" onclick="">
+      
+      <a href="" class="table-link" data-toggle="modal"
+      data-target="#showMatchDetail" onclick="setMatchValue('<%= JSON.stringify(match) %>', '<%=match.result%>', '<%=match.listAthGoalHost%>', '<%=match.listAthGoalGuest%>')">
+      <span class="fa-stack">
+        <i class="fa fa-eye  fa-stack-2x" ></i>
+      </span>
+    </a>
+    <a href="" class="table-link" data-toggle="modal"
+        data-target="#addTeam" onclick="">
         <span class="fa-stack">
           <i class="fa fa-square fa-stack-2x"></i>
           <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
         </span>
-      </a> -->
+      </a>
       <a
-        href="/match/delete?id=<%= match.id%>"
+        href="/matchs/delete?id=<%= match.id%>"
         class="table-link danger"
         onclick="return confirm('Bạn có muốn xoá trận đấu này?')"
       >

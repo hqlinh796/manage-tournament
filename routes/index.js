@@ -12,14 +12,16 @@ const managerRouter = require('./manager')
 const accountRoute = require('./account');
 const roleRouter = require('./role');
 const authenticate = require('../components/authentication');
+const matchController = require('../controllers/match.controller');
 
 
 /* GET home page. */
+router.get('/', authenticate, matchController.showMatchList);
 router.use('/accounts', accountRoute);
 router.use('/athletes', authenticate, athleteRoute);
 router.use('/teams', authenticate, teamRouter);
 router.use('/statisticals', authenticate, statisticalRouter);
-router.use('/coachs', authenticate, coachRouter);
+router.use('/coaches', authenticate, coachRouter);
 router.use('/stadiums', authenticate, stadiumRouter);
 router.use('/matchs', authenticate, matchRouter);
 router.use('/pictures', authenticate, pictureRouter);

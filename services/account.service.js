@@ -83,7 +83,13 @@ const db = require('../models');
 module.exports = {
     getAccountByUsername: (username) => {
         return db.accounts.findOne({
-            username
+            where: {
+                username
+            },
+            include: [{
+                model: db.teams,
+                as: 'account_team'
+            }]
         });
     },
     createAccount: (username, password, roleCode) => {

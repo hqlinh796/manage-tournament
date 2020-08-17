@@ -1,0 +1,30 @@
+<tr>
+    <td class="text-center index">
+      <a href="#" class="text-center"
+        ><%= index + 1 %></a
+      >
+    </td>
+    <td class="text-center team">
+        <div>
+            <span>
+            <img src="<%= team.logo %>" alt="" style="max-width: 20px;">
+            <a href="#"> <%= team.name %></a>
+          </span>
+        </div>
+    </td>
+    <td class="text-center manager">
+        <%=team.win%>
+    </td>
+    <td class="text-center manager">
+        <%=team.lose%>
+    </td>
+    <td class="text-center manager">
+        <%=team.drawn%>
+    </td>
+    <td class="text-center manager">
+        <%=team.goalDifference%>
+    </td>
+    <td class="text-center manager">
+        <%=team.score%>
+    </td>
+  </tr>

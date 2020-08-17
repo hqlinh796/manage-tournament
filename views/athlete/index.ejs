@@ -29,26 +29,35 @@
                 <div class="container-fluid">
                     <div class="row">
                         <main role="main" class="col-md-12 col-lg-12 px-4">
-                            <div class="row mt-4">
+                            <div class="col mt-4">
 
-                                <div class="col-12 text-center">
-                                    <img alt=<%=teamData.name%> id="logo" src=<%=teamData.logo%>>
-                                    <span class="team-name"><%=teamData.name%></span>
+                                <div class="row text-center">
+                                    <div class="col text-center">
+                                        <img alt=<%=teamData.name%> id="logo" src=<%=teamData.logo%>>
+                                        <span class="team-name"><%=teamData.name%></span>
+                                    </div>
                                 </div>
-                                <div class="col-12 d-flex" style="margin-bottom: 30px; margin-top: 20px;">
+                                <div class="row">
+                                    <div class="col-12 d-flex" style="margin-bottom: 30px; margin-top: 20px; justify-content: center;">
 
-                                    <span class="font-weight-bold">Người quản lý: &nbsp</span>
-                                    <span><%=teamData.manageId%> &nbsp</span>
-                                    <a href="#" class="mr-5 ">Thay đổi</a>
-
-
-                                    <span class="ml-5 font-weight-bold">Huấn luyện viên: &nbsp</span>
-                                    <span><%=teamData.coachId%> &nbsp</span>
-                                    <a href="#">Thay đổi</a>
-
-
+                                        <span class="font-weight-bold">Người quản lý: &nbsp</span>
+                                        <%if(managerData){%>
+                                        <span><%=managerData.fullName%> &nbsp</span>
+                                        <%}%>
+                                        
+                                        <!-- <a href="#model-manager" class="mr-5 " data-toggle="modal" data-target="#model-manager">Thay đổi</a> -->
+    
+    
+                                        <span class="ml-5 font-weight-bold">Huấn luyện viên: &nbsp</span>
+                                        <%if(coachData){%>
+                                        <span><%=coachData.fullName%> &nbsp</span>
+                                        <%}%>
+                                        <a href="#model-coach" class="mr-5 " data-toggle="modal" data-target="#model-coach">Thay đổi</a>
+    
+    
+                                    </div>
                                 </div>
-                                <div class="col-12 d-flex justify-content-between">
+                                <div class="row d-flex justify-content-between ml-3 mr-3">
                                     <div>
                                         <input id="search" class="form-control" type="text" name="" value="" placeholder="Tìm kiếm">
                                     </div>
@@ -98,6 +107,10 @@
     <%-include('./modal/modal-add-athlete.ejs')%>
     <%-include('./modal/modal-update-athlete.ejs')%>
 
+    <!-- change modal -->
+    <%-include('./modal/modal-coach.ejs', {coachesData, coachData})%>
+    <%-include('./modal/modal-manager.ejs', {managerData})%>
+
     <!-- end Modal -->
 
     <%-include('../general/js')%>
@@ -120,6 +133,8 @@
         }
 
         const path = window.location.pathname;
+        $('#update-coach')[0].action= path + "/edit";
+        $('#update-manager')[0].action= path + "/edit";
         setAction(path);
     </script>
     <script src="../../js/table/athleteList.js"></script>

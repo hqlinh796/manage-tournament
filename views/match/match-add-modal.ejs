@@ -3,7 +3,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Tạo trận đấu</h5>
-          <button type="button" class="close"  aria-label="Close" onclick="hideDialog()">
+          <button type="button" class="close"  aria-label="Close" data-dismiss="modal">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -26,7 +26,7 @@
                         <div class="col-lg-9 col-md-9 col-sm-8">
                           <div class="dropdown">
                             <input id="hostTeam" name="hostTeam" style="display: none;" value="">
-                            <button id="btn-hostTeam" class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button style="width:100%" id="btn-hostTeam" class="btn btn-default dropdown-toggle text-left" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Chọn đội
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -59,9 +59,9 @@
                             type="text"
                             value=""
                           /> -->
-                          <div class="dropdown">
+                          <div class="dropdown" >
                             <input id="guestTeam" name="guestTeam" style="display: none;" value="">
-                            <button class="btn btn-default dropdown-toggle btn-guestTeam" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <button style="width:100%" class="btn btn-default dropdown-toggle btn-guestTeam text-left" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               Chọn đội
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
@@ -127,16 +127,12 @@
   </div>
 
   <script>
-    function hideDialog() {
-      $('#addMatch').modal('hide');
-    }
-
+    
     function setHostTeam(el, team, index, length) {
       $('#btn-hostTeam')[0].innerHTML = el.innerHTML;
       $('#hostTeam')[0].value = JSON.parse(team).id;
       $('#stadium')[0].value = JSON.parse(team).team_stadium.name;
       document.getElementById('guest'+index).style.display = "none";
-      console.log(index);
       for(let i = 0; i < length; i++) {
         if(i!=index) {
           document.getElementById('guest'+i).style.display = "inline";

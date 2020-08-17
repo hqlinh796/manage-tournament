@@ -1,18 +1,17 @@
-<table class="table user-list" id="athleteList">
+<table class="table user-list" id="coachList">
     <thead>
         <tr>
             <th onclick="sortTable(0)" class="text-center"><span>STT <i class="fas fa-sort"></i></span></th>
             <th onclick="sortTable(1)" class="text-center"><span>Tên <i class="fas fa-sort"></i></span></th>
             <th onclick="sortTable(2)" class="text-center" contenteditable=""><span>Ngày sinh
                     <i class="fas fa-sort"></i></span></th>
-            <th onclick="sortTable(3)" class="text-center"><span>Vị trí <i class="fas fa-sort"></i></span></th>
-            <th onclick="sortTable(4)" class="text-center"><span>Quốc tịch <i class="fas fa-sort"></i></span></th>
+            <th onclick="sortTable(3)" class="text-center"><span>Quốc tịch <i class="fas fa-sort"></i></span></th>
             <th>&nbsp;</th>
         </tr>
     </thead>
     <tbody id="data-table">
-        <%athletesData.forEach(function(row, index){%>
-        <%-include('./row-athlete.ejs', {row, index})%>
+        <%data.forEach(function(row){%>
+        <%-include('./row-coach.ejs', {row})%>
         <%})%>
     </tbody>
 
