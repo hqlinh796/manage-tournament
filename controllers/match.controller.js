@@ -82,7 +82,7 @@ module.exports = {
         try {
             console.log(await matchService.addMatch(req.body));
 
-            res.redirect('/match');
+            res.redirect('/matchs');
         } catch (error) {
             next(e);
         }
@@ -93,7 +93,7 @@ module.exports = {
                 await matchService.deleteMatch(req.query.id);
             }
 
-            res.redirect('/match');
+            res.redirect('/matchs');
         } catch (error) {
             next(e);
         }

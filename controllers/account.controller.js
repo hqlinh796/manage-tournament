@@ -19,7 +19,7 @@ module.exports = {
     },
     getAllAccounts: async (req, res, next) => {
         try {
-            const accounts = await accountService.getAllAccounts();
+            const accounts = await accountService.getAccounts();
             return accounts;
         } catch (error) {
             next(error);

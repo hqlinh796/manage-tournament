@@ -21,6 +21,8 @@ module.exports = {
     },
     addTeam: async (req, res, next) => {
         var newTeam = req.body;
+        console.log(JSON.stringify(newTeam));
+        delete newTeam.teamId;
         if (!newTeam.managerId) {
             delete newTeam.managerId;
         }
@@ -34,7 +36,7 @@ module.exports = {
                 await teamService.addTeam(newTeam);
             }
 
-            res.redirect('/team');
+            res.redirect('/teams');
         } catch (error) {
             next(error)
         }
