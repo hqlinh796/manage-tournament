@@ -21,6 +21,7 @@ module.exports ={
         return data;
     },
     updateStadiumById:(id, data)=>{
+        console.log(data);
         const newData = db.stadiums.update(data,{
             where:{id: id}
         });

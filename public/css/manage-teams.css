@@ -86,3 +86,11 @@ a {
     border-top: 1px solid #e7ebee;
     padding: 12px 8px;
 }
+
+table {
+    table-layout:fixed;
+}
+
+table td {
+    overflow:hidden;
+}

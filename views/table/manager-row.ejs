@@ -1,0 +1,45 @@
+<tr>
+  <td class="text-center">
+    <a href="#" class="text-center"
+      ><%= index + 1 %></a
+    >
+  </td>
+  <td class="text-center">
+    <a href="#"><%= manager.fullName %></a>
+  </td>
+  <td class="text-center">
+    <a href="#"><%=manager.account.username %></a>
+  </td>
+  <td class="text-center">
+    <div>
+      <% if(manager.team) { %>
+        <span>
+          <img src="<%= manager.team.logo %>" alt="" style="max-width: 20px;">
+          <a href="#"> <%= manager.team.name %></a>
+        </span>
+     <% } else {%>
+      <a href="#">#</a>
+      <% } %>
+        
+      </div>
+  </td>
+  <td style="width: 7%;">
+    <a href="" class="table-link" data-toggle="modal"
+    data-target="#addManager" onclick="setTeamValue('<%= JSON.stringify(manager) %>')">
+      <span class="fa-stack">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+    <a
+      href="/manager/delete?id=<%=manager.id %>"
+      class="table-link danger"
+      onclick="return confirm('Bạn có muốn xoá đội bóng này?')"
+    >
+      <span class="fa-stack">
+        <i class="fa fa-square fa-stack-2x"></i>
+        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+      </span>
+    </a>
+  </td>
+</tr>

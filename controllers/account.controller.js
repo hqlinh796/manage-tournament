@@ -1,3 +1,5 @@
+
+
 const bcrypt = require('bcrypt');
 const accountService = require('../services/account.service');
 const roleService = require('../services/role.service');
@@ -6,6 +8,23 @@ const jwt = require('../components/jsonwebtoken');
 const db = require('../models');
 
 module.exports = {
+    addAccount : async (req, res, next) => {
+        const newAccount = req.body;
+        try {
+            const createAccount = await accountService.addAccount(newAccount);
+           res.send();
+        } catch (error) {
+            next(error);
+        }
+    },
+    getAllAccounts: async (req, res, next) => {
+        try {
+            const accounts = await accountService.getAccounts();
+            return accounts;
+        } catch (error) {
+            next(error);
+        }
+    },
     getLoginPage: (req, res) => {
         //console.log(req.cookies.previousPage);
         res.render('login');

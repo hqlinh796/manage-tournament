@@ -1,0 +1,16 @@
+module.exports = {
+    viewAthlete: 'team-view_athlete',
+    editAthlete: 'team-edit_athlete',
+    editTeam: 'team-edit_team',
+    reportTeam: 'team-report_team',
+    viewListTeam: 'tournament-view_team',
+    editTeamInfo: 'tournament-edit_team',
+    viewMatch: 'tournament-view_match',
+    editMatch: 'tournament-edit_match',
+    updateMatch: 'tournament-update_match',
+    viewRank: 'tournament-view_rank',
+    reportTournament: 'tournament-report_tournament',
+    viewRule: 'tournament-view_rule',
+    editRule: 'tournament-edit_rule',
+    editAccount: 'account-edit_account',
+}

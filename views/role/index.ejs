@@ -59,7 +59,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3" style="font-size: 13px">Ngoại <br>hạng anh</div>
       </a>
 
       <!-- Divider -->
@@ -69,7 +69,7 @@
       <li class="nav-item active">
         <a class="nav-link" href="index.html">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Trang chủ</span></a>
       </li>
 
       <!-- Divider -->
@@ -77,7 +77,7 @@
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Interface
+        Chức năng
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -85,13 +85,13 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
           aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Đội bóng</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
+            <a class="collapse-item" href="buttons.html">Cầu thủ</a>
+            <a class="collapse-item" href="cards.html">Thống kê</a>
           </div>
         </div>
       </li>
@@ -101,21 +101,34 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
           aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
+          <span>Giải đấu</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
+            <a class="collapse-item" href="utilities-color.html">Đội bóng</a>
+            <a class="collapse-item" href="utilities-border.html">Lịch thi đấu</a>
+            <a class="collapse-item" href="utilities-animation.html">BXH</a>
+            <a class="collapse-item" href="utilities-other.html">Thống kê</a>
+            <a class="collapse-item" href="utilities-other.html">Quy định</a>
           </div>
         </div>
       </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#accountCollapse"
+          aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-wrench"></i>
+          <span>Tài khoản</span>
+        </a>
+        <div id="accountCollapse" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="utilities-color.html">Danh sách</a>
+            <a class="collapse-item" href="utilities-border.html">Vai trò</a>
+          </div>
+        </div>
+      </li>
 
       <!-- Heading -->
       <div class="sidebar-heading">
@@ -418,19 +431,23 @@
                                         <%= role.code %>
                                     </td>
                                     <td class="text-center">
-                                        <%= role.actions %>
+                                        <% role.actions.forEach(function(action, index){  %>
+                                          <% if (index < 5) {%>
+                                            <%= action.name %>, 
+                                            <% }%>
+                                          <%})%> ...
                                     </td>
                                     <td class="text-center">
                                         
                                     </td>
                                     <td style="width: 7%;">
-                                      <a href="/admin/user/add?id={{_id}}" class="table-link">
+                                      <a href="#" class="table-link edit-role-btn" id="role-<%= role.code%>">
                                         <span class="fa-stack">
                                           <i class="fa fa-square fa-stack-2x"></i>
                                           <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                                         </span>
                                       </a>
-                                      <a href="/admin/user/delete/{{_id}}" class="table-link danger"
+                                      <a href="/roles/delete-role/<%= role.code %>" class="table-link danger"
                                         onclick="return confirm('Bạn có muốn xoá đội bóng này?')">
                                         <span class="fa-stack">
                                           <i class="fa fa-square fa-stack-2x"></i>
@@ -510,21 +527,20 @@
               <div class="form-group">
                 <label for="action">Vai trò</label>
                 <select id="action" name="action" multiple="multiple" class="form-control">
-                    <optgroup label="Swedish Cars">
-                        <option value="C++">C++</option>
-                        <option value="C#">C#</option>
-                        <option value="Java">Java</option>
-                        <option value="Objective-C">Objective-C</option>
-                        <option value="JavaScript">JavaScript</option>
+                    <optgroup label="Đội bóng">
+                      <% actionGroupByCategory.team.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
                     </optgroup>
-                    <optgroup label="Ronaldo">
-                        <option value="Perl">Perl</option>
-                        <option value="PHP">PHP</option>
-                        <option value="Ruby on Rails">Ruby on Rails</option>
-                        <option value="Android">Android</option>
-                        <option value="iOS">iOS</option>
-                        <option value="HTML">HTML</option>
-                        <option value="XML">XML</option>
+                    <optgroup label="Giải đấu">
+                      <% actionGroupByCategory.tournament.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    <optgroup label="Tài khoản">
+                      <% actionGroupByCategory.account.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
                     </optgroup>
                     
                 </select>
@@ -539,43 +555,132 @@
       </div>
     </div>
   
+    <div id="edit-role-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="my-modal-title" aria-hidden="true" style="padding-bottom: 100px">
+      <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="my-modal-title">Chỉnh sửa vai trò</h5>
+            <button class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form id="create-role-form">
+              
+              <div class="row">
+                <div class="col-md-6">
+                    <label for="role-edit-from">Tên vai trò</label>
+                    <input id="name-edit-from" class="form-control" type="text" name="role" placeholder="">
+                    
+                  </div>
+                  <div class="col-md-6">
+                    <label for="code-edit-from">Mã vai trò</label>
+                    <input id="code-edit-from" class="form-control" type="text" name="code">
+                    
+                  </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="action-edit-form">Vai trò</label>
+                <select id="action-edit-form" name="action" multiple="multiple" class="form-control">
+                    <optgroup label="Đội bóng">
+                      <% actionGroupByCategory.team.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    <optgroup label="Giải đấu">
+                      <% actionGroupByCategory.tournament.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    <optgroup label="Tài khoản">
+                      <% actionGroupByCategory.account.forEach(function(action) {%>
+                        <option value="<%= action.code %>"><%= action.name %></option>
+                        <%})%>
+                    </optgroup>
+                    
+                </select>
+              
+            </div>
+              
+              <button type="submit" class="btn btn-primary" style="float: right">Lưu</button>
+            </form>
+          </div>
+          
+        </div>
+      </div>
+    </div>
 
     <script>
         $(document).ready(function() {
 
         $('#action').multiSelect();
+        $('#action-edit-form').multiSelect();
 
         $('#create-role-form').submit((e) => {
             e.preventDefault();
             const name = $('#name').val();
             const code = $('#code').val();
-            let actions = [];
+            let actionList = [];
             const listDom = $( ".multi-select-menuitems input[type=checkbox]:checked" );
             for (i of listDom) 
-                actions.push(i.value);
+                actionList.push(i.value);
             
-            if (!name || !code || !actions.length) {
+            if (!name || !code || !actionList.length) {
                 alert('Nhap day du cac truong');
                 return;
             }
-
-
+            
+            
+            const data = {
+                    name: name,
+                    code: code,
+                    actions: actionList
+            };
+            
             //send ajax
-            $.ajax({
-                type: 'POST',
-                url: '/roles/create-role',
-                data: {
-                    name,
-                    code,
-                    actions
-                },
-                success: (data, status) => {
-                    location.reload();
-                }
+            fetch('/roles/create-role', {
+              method: 'POST',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
             })
+            .then(res => location.reload());
+           
+        })
+        $('.edit-role-btn').click(function(e) {
+          const code = this.id.slice(5);
+          
+          fetch('/roles/' + code, {
+            method: 'GET',
+
+          })
+          .then(res => res.json())
+          .then(data => {
+            
+            $('#name-edit-from').val(data.name);
+            $('#code-edit-from').val(data.code);
+            let temp = [];
+            data.actions.forEach(element => {
+              temp.push(element.code);
+            });
+            
+            const listDom = $( "#edit-role-modal .multi-select-menuitems input[type=checkbox]" );
+            for (item of listDom) {
+              if (temp.includes(item.value))
+                item.checked = true;
+            }
+            $('#edit-role-modal').modal();
+          })
+        
+          
+          return false;
         })
         });
 
+        
 
     </script>
     

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%-include('../general/head.ejs') %>
+    <link href="../../css/manage-teams.css" rel="stylesheet">
+    <link href="../../css/manager/manager-add.css" rel="stylesheet">
+    
+
+    <script
+      type="application/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+    ></script>
+  </head>
+
+  <body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+      <%-include('../general/nav.ejs') %>
+
+      <!-- Content Wrapper -->
+      <div id="content-wrapper" class="d-flex flex-column">
+        <!-- Main Content -->
+        <div id="content">
+          <%-include('../general/topbar.ejs') %>
+
+          <!-- Begin Page Content -->
+          <div class="container-fluid">
+            <!-- Page Heading -->
+            <div class="row">
+              <main role="main" class="col-md-12 col-lg-12 px-4">
+                <section
+                  class="mainWidget statsRow"
+                  style="
+                    position: relative;
+                    clear: both;
+                  "
+                >
+                  <header>
+                    <h3 class="subHeader">Danh sách người quản lý đội bóng</h3>
+                  </header>
+                </section>
+                <div class="row mt-4">
+                  <div class="d-flex flex-row-reverse mb-2 pr-1 w-100 mr-2">
+                    <!-- <a href="/admin/user/upgrade" class="p-2 btn btn-primary btn-sm ml-1" role="button"
+                       aria-pressed="true">Upgrade Required</a> -->
+                    <!-- Button trigger modal -->
+                    <button
+                      type="button"
+                      class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"
+                      data-toggle="modal"
+                      data-target="#addManager"
+                      onclick="setNoneTeamValue()"
+                    >
+                    <i class="fa fa-plus mr-2" aria-hidden="true"></i>Thêm
+                    người quản lý
+                    </button>
+                  </div>
+
+                    <!-- Modal -->
+            <div class="modal fade" id="addManager" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+            aria-hidden="true">
+            <div class="modal-dialog" style="max-width: 900px;" role="document">
+              <div class="modal-content">
+                <%- include('./manager-add-modal.ejs', {accounts: accounts}) %>
+              </div>
+            </div>
+          </div>
+        </div>
+                  <div class="col-lg-12">
+                    <div class="main-box no-header clearfix">
+                      <div class="main-box-body clearfix">
+                        <div class="table-responsive">
+                          <table class="table user-list">
+                            <thead>
+                              <tr>
+                                <th class="text-center"><span>ID
+                                    <i class="fas fa-sort" aria-hidden="true"></i>
+                                </span></th>
+                                <th class="text-center">
+                                  <span>Tên quản lý
+                                    <i class="fas fa-sort" aria-hidden="true"></i>
+                                  </span>
+                                </th>
+                                <th class="text-center">
+                                    <span>Username
+                                        <i class="fas fa-sort" aria-hidden="true"></i>
+                                    </span>
+                                </th>
+                                <th class="text-center" contenteditable="">
+                                  <span>Đội bóng quản lý
+                                    <i class="fas fa-sort" aria-hidden="true"></i>
+                                  </span>
+                                </th>
+                                <th>&nbsp;</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <% managers.forEach(function(manager, index) { %>
+                              <%- include('../table/manager-row.ejs', {manager: manager, index: index}) %>
+                              <% }); %>
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </main>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+        $('.user-list').DataTable();
+      } );
+    </script>
+
+    <%-include('../general/js.ejs') %>
+    <script src="../js/table/teamJS.js"></script>
+  </body>
+</html>
