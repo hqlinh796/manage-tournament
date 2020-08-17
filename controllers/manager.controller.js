@@ -22,7 +22,7 @@ module.exports = {
                 await managerService.addManager(newManager);
             }
             
-            res.redirect('/manager');
+            res.redirect('/managers');
         } catch (error) {
             next(error);
         }
@@ -33,7 +33,7 @@ module.exports = {
                 await managerService.deleteManager(req.query.id);
             }
 
-            res.redirect('/manager');
+            res.redirect('/managers');
         } catch (error) {
             next(error);
         }
@@ -41,7 +41,7 @@ module.exports = {
     showManagerList: async (req, res, next) => {
         try {
             const managers = await managerService.getAllManagers();
-            const accounts = await accountService.getAllAccounts();
+            const accounts = await accountService.getAccounts();
             for(let i = 0; i < managers.length; i++) {
                 managers[i].team = await teamService.getTeamByManager(managers[i].accountId);
                 managers[i].account = await managers[i].getManager_account();
